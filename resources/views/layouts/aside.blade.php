@@ -23,6 +23,18 @@
                 </ul>
             </li>
             <li class="sidebar-item @if($page == 'supplier') active @endif"><a href="{{route('supplier.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="home"></i> <span class="align-middle">Suppliers</span></a></li>
+            @php
+                $purchase_items = ['purchase_list', 'add_purchase'];
+            @endphp
+            <li class="sidebar-item @if($page == in_array($page, $purchase_items)) active @endif">
+                <a href="#purchases" data-toggle="collapse" class="font-weight-bold sidebar-link collapsed">
+                    <i class="align-middle" data-feather="server"></i> <span class="align-middle">{{__('page.purchase')}}</span>
+                </a>
+                <ul id="purchases" class="sidebar-dropdown list-unstyled collapse ">
+                    <li class="sidebar-item @if($page == 'purchase_list') active @endif"><a class="sidebar-link" href="{{route('purchase.index')}}">Purchase List</a></li>
+                    <li class="sidebar-item @if($page == 'add_purchase') active @endif"><a class="sidebar-link" href="{{route('purchase.create')}}">Add Purchase</a></li>
+                </ul>
+            </li>
             <li class="sidebar-item @if($page == 'user') active @endif"><a href="{{route('users.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="users"></i> <span class="align-middle">User Management</span></a></li>
             @php
                 $settings_items = ['scategory', 'pcategory'];

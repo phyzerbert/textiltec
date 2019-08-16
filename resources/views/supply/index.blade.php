@@ -22,8 +22,9 @@
                                     <th>{{__('page.name')}}</th>
                                     <th>{{__('page.category')}}</th>
                                     <th>{{__('page.cost')}}</th>
-                                    <th>{{__('page.quantity')}}</th>
                                     <th>{{__('page.unit')}}</th>
+                                    <th>{{__('page.color')}}</th>
+                                    <th>{{__('page.quantity')}}</th>
                                     <th>{{__('page.alert_quantity')}}</th>
                                     <th>{{__('page.action')}}</th>
                                 </tr>
@@ -39,8 +40,9 @@
                                         <td class="name">{{$item->name}}</td>
                                         <td class="category">@isset($item->category->name){{$item->category->name}}@endisset</td>
                                         <td class="cost">{{number_format($item->cost)}}</td>
-                                        <td class="quantity">{{$quantity}}</td>
                                         <td class="unit">{{$item->unit}}</td>
+                                        <td class="color">{{$item->color}}</td>
+                                        <td class="quantity">{{$quantity}}</td>
                                         <td class="alert_quantity">{{$item->alert_quantity}}</td>
                                         <td class="py-1">
                                             <a href="{{route('supply.detail', $item->id)}}" class="btn-detail" data-toggle="tooltip" data-placement="left" title="{{__('page.details')}}"><i class="align-middle" data-feather="eye"></i></a>

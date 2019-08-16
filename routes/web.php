@@ -50,4 +50,12 @@ Route::post('/user/create', 'UserController@create')->name('user.create');
 Route::post('/user/edit', 'UserController@edituser')->name('user.edit');
 Route::get('/user/delete/{id}', 'UserController@delete')->name('user.delete');
 
+Route::any('/purchase/index', 'PurchaseController@index')->name('purchase.index');
+Route::get('/purchase/create', 'PurchaseController@create')->name('purchase.create');
+Route::post('/purchase/save', 'PurchaseController@save')->name('purchase.save');
+Route::get('/purchase/edit/{id}', 'PurchaseController@edit')->name('purchase.edit');
+Route::post('/purchase/update', 'PurchaseController@update')->name('purchase.update');
+Route::get('/purchase/detail/{id}', 'PurchaseController@detail')->name('purchase.detail');
+Route::get('/purchase/delete/{id}', 'PurchaseController@delete')->name('purchase.delete');
+
 Route::post('/set_pagesize', 'HomeController@set_pagesize')->name('set_pagesize');
