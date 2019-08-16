@@ -27,6 +27,7 @@
     </div>
 
     <script src="{{asset('master/js/app.js')}}"></script>
+    <script src="{{asset('master/js/custom.js')}}"></script>
     @yield('script')
     <script>
         $.ajaxSetup({

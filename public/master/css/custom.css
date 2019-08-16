@@ -65,3 +65,31 @@ input[type=file][data-fouc] {
     border-top-right-radius: .1875rem;
     border-bottom-right-radius: .1875rem;
 }
+
+#supply_order_table tbody tr td {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+} 
+
+/* autocomplete */
+
+.ui-autocomplete .ui-menu-item {
+    padding: 3px !important;
+    font-size: 14px;
+}
+
+.btn-rounded {
+    border-radius: 100% !important;
+    padding-left: .65rem;
+    padding-right: 0.65rem;
+}
+
+.top-search-form .select2-container--bootstrap4 .select2-selection--single {
+    height: 25px !important;
+    /* margin-bottom: 4px; */
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+}
+.top-search-form .select2-container--bootstrap4 .select2-selection--single .select2-selection__arrow {
+    height: 25px !important;
+}

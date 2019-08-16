@@ -24,6 +24,7 @@ class CreatePurchasesTable extends Migration
             $table->string('discount_string')->nullable();
             $table->integer('shipping')->default(0);
             $table->string('shipping_string')->nullable();
+            $table->integer('returns')->default(0);
             $table->integer('grand_total')->default(0);
             $table->integer('credit_days')->nullable();
             $table->date('expiry_date')->nullable();
