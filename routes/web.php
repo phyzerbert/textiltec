@@ -43,4 +43,11 @@ Route::post('/supply/update', 'SupplyController@update')->name('supply.update');
 Route::get('/supply/detail/{id}', 'SupplyController@detail')->name('supply.detail');
 Route::get('/supply/delete/{id}', 'SupplyController@delete')->name('supply.delete');
 
+Route::get('/profile', 'UserController@profile')->name('profile');
+Route::post('/updateuser', 'UserController@updateuser')->name('updateuser');
+Route::any('/users/index', 'UserController@index')->name('users.index');
+Route::post('/user/create', 'UserController@create')->name('user.create');
+Route::post('/user/edit', 'UserController@edituser')->name('user.edit');
+Route::get('/user/delete/{id}', 'UserController@delete')->name('user.delete');
+
 Route::post('/set_pagesize', 'HomeController@set_pagesize')->name('set_pagesize');

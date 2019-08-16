@@ -23,6 +23,7 @@
                 </ul>
             </li>
             <li class="sidebar-item @if($page == 'supplier') active @endif"><a href="{{route('supplier.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="home"></i> <span class="align-middle">Suppliers</span></a></li>
+            <li class="sidebar-item @if($page == 'user') active @endif"><a href="{{route('users.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="users"></i> <span class="align-middle">User Management</span></a></li>
             @php
                 $settings_items = ['scategory', 'pcategory'];
             @endphp

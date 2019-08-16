@@ -13,7 +13,7 @@
                             <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> Add New</button>
                         </div>
                         <div class="card-body">
-                            <table id="datatables-basic" class="table table-striped table-bordered" style="width:100%">
+                            <table id="datatables-basic" class="table table-striped table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th class="wd-40">#</th>

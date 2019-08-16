@@ -45,13 +45,4 @@
         </div>
     </div>
 @endsection
-
-@section('script')
-    <script src="{{asset('master/plugins/uniform/uniform.min.js')}}"></script>
-    <script>
-        $(document).ready(function(){
-            
-        });
-    </script>
-@endsection
                     
