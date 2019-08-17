@@ -1,6 +1,15 @@
 @extends('layouts.master')
-@section('style')
-    
+@section('style')    
+    <link rel="stylesheet" href="{{asset('master/plugins/imageviewer/css/jquery.verySimpleImageViewer.css')}}">
+    <style>
+        #image_preview {
+            max-width: 600px;
+            height: 600px;
+        }
+        .image_viewer_inner_container {
+            width: 100% !important;
+        }
+    </style> 
 @endsection
 @section('content')
     <div class="container-fluid p-0">
@@ -40,7 +49,7 @@
                                         <li class="list-group-item">
                                             {{__('page.attachment')}} : 
                                             @if ($purchase->attachment != "")
-                                                <a href="#" class="attachment" data-value="{{$purchase->attachment}}">&nbsp;&nbsp;&nbsp;<i class="fa fa-paperclip"></i></a>
+                                                <a href="#" class="attachment" data-value="{{asset($purchase->attachment)}}">&nbsp;&nbsp;&nbsp;<i class="fa fa-paperclip"></i></a>
                                             @endif
                                         </li>
                                     </ul>
@@ -144,7 +153,7 @@
                                 <div class="row mt-5">
                                     <div class="col-md-12 text-right">
                                         <a href="{{route('purchase.index')}}" class="btn btn-success"><i class="fa fa-credit-card"></i>  {{__('page.purchases_list')}}</a>
-                                        <a href="{{route('payment.index', ['purchase', $purchase->id])}}" class="btn btn-info"><i class="fa fa-list"></i>  {{__('page.payment_list')}}</a>
+                                        <a href="{{route('payment.index', $purchase->id)}}" class="btn btn-info"><i class="fa fa-list"></i>  {{__('page.payment_list')}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -154,13 +163,40 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="attachModal">
+        <div class="modal-dialog" style="margin-top:17vh">
+            <div class="modal-content">
+                <div id="image_preview"></div>
+                {{-- <img src="" id="attachment" width="100%" height="600" alt=""> --}}
+            </div>
+        </div>
+    </div>
 @endsection
 
 
 @section('script')
+    <script src="{{asset('master/plugins/imageviewer/js/jquery.verySimpleImageViewer.min.js')}}"></script>
     <script>
         $(document).ready(function(){
             
+            $(".attachment").click(function(e){
+                e.preventDefault();
+                let path = $(this).data('value');
+                console.log(path)
+                // $("#attachment").attr('src', path);
+                $("#image_preview").html('')
+                $("#image_preview").verySimpleImageViewer({
+                    imageSource: path,
+                    frame: ['100%', '100%'],
+                    maxZoom: '900%',
+                    zoomFactor: '10%',
+                    mouse: true,
+                    keyboard: true,
+                    toolbar: true,
+                });
+                $("#attachModal").modal();
+            });
             
         });
     </script>

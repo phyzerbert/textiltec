@@ -214,7 +214,7 @@ class PurchaseController extends Controller
     }
 
     public function detail(Request $request, $id){    
-        config(['site.page' => 'purchase_list']);    
+        config(['site.page' => 'purchase_list']);
         $purchase = Purchase::find($id);
 
         return view('purchase.detail', compact('purchase'));

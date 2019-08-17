@@ -58,7 +58,7 @@ Route::post('/purchase/update', 'PurchaseController@update')->name('purchase.upd
 Route::get('/purchase/detail/{id}', 'PurchaseController@detail')->name('purchase.detail');
 Route::get('/purchase/delete/{id}', 'PurchaseController@delete')->name('purchase.delete');
 
-Route::any('/payment/index/{type}/{id}', 'PaymentController@index')->name('payment.index');
+Route::any('/payment/index/{id}', 'PaymentController@index')->name('payment.index');
 Route::post('/payment/create', 'PaymentController@create')->name('payment.create');
 Route::post('/payment/edit', 'PaymentController@edit')->name('payment.edit');
 Route::get('/payment/delete/{id}', 'PaymentController@delete')->name('payment.delete');

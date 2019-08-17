@@ -84,7 +84,7 @@
                                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item px-3" href="{{route('purchase.detail', $item->id)}}"><i class="fa fa-eye"></i> {{__('page.details')}}</a>
-                                                    <a class="dropdown-item px-3" href="{{route('payment.index', ['purchase', $item->id])}}"><i class="align-middle" data-feather="dollar-sign"></i> {{__('page.payment_list')}}</a>
+                                                    <a class="dropdown-item px-3" href="{{route('payment.index', $item->id)}}"><i class="align-middle" data-feather="dollar-sign"></i> {{__('page.payment_list')}}</a>
                                                     <a class="dropdown-item px-3 btn-add-payment" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="credit-card"></i> {{__('page.add_payment')}}</a>
                                                     <a class="dropdown-item px-3" href="{{route('purchase.edit', $item->id)}}"><i class="align-middle" data-feather="edit"></i> {{__('page.edit')}}</a>
                                                     <div class="dropdown-divider"></div>
@@ -134,8 +134,7 @@
                 </div>
                 <form action="{{route('payment.create')}}" id="payment_form" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" class="type" name="type" value="purchase" />
-                    <input type="hidden" class="paymentable_id" name="paymentable_id" />
+                    <input type="hidden" class="purchase_id" name="purchase_id" />
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="control-label">{{__('page.date')}}</label>
@@ -194,7 +193,7 @@
             // $("#payment_form input.form-control").val('');
             let id = $(this).data('id');
             let balance = $(this).parents('tr').find('.balance').data('value');
-            $("#payment_form .paymentable_id").val(id);
+            $("#payment_form .purchase_id").val(id);
             $("#payment_form .amount").val(balance);
             $("#paymentModal").modal();
         });
