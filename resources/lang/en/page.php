@@ -190,6 +190,7 @@ return [
     'manufacturing_cost' => 'Manufacturing Cost',
     'total_cost' => 'Total Cost',
     'production_order_date' => 'Production Order Date',
+    'received_quantity' => 'Received Quantity',
 
 
     // ******** Modal ********

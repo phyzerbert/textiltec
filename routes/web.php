@@ -77,6 +77,11 @@ Route::post('/produce_order/update', 'ProduceOrderController@update')->name('pro
 Route::get('/produce_order/detail/{id}', 'ProduceOrderController@detail')->name('produce_order.detail');
 Route::get('/produce_order/delete/{id}', 'ProduceOrderController@delete')->name('produce_order.delete');
 
+Route::any('/order_receive/index/{id}', 'ProduceOrderReceptionController@index')->name('order_receive.index');
+Route::post('/order_receive/create', 'ProduceOrderReceptionController@create')->name('order_receive.create');
+Route::post('/order_receive/edit', 'ProduceOrderReceptionController@edit')->name('order_receive.edit');
+Route::get('/order_receive/delete/{id}', 'ProduceOrderReceptionController@delete')->name('order_receive.delete');
+
 
 
 Route::get('get_supplies', 'VueController@get_supplies');

@@ -25,6 +25,7 @@ class ProduceOrderController extends Controller
         config(['site.page' => 'produce_order_list']);
         $user = Auth::user();
         $products = Product::all();
+        $workshops = Workshop::all();
 
         $mod = new ProduceOrder();
         $reference_no = $product_id = $workshop_id = $period = $deadline = $keyword = '';
@@ -71,7 +72,7 @@ class ProduceOrderController extends Controller
         }
         $pagesize = session('pagesize');
         $data = $mod->orderBy('timestamp', $sort_by_date)->paginate($pagesize);
-        return view('produce_order.index', compact('data', 'products', 'workshop', 'product_id', 'workshop_id', 'reference_no', 'period', 'deadline', 'keyword', 'sort_by_date'));
+        return view('produce_order.index', compact('data', 'products', 'workshops', 'product_id', 'workshop_id', 'reference_no', 'period', 'deadline', 'keyword', 'sort_by_date'));
     }
 
     public function create(Request $request){

@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">
                         @include('elements.pagesize')                    
-                        {{-- @include('purchase.filter') --}}
+                        @include('produce_order.filter')
                         <a href="{{route('produce_order.create')}}" class="btn btn-success btn-sm float-right ml-3 mg-b-5" id="btn-add"><i class="fa fa-plus mg-r-2"></i> {{__('page.add_new')}}</a>                            
                         @include('elements.keyword')
                     </div>
@@ -37,6 +37,7 @@
                                     <th>{{__('page.reference_no')}}</th>
                                     <th>{{__('page.product')}}</th>
                                     <th>{{__('page.quantity')}}</th>
+                                    <th>{{__('page.received_quantity')}}</th>
                                     <th>{{__('page.workshop')}}</th>
                                     <th>{{__('page.supply_cost')}}</th>
                                     <th>{{__('page.manufacturing_cost')}}</th>
@@ -62,6 +63,7 @@
                                         <td class="reference_no">{{$item->reference_no}}</td>
                                         <td class="product" data-id="{{$item->product_id}}">{{$item->product->name}}</td>
                                         <td class="quantity" data-balance="{{$item->quantity - $received_quantity}}">{{$item->quantity}}</td>
+                                        <td class="received_quantity">{{$received_quantity}}</td>
                                         <td class="workshop" data-id="{{$item->workshop_id}}">{{$item->workshop->name}}</td>
                                         <td class="supply_cost"> {{number_format($item->supply_cost)}} </td>
                                         <td class="manufacturing_cost"> {{number_format($item->manufacturing_cost)}} </td>
@@ -80,7 +82,7 @@
                                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item px-3" href="{{route('produce_order.detail', $item->id)}}"><i class="fa fa-eye"></i> {{__('page.details')}}</a>
-                                                    <a class="dropdown-item px-3 btn-add-receive" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="credit-card"></i> {{__('page.receive')}}</a>
+                                                    <a class="dropdown-item px-3 btn-add-receive" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="archive"></i> {{__('page.receive')}}</a>
                                                     <a class="dropdown-item px-3" href="{{route('produce_order.edit', $item->id)}}"><i class="align-middle" data-feather="edit"></i> {{__('page.edit')}}</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item px-3" href="{{route('produce_order.delete', $item->id)}}"><i class="align-middle" data-feather="trash-2"></i> {{__('page.delete')}}</a>
@@ -92,7 +94,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="6">{{__('page.total')}}</td>
+                                    <td colspan="7">{{__('page.total')}}</td>
                                     <td>{{number_format($footer_supply_cost)}}</td>
                                     <td>{{number_format($footer_manufacturing_cost)}}</td>
                                     <td>{{number_format($footer_total_cost)}}</td>
@@ -129,13 +131,13 @@
                     <h4 class="modal-title">{{__('page.receive_production_order')}}</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
-                <form action="#" id="receive_form" method="post">
+                <form action="{{route('order_receive.create')}}" id="receive_form" method="post">
                     @csrf
                     <input type="hidden" class="produce_order_id" name="produce_order_id" />
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="control-label">{{__('page.date')}}</label>
-                            <input class="form-control date" type="text" name="date" autocomplete="off" value="{{date('Y-m-d H:i')}}" placeholder="{{__('page.date')}}">
+                            <label class="control-label">{{__('page.receive_date')}}</label>
+                            <input class="form-control receive_date" type="text" name="receive_date" autocomplete="off" value="{{date('Y-m-d H:i')}}" placeholder="{{__('page.receive_date')}}">
                         </div>                                               
                         <div class="form-group">
                             <label class="control-label">{{__('page.quantity')}}</label>
@@ -166,7 +168,7 @@
                 .wrap('<div class="position-relative" style="width: 200px;"></div>')
                 .select2({
                     width: '100%',
-                    placeholder: '{!! __('page.supplier') !!}'
+                    placeholder: "{!! __('page.select_product') !!}"
                 });                    
         });
 
