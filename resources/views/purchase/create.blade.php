@@ -15,80 +15,66 @@
                         <form class="form-layout form-layout-1" action="{{route('purchase.save')}}" method="POST" enctype="multipart/form-data" id="app">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-md-4 text-sm-right">{{__('page.purchase_date')}} <span class="text-danger">*</span></label>
-                                        <div class="col-md-8">
-                                            <input class="form-control" type="text" name="date" id="purchase_date" value="{{date('Y-m-d H:i')}}"placeholder="{{__('page.purchase_date')}}" autocomplete="off" required>
-                                            @error('date')
-                                                <span class="invalid-feedback d-block" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">{{__('page.purchase_date')}} <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="date" id="purchase_date" value="{{date('Y-m-d H:i')}}"placeholder="{{__('page.purchase_date')}}" autocomplete="off" required>
+                                        @error('date')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-md-4 text-sm-right">{{__('page.reference_number')}} <span class="text-danger">*</span></label>
-                                        <div class="col-md-8">
-                                            <input class="form-control" type="text" name="reference_number" value="{{ old('reference_number') }}" required placeholder="{{__('page.reference_number')}}">
-                                            @error('reference_number')
-                                                <span class="invalid-feedback d-block" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">{{__('page.reference_number')}} <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="reference_number" value="{{ old('reference_number') }}" required placeholder="{{__('page.reference_number')}}">
+                                        @error('reference_number')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-md-4 text-sm-right">{{__('page.supplier')}} <span class="text-danger">*</span></label>
-                                        <div class="col-md-8">
-                                            <div class="input-group">                                  
-                                                <select class="form-control select2" name="supplier" id="search_supplier" required data-placeholder="{{__('page.select_supplier')}}">
-                                                    <option label="{{__('page.select_supplier')}}"></option>
-                                                    @foreach ($suppliers as $item)
-                                                        <option value="{{$item->id}}" @if(old('supplier') == $item->id) selected @endif>{{$item->company}}</option>
-                                                    @endforeach
-                                                </select>
-                                                <div class="input-group-append">
-                                                    <button type="button" class="btn btn-primary btn-rounded tx-white ml-1" id="btn-add-supplier"><i class="fa fa-plus"></i></button>
-                                                </div>  
-                                            </div>
-                                            @error('supplier')
-                                                <span class="invalid-feedback d-block" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-md-4 text-sm-right">{{__('page.attachment')}}</label>
-                                        <div class="col-md-8">
-                                            <input type="file" name="attachment" id="file2" class="file-input-styled">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-md-4 text-sm-right">{{__('page.credit_days')}}</label>
-                                        <div class="col-md-8">
-                                            <input type="number" class="form-control" name="credit_days" min=0 value="{{old('credit_days')}}" required placeholder="{{__('page.credit_days')}}" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-md-4 text-sm-right">{{__('page.status')}} <span class="text-danger">*</span></label>
-                                        <div class="col-md-8">
-                                            <select class="form-control" name="status" data-placeholder="{{__('page.status')}}">
-                                                <option label="{{__('page.status')}}" hidden></option>
-                                                <option value="0">{{__('page.pending')}}</option>
-                                                <option value="1" selected>{{__('page.received')}}</option>
+                                    <div class="form-group">
+                                        <label class="col-form-label">{{__('page.supplier')}} <span class="text-danger">*</span></label>
+                                        <div class="input-group">                                  
+                                            <select class="form-control select2" name="supplier" id="search_supplier" required data-placeholder="{{__('page.select_supplier')}}">
+                                                <option label="{{__('page.select_supplier')}}"></option>
+                                                @foreach ($suppliers as $item)
+                                                    <option value="{{$item->id}}" @if(old('supplier') == $item->id) selected @endif>{{$item->company}}</option>
+                                                @endforeach
                                             </select>
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-primary btn-rounded tx-white ml-1" id="btn-add-supplier"><i class="fa fa-plus"></i></button>
+                                            </div>  
                                         </div>
+                                        @error('supplier')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-md-4 text-sm-right">{{__('page.note')}}:</label>
-                                        <div class="col-md-8">
-                                            <textarea class="form-control" name="note" rows="5" placeholder="{{__('page.note')}}"></textarea>
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">{{__('page.attachment')}}</label>
+                                        <input type="file" name="attachment" id="file2" class="file-input-styled">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">{{__('page.credit_days')}}</label>
+                                        <input type="number" class="form-control" name="credit_days" min=0 value="{{old('credit_days')}}" required placeholder="{{__('page.credit_days')}}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">{{__('page.status')}} <span class="text-danger">*</span></label>
+                                        <select class="form-control" name="status" data-placeholder="{{__('page.status')}}">
+                                            <option label="{{__('page.status')}}" hidden></option>
+                                            <option value="0">{{__('page.pending')}}</option>
+                                            <option value="1" selected>{{__('page.received')}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">{{__('page.note')}}:</label>
+                                        <textarea class="form-control" name="note" rows="5" placeholder="{{__('page.note')}}"></textarea>
                                     </div>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-8">
                                     <div>
                                         <h5 class="my-1" style="float:left">{{__('page.order_items')}}</h5>
                                         {{-- <button type="button" class="btn btn-primary mg-b-10 add-product" style="float:right">ADD</button> --}}
