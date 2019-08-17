@@ -63,15 +63,28 @@ Route::post('/payment/create', 'PaymentController@create')->name('payment.create
 Route::post('/payment/edit', 'PaymentController@edit')->name('payment.edit');
 Route::get('/payment/delete/{id}', 'PaymentController@delete')->name('payment.delete');
 
+Route::any('/product/index', 'ProductController@index')->name('product.index');
+Route::post('/product/create', 'ProductController@create')->name('product.create');
+Route::post('/product/edit', 'ProductController@edit')->name('product.edit');
+Route::get('/product/delete/{id}', 'ProductController@delete')->name('product.delete');
+Route::post('/product/produce_create', 'ProductController@produce_create')->name('product.produce_create');
 
+Route::any('/produce_order/index', 'ProduceOrderController@index')->name('produce_order.index');
+Route::get('/produce_order/create', 'ProduceOrderController@create')->name('produce_order.create');
+Route::post('/produce_order/save', 'ProduceOrderController@save')->name('produce_order.save');
+Route::get('/produce_order/edit/{id}', 'ProduceOrderController@edit')->name('produce_order.edit');
+Route::post('/produce_order/update', 'ProduceOrderController@update')->name('produce_order.update');
+Route::get('/produce_order/detail/{id}', 'ProduceOrderController@detail')->name('produce_order.detail');
+Route::get('/produce_order/delete/{id}', 'ProduceOrderController@delete')->name('produce_order.delete');
 
 
 
 Route::get('get_supplies', 'VueController@get_supplies');
 Route::post('get_orders', 'VueController@get_orders');
 Route::post('get_supply', 'VueController@get_supply');
+Route::post('produce_get_supply', 'VueController@produce_get_supply');
 Route::get('get_first_supply', 'VueController@get_first_supply');
-Route::post('get_data', 'VueController@get_data');
+Route::post('produce_get_data', 'VueController@produce_get_data');
 Route::post('get_autocomplete_supplies', 'VueController@get_autocomplete_supplies');
 
 Route::post('/set_pagesize', 'HomeController@set_pagesize')->name('set_pagesize');

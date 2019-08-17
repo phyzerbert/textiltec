@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Supply;
 use App\Models\Purchase;
 use App\Models\Order;
+use App\Models\ProduceOrder;
 
 class VueController extends Controller
 {
@@ -34,6 +35,12 @@ class VueController extends Controller
     public function get_data(Request $request){
         $id = $request->get('id');
         $item = Purchase::find($id)->load('orders');
+        return response()->json($item);
+    }
+
+    public function produce_get_data(Request $request){
+        $id = $request->get('id');
+        $item = ProduceOrder::find($id)->load('supplies');
         return response()->json($item);
     }
 

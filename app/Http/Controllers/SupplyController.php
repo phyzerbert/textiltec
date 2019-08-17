@@ -69,9 +69,9 @@ class SupplyController extends Controller
 
         if($request->has("image")){
             $picture = request()->file('image');
-            $imageName = "product_".time().'.'.$picture->getClientOriginalExtension();
-            $picture->move(public_path('images/uploaded/product_images/'), $imageName);
-            $item->image = 'images/uploaded/product_images/'.$imageName;
+            $imageName = "supply_".time().'.'.$picture->getClientOriginalExtension();
+            $picture->move(public_path('images/uploaded/supply_images/'), $imageName);
+            $item->image = 'images/uploaded/supply_images/'.$imageName;
         }
         $item->save();
 
@@ -111,8 +111,8 @@ class SupplyController extends Controller
         if($request->has("image")){
             $picture = request()->file('image');
             $imageName = "product_".time().'.'.$picture->getClientOriginalExtension();
-            $picture->move(public_path('images/uploaded/product_images/'), $imageName);
-            $data['image'] = 'images/uploaded/product_images/'.$imageName;
+            $picture->move(public_path('images/uploaded/supply_images/'), $imageName);
+            $data['image'] = 'images/uploaded/supply_images/'.$imageName;
         }
         $item->update($data);
         return redirect(route('supply.index'))->with('success', __('page.updated_successfully'));

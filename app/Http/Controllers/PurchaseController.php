@@ -198,7 +198,6 @@ class PurchaseController extends Controller
                     ]);
                 }else{
                     $order = PurchaseOrder::find($data['order_id'][$i]);
-                    $order_original_quantity = $order->quantity;
                     $order->update([
                         'supply_id' => $data['supply_id'][$i],
                         'cost' => $data['cost'][$i],

@@ -17,7 +17,7 @@ class ProduceOrder extends Model
     }
 
     public function supplies(){
-        return $this->hasMany('App\Models\ProduceOrderSupply')
+        return $this->hasMany('App\Models\ProduceOrderSupply');
     }
 
     public function receptions(){

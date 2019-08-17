@@ -26,7 +26,7 @@ return [
     'purchases_list' => 'Purchases List',
     'add_purchase' => 'Add Purchase',
     'sales' => 'Sales',
-    'sales_list' => 'Sales List',
+    'production_order' => 'Production Order',
     'add_sale' => 'Add Sale',
     'product' => 'Product',
     'reports' => 'Reports',
@@ -52,7 +52,7 @@ return [
     'setting' => 'Setting',
     'category' => 'Category',
     'company' => 'Company',
-    'store' => 'Store',
+    'supply_list' => 'Supply List',
 
     // ******** Common ********
     'purchase' => 'Purchase',
@@ -80,6 +80,7 @@ return [
     'close' => 'Close',
     'back' => 'Back',
     'cancel' => 'Cancel',
+    'receive' => 'Receive',
     'name' => 'Name',
     'type' => 'Type',
     'total' => 'Total',
@@ -180,6 +181,15 @@ return [
     'discount' => 'Discount',
     'shipping' => 'Shipping',
     'returns' => 'Returns',
+    'workshop' => 'Workshop',
+    'main_image' => 'Main Image',
+    'gallery_images' => 'Gallery Images',
+    'responsibility' => 'Responsibility',
+    'deadline' => 'Deadline',
+    'supply_cost' => 'Supply Cost',
+    'manufacturing_cost' => 'Manufacturing Cost',
+    'total_cost' => 'Total Cost',
+    'production_order_date' => 'Production Order Date',
 
 
     // ******** Modal ********
@@ -197,6 +207,9 @@ return [
     'edit_payment' => 'Edit Payment',
     'add_workshop' => 'Add Workshop',
     'edit_workshop' => 'Edit Workshop',
+    'add_product' => 'Add Product',
+    'edit_product' => 'Edit Product',
+    'receive_production_order' => 'Receive Production Order',
 
 
     // ******** Title ********
@@ -222,6 +235,8 @@ return [
     'supplier_payments' => 'Supplier Payments',
     'customer_sales' => 'Customer Sales',
     'customer_payments' => 'Customer Payments',
+    'production_order_list' => 'Production Order List',
+    'edit_production_order' => 'Edit Production Order',
 
 
 
@@ -231,7 +246,7 @@ return [
     'select_supplier' => 'Select a supplier',
     'select_customer' => 'Select a customer',
     'select_product' => 'Select a product',
-    'select_tax_method' => 'Select a tax method',
+    'select_workshop' => 'Select workshop',
     'purchase_date' => 'Purchase Date',
     'payment_date' => 'Payment Date',
     'sale_date' => 'Sale Date',

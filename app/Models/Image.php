@@ -15,6 +15,6 @@ class Image extends Model
 
     public function produce_orders()
     {
-        return $this->morphedByMany('App\Models\ProduceOrder', 'taggable');
+        return $this->morphedByMany('App\Models\ProduceOrder', 'imageable');
     }
 }

@@ -35,6 +35,19 @@
                     <li class="sidebar-item @if($page == 'add_purchase') active @endif"><a class="sidebar-link" href="{{route('purchase.create')}}">Add Purchase</a></li>
                 </ul>
             </li>
+            @php
+                $produce_order_items = ['produce_order_list', 'add_produce_order'];
+            @endphp
+            <li class="sidebar-item @if($page == in_array($page, $produce_order_items)) active @endif">
+                <a href="#produce_orders" data-toggle="collapse" class="font-weight-bold sidebar-link collapsed">
+                    <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">{{__('page.production_order')}}</span>
+                </a>
+                <ul id="produce_orders" class="sidebar-dropdown list-unstyled collapse ">
+                    <li class="sidebar-item @if($page == 'produce_order_list') active @endif"><a class="sidebar-link" href="{{route('produce_order.index')}}">Order List</a></li>
+                    <li class="sidebar-item @if($page == 'add_produce_order') active @endif"><a class="sidebar-link" href="{{route('produce_order.create')}}">Add Order</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-item @if($page == 'product') active @endif"><a href="{{route('product.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="box"></i> <span class="align-middle">Product Management</span></a></li>
             <li class="sidebar-item @if($page == 'user') active @endif"><a href="{{route('users.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="users"></i> <span class="align-middle">User Management</span></a></li>
             @php
                 $settings_items = ['scategory', 'pcategory', 'workshop'];
