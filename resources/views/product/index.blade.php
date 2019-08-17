@@ -18,12 +18,20 @@
                                     <th class="wd-50">#</th>
                                     <th>{{__('page.name')}}</th>
                                     <th>{{__('page.code')}}</th>
+                                    <th>{{__('page.quantity')}}</th>
                                     <th>{{__('page.description')}}</th>
                                     <th>{{__('page.action')}}</th>
                                 </tr>
                             </thead>
                             <tbody>                                
                                 @foreach ($data as $item)
+                                    @php
+                                        $produce_orders = $item->produce_orders;
+                                        $quantity = 0;
+                                        foreach ($produce_orders as $order) {
+                                            $quantity += $order->receptions->sum('quantity');
+                                        }
+                                    @endphp
                                     <tr>
                                         <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
                                         <td class="name py-1" data-value="{{$item->name}}">
@@ -31,6 +39,7 @@
                                             {{$item->name}}
                                         </td>
                                         <td class="code">{{$item->code}}</td>
+                                        <td class="quantity">{{$quantity}}</td>
                                         <td class="description">{{$item->description}}</td>
                                         <td class="py-1">
                                             <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
