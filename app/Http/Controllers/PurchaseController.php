@@ -128,4 +128,103 @@ class PurchaseController extends Controller
 
         return redirect(route('purchase.index'))->with('success', __('page.created_successfully'));
     }
+
+    public function edit(Request $request, $id){    
+        config(['site.page' => 'purchase_list']);
+        $purchase = Purchase::find($id);        
+        $suppliers = Supplier::all();
+        $supplies = Supply::all();
+
+        return view('purchase.edit', compact('purchase', 'suppliers', 'supplies'));
+    }
+
+    public function update(Request $request){
+        $request->validate([
+            'date'=>'required|string',
+            'reference_number'=>'required|string',
+            'supplier'=>'required',
+        ]);
+        $data = $request->all();
+
+        if(!isset($data['supply_id']) ||  count($data['supply_id']) == 0 || in_array(null, $data['supply_id'])){
+            return back()->withErrors(['supply' => 'Please select a supply.']);
+        }
+        // dd($data);
+        $item = Purchase::find($request->get("id"));
+ 
+        $item->timestamp = $data['date'].":00";
+        $item->reference_no = $data['reference_number'];
+        $item->supplier_id = $data['supplier'];
+        if($data['credit_days'] != ''){
+            $item->credit_days = $data['credit_days'];
+            $item->expiry_date = date('Y-m-d', strtotime("+".$data['credit_days']."days", strtotime($item->timestamp)));
+        }
+        $item->status = $data['status'];
+        $item->note = $data['note'];
+
+        if($request->has("attachment")){
+            $picture = request()->file('attachment');
+            $imageName = "purchase_".time().'.'.$picture->getClientOriginalExtension();
+            $picture->move(public_path('images/uploaded/purchase_images/'), $imageName);
+            $item->attachment = 'images/uploaded/purchase_images/'.$imageName;
+        }
+
+        $item->discount_string = $data['discount_string'];
+        $item->discount = $data['discount'];
+
+        $item->shipping_string = $data['shipping_string'];
+        $item->shipping = -1 * $data['shipping'];
+        $item->returns = $data['returns'];
+        
+        $item->grand_total = $data['grand_total'];
+        
+        $item->save();
+        $purchase_orders = $item->orders->pluck('id')->toArray();
+        $diff_orders = array_diff($purchase_orders, $data['order_id']);
+        foreach ($diff_orders as $key => $value) {
+            PurchaseOrder::find($value)->delete();
+        }
+        
+        if(isset($data['order_id']) && count($data['order_id']) > 0){
+            for ($i=0; $i < count($data['order_id']); $i++) {
+                if($data['order_id'][$i] == ''){
+                    PurchaseOrder::create([
+                        'supply_id' => $data['supply_id'][$i],
+                        'cost' => $data['cost'][$i],
+                        'quantity' => $data['quantity'][$i],
+                        'expiry_date' => $data['expiry_date'][$i],
+                        'subtotal' => $data['subtotal'][$i],
+                        'purchase_id' => $item->id,
+                    ]);
+                }else{
+                    $order = PurchaseOrder::find($data['order_id'][$i]);
+                    $order_original_quantity = $order->quantity;
+                    $order->update([
+                        'supply_id' => $data['supply_id'][$i],
+                        'cost' => $data['cost'][$i],
+                        'quantity' => $data['quantity'][$i],
+                        'expiry_date' => $data['expiry_date'][$i],
+                        'subtotal' => $data['subtotal'][$i],
+                    ]);
+                }
+            }
+        }
+        
+        return redirect(route('purchase.index'))->with('success', __('page.updated_successfully'));
+    }
+
+    public function detail(Request $request, $id){    
+        config(['site.page' => 'purchase_list']);    
+        $purchase = Purchase::find($id);
+
+        return view('purchase.detail', compact('purchase'));
+    }
+
+    public function delete($id){
+        $item = Purchase::find($id);
+        $item->orders()->delete();
+        $item->payments()->delete();
+        $item->delete();
+        return back()->with("success", __('page.deleted_successfully'));
+    }
 }

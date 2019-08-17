@@ -33,7 +33,7 @@ class VueController extends Controller
 
     public function get_data(Request $request){
         $id = $request->get('id');
-        $item = Purchase::find($id);
+        $item = Purchase::find($id)->load('orders');
         return response()->json($item);
     }
 
