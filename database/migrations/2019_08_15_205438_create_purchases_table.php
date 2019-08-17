@@ -18,7 +18,6 @@ class CreatePurchasesTable extends Migration
             $table->integer("user_id")->nullable();
             $table->dateTime('timestamp')->nullable();
             $table->string('reference_no')->nullable();
-            $table->integer('company_id')->nullable();
             $table->integer('supplier_id')->nullable();
             $table->integer('discount')->default(0);
             $table->string('discount_string')->nullable();

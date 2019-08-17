@@ -4,7 +4,7 @@
     <div class="container p-0">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">Product Category</h1>
+            <h1 class="h3 mb-3">Workshop</h1>
 
             <div class="row">
                 <div class="col-12">
@@ -16,7 +16,7 @@
                             <table class="table table-bordered table-hover">
                                 <thead class="thead-colored thead-primary">
                                     <tr class="bg-blue">
-                                        <th class="wd-40">#</th>
+                                        <th class="wd-50">#</th>
                                         <th>{{__('page.name')}}</th>
                                         <th>{{__('page.action')}}</th>
                                     </tr>
@@ -28,7 +28,7 @@
                                             <td class="name">{{$item->name}}</td>
                                             <td class="py-1">
                                                 <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
-                                                <a href="{{route('pcategory.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
+                                                <a href="{{route('workshop.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -54,10 +54,10 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">{{__('page.add_category')}}</h4>
+                            <h4 class="modal-title">{{__('page.add_workshop')}}</h4>
                             <button type="button" class="close" data-dismiss="modal">×</button>
                         </div>
-                        <form action="{{route('pcategory.create')}}" id="create_form" method="post">
+                        <form action="{{route('workshop.create')}}" id="create_form" method="post">
                             @csrf
                             <div class="modal-body">
                                 <div class="form-group">
@@ -77,19 +77,16 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">{{__('page.edit_category')}}</h4>
+                            <h4 class="modal-title">{{__('page.edit_workshop')}}</h4>
                             <button type="button" class="close" data-dismiss="modal">×</button>
                         </div>
-                        <form action="{{route('pcategory.edit')}}" id="edit_form" method="post">
+                        <form action="{{route('workshop.edit')}}" id="edit_form" method="post">
                             @csrf
                             <input type="hidden" name="id" class="id">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label class="control-label">{{__('page.name')}}</label>
                                     <input class="form-control name" type="text" name="name" placeholder="{{__('page.name')}}">
-                                    <span id="edit_name_error" class="invalid-feedback">
-                                        <strong></strong>
-                                    </span>
                                 </div>
                             </div>  
                             <div class="modal-footer">

@@ -195,8 +195,8 @@ return [
     'add_store' => 'Add Store',
     'edit_store' => 'Edit Store',
     'edit_payment' => 'Edit Payment',
-    'add_tax_rate' => 'Add Tax Rate',
-    'edit_tax_rate' => 'Edit Tax Rate',
+    'add_workshop' => 'Add Workshop',
+    'edit_workshop' => 'Edit Workshop',
 
 
     // ******** Title ********

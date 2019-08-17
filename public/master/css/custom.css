@@ -1,3 +1,7 @@
+.wd-30 {width:30px;}
+.wd-40 {width:40px;}
+.wd-50 {width:50px;}
+
 #ajax-loading{
     display: none;
     position: absolute;

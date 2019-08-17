@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePcategoriesTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreatePcategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pcategories', function (Blueprint $table) {
-            $table->bigIncrements('id');            
-            $table->string('name');
+        Schema::create('images', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('path')->nullable();
+            $table->string('original_name')->nullable();
+            $table->integer('imageable_id')->nullable();
+            $table->string('imageable_type')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreatePcategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pcategories');
+        Schema::dropIfExists('images');
     }
 }

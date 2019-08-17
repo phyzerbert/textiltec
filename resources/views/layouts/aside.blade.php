@@ -37,7 +37,7 @@
             </li>
             <li class="sidebar-item @if($page == 'user') active @endif"><a href="{{route('users.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="users"></i> <span class="align-middle">User Management</span></a></li>
             @php
-                $settings_items = ['scategory', 'pcategory'];
+                $settings_items = ['scategory', 'pcategory', 'workshop'];
             @endphp
             <li class="sidebar-item @if($page == in_array($page, $settings_items)) active @endif">
                 <a href="#layouts" data-toggle="collapse" class="font-weight-bold sidebar-link collapsed">
@@ -45,7 +45,7 @@
                 </a>
                 <ul id="layouts" class="sidebar-dropdown list-unstyled collapse ">
                     <li class="sidebar-item @if($page == 'scategory') active @endif"><a class="sidebar-link" href="{{route('scategory.index')}}">Supply Category</a></li>
-                    <li class="sidebar-item @if($page == 'pcategory') active @endif"><a class="sidebar-link" href="{{route('pcategory.index')}}">Product Category</a></li>
+                    <li class="sidebar-item @if($page == 'workshop') active @endif"><a class="sidebar-link" href="{{route('workshop.index')}}">Workshop</a></li>
                 </ul>
             </li>
         </ul>

@@ -30,10 +30,10 @@ Route::post('/scategory/create', 'ScategoryController@create')->name('scategory.
 Route::post('/scategory/edit', 'ScategoryController@edit')->name('scategory.edit');
 Route::get('/scategory/delete/{id}', 'ScategoryController@delete')->name('scategory.delete');
 
-Route::any('/pcategory/index', 'PcategoryController@index')->name('pcategory.index');
-Route::post('/pcategory/create', 'PcategoryController@create')->name('pcategory.create');
-Route::post('/pcategory/edit', 'PcategoryController@edit')->name('pcategory.edit');
-Route::get('/pcategory/delete/{id}', 'PcategoryController@delete')->name('pcategory.delete');
+Route::any('/workshop/index', 'WorkshopController@index')->name('workshop.index');
+Route::post('/workshop/create', 'WorkshopController@create')->name('workshop.create');
+Route::post('/workshop/edit', 'WorkshopController@edit')->name('workshop.edit');
+Route::get('/workshop/delete/{id}', 'WorkshopController@delete')->name('workshop.delete');
 
 Route::any('/supply/index', 'SupplyController@index')->name('supply.index');
 Route::get('/supply/create', 'SupplyController@create')->name('supply.create');
@@ -62,6 +62,10 @@ Route::any('/payment/index/{id}', 'PaymentController@index')->name('payment.inde
 Route::post('/payment/create', 'PaymentController@create')->name('payment.create');
 Route::post('/payment/edit', 'PaymentController@edit')->name('payment.edit');
 Route::get('/payment/delete/{id}', 'PaymentController@delete')->name('payment.delete');
+
+
+
+
 
 Route::get('get_supplies', 'VueController@get_supplies');
 Route::post('get_orders', 'VueController@get_orders');
