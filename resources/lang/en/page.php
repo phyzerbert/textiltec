@@ -29,6 +29,7 @@ return [
     'production_order' => 'Production Order',
     'add_sale' => 'Add Sale',
     'product' => 'Product',
+    'report' => 'Report',
     'reports' => 'Reports',
     'overview_chart' => 'Overview Chart',
     'company_chart' => 'Company Chart',

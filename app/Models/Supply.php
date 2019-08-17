@@ -19,4 +19,8 @@ class Supply extends Model
     public function purchase_orders(){
         return $this->hasMany('App\Models\PurchaseOrder');
     }
+
+    public function produce_orders(){
+        return $this->hasMany('App\Models\ProduceOrderSupply');
+    }
 }

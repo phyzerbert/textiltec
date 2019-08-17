@@ -33,7 +33,7 @@
                                         <li class="list-group-item font-weight-bold">{{__('page.category')}} : @isset($supply->category->name){{$supply->category->name}}@endisset</li>
                                         <li class="list-group-item font-weight-bold">{{__('page.cost')}} : {{number_format($supply->cost)}}</li>
                                         <li class="list-group-item font-weight-bold">{{__('page.unit')}} : {{$supply->unit}}</li>
-                                        <li class="list-group-item font-weight-bold">{{__('page.quantity')}} : {{$supply->purchase_orders()->sum('quantity')}}</li>
+                                        <li class="list-group-item font-weight-bold">{{__('page.quantity')}} : {{$supply->purchase_orders()->sum('quantity') - $supply->produce_orders()->sum('quantity')}}</li>
                                         <li class="list-group-item font-weight-bold">{{__('page.alert_quantity')}} : {{$supply->alert_quantity}}</li>
                                     </ul>
                                 </div>

@@ -60,7 +60,8 @@
                                             <td>{{number_format($paid)}}</td>
                                             <td>{{number_format($total_amount - $paid)}}</td>                                      
                                             <td>
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('page.view')}}"><i class="align-middle" data-feather="file-text"></i></a>
+                                                {{-- <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('page.view')}}"><i class="align-middle" data-feather="file-text"></i></a> --}}
+                                                <a href="{{route('supplier.report', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.report')}}"><i class="align-middle" data-feather="file-text"></i></a>
                                                 <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
 												<a href="{{route('supplier.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
                                             </td>

@@ -23,6 +23,7 @@ Route::any('/supplier/index', 'SupplierController@index')->name('supplier.index'
 Route::post('/supplier/create', 'SupplierController@create')->name('supplier.create');
 Route::post('/supplier/purchase_create', 'SupplierController@purchase_create')->name('supplier.purchase_create');
 Route::post('/supplier/edit', 'SupplierController@edit')->name('supplier.edit');
+Route::get('/supplier/report/{id}', 'SupplierController@report')->name('supplier.report');
 Route::get('/supplier/delete/{id}', 'SupplierController@delete')->name('supplier.delete');
 
 Route::any('/scategory/index', 'ScategoryController@index')->name('scategory.index');

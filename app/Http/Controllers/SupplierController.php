@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 
+use PDF;
+
 class SupplierController extends Controller
 {
     public function __construct()
@@ -78,5 +80,13 @@ class SupplierController extends Controller
         $item = Supplier::find($id);
         $item->delete();
         return back()->with("success", __('page.deleted_successfully'));
+    }
+
+    public function report($id)
+    {
+        $supplier = Supplier::find($id);
+        $pdf = PDF::loadView('supplier.report', compact('supplier'));
+  
+        return $pdf->download('supplier_report_'.$supplier->name.'.pdf');
     }
 }
