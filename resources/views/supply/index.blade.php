@@ -8,12 +8,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header pb-1">
                         @include('elements.pagesize')
                         @include('supply.filter')
                         <a href="{{route('supply.create')}}" class="btn btn-success btn-sm float-right tx-white mg-b-5" id="btn-add"><i class="fa fa-plus mg-r-2"></i> Add New</a>
                     </div>
-                    <div class="card-body">                            
+                    <div class="card-body table-responsive">                            
                         <table class="table table-bordered table-hover">
                             <thead class="thead-colored thead-primary">
                                 <tr class="bg-blue">

@@ -12,7 +12,7 @@
                         <div class="card-header">
                             <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> Add New</button>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table id="datatables-basic" class="table table-striped table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
@@ -33,10 +33,10 @@
                                     @endphp                               
                                     @foreach ($data as $item)
                                         @php
-                                            $sales_array = $item->sales()->pluck('id');
-                                            $total_sales = $item->sales()->count();
-                                            $mod_total_amount = $item->sales();
-                                            $mod_paid = \App\Models\Payment::whereIn('sale_id', $sales_array);
+                                            $sales_array = $item->product_sales()->pluck('id');
+                                            $total_sales = $item->product_sales()->count();
+                                            $mod_total_amount = $item->product_sales();
+                                            $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $sales_array)->where('paymentable_type', ProductSale::class);
         
                                             $total_amount = $mod_total_amount->sum('grand_total');
                                             $paid = $mod_paid->sum('amount');  
@@ -60,7 +60,7 @@
                                             <td>{{number_format($total_amount - $paid)}}</td>                                      
                                             <td>
                                                 {{-- <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('page.view')}}"><i class="align-middle" data-feather="file-text"></i></a> --}}
-                                                <a href="{{route('customer.report', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.report')}}"><i class="align-middle" data-feather="file-text"></i></a>
+                                                {{-- <a href="{{route('customer.report', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.report')}}"><i class="align-middle" data-feather="file-text"></i></a> --}}
                                                 <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
 												<a href="{{route('customer.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
                                             </td>

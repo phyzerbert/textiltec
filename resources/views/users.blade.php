@@ -12,7 +12,7 @@
                         <div class="card-header">
                             <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> {{__('page.add_new')}}</button>
                         </div>
-                        <div class="card-body">                            
+                        <div class="card-body table-responsive">                            
                             <table class="table table-bordered table-hover">
                                 <thead class="thead-colored thead-primary">
                                     <tr class="bg-blue">

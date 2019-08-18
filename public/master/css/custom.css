@@ -104,3 +104,13 @@ li.sidebar-item.active>a.sidebar-link {
 .bg-nav {
     background-color: #009688 !important;
 }
+
+
+.table-bordered td, .table-bordered th {
+    border: 1px solid #dee2e6 !important;
+}
+
+td, th {
+    white-space: nowrap;
+    /* overflow: hidden; */
+  }

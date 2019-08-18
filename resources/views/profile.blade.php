@@ -67,7 +67,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-8 ml-sm-auto text-right">
-                                                    <button type="submit" class="btn btn-lg btn-primary w-25"><i class="fa fa-check"></i> {{__('page.save')}}</button>
+                                                    <button type="submit" class="btn btn-lg btn-primary w-50"><i class="fa fa-check"></i> {{__('page.save')}}</button>
                                                 </div>
                                             </div>
                                         </form>

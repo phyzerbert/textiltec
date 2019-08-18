@@ -12,7 +12,7 @@
                         <div class="card-header">
                             <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> Add New</button>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table id="datatables-basic" class="table table-striped table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>

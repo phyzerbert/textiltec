@@ -19,7 +19,7 @@
                         <a href="{{route('product_sale.create')}}" class="btn btn-success btn-sm float-right ml-3 mg-b-5" id="btn-add"><i class="fa fa-plus mg-r-2"></i> {{__('page.add_new')}}</a>                            
                         {{-- @include('elements.keyword') --}}
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead class="thead-colored thead-primary">
                                 <tr class="bg-blue">
