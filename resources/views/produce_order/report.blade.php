@@ -11,6 +11,12 @@
             font-size: 18px;
             font-weight: 500;
         }
+        .table-bordered, .table-bordered td, .table-bordered th {
+            border: 1px solid #2d2d2d;
+        }
+        .table thead th {
+            border-bottom: 2px solid #2d2d2d;
+        }
     </style>
 </head>
 <body>
