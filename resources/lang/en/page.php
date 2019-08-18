@@ -8,12 +8,6 @@ return [
     'password' => 'Password',
     'remember_me' => 'Remember Me',
     'enter_your_credentials_below' => 'Enter your credentials below',
-
-    // ********  Verify Phone Number Page  ********
-    'verification_phone_number' => 'Verification Phone Number',
-    'please_enter_your_verification_code' => 'Please enter your verification code.',
-    'verification_code' => 'Verification Code',
-    'verify' => 'Verify',
     
     // ********  Header  ********
     'online' => 'Online',
@@ -32,8 +26,6 @@ return [
     'report' => 'Report',
     'reports' => 'Reports',
     'overview_chart' => 'Overview Chart',
-    'company_chart' => 'Company Chart',
-    'store_chart' => 'Store Chart',
     'product_quantity_alert' => 'Product Quantity Alert',
     'product_expiry_alert' => 'Product Expiry Alert',
     'expired_purchases_report' => 'Expired Purchases Report',
@@ -239,6 +231,9 @@ return [
     'edit_production_order' => 'Edit Production Order',
     'supply_category' => 'Supply Category',
     'workshop_management' => 'Workshop Management',
+    'supplies_list' => 'Supplies List',
+    'image_gallery' => 'Image Gallery',
+    'production_order_report' => 'Production Order Report',
 
 
 

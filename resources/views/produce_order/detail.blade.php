@@ -24,6 +24,9 @@
                                     <div class="card-header">
                                         <h2 class="card-title mb-0">{{__('page.product')}}</h2>
                                     </div>
+                                    <div class="card-body">
+                                        <img src="@if($order->main_image){{asset($order->main_image)}}@else{{asset('images/no-image-icon.png')}}@endif" alt="" class="img-fluid">
+                                    </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">{{__('page.name')}} :  @isset($order->product->name){{$order->product->name}}@endisset</li>
                                         <li class="list-group-item">{{__('page.code')}} :  @isset($order->product->code){{$order->product->code}}@endisset</li>
@@ -53,7 +56,19 @@
                                 </div>
                             </div>
                             <div class="col-lg-8">
-                                <h3>Supplies List</h3>
+                                <h3><i class="align-middle" data-feather="image"></i> {{__('page.image_gallery')}}</h3>
+                                <div class="row">                                    
+                                    @foreach ($order->images as $item)                                        
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <img src="{{asset($item->path)}}" width="100%" alt="" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <h3><i class="align-middle" data-feather="codepen"></i> {{__('page.supplies_list')}}</h3>
                                 
                                 <table class="table table-bordered table-colored table-info">
                                     <thead>

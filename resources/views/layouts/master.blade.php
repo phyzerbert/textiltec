@@ -44,17 +44,17 @@
     </script>
 
     <script>
-        var notification = '<?php echo session()->get("success"); ?>';
+        var notification = '{!! session()->get("success"); !!}';
         if(notification != ''){
-            toastr_call("success","Success",notification);
+            toastr_call("success","{{__('page.success')}}",notification);
         }
-        var errors_string = '<?php echo json_encode($errors->all()); ?>';
+        var errors_string = '{!! json_encode($errors->all()); !!}';
         errors_string=errors_string.replace("[","").replace("]","").replace(/\"/g,"");
         var errors = errors_string.split(",");
         if (errors_string != "") {
             for (let i = 0; i < errors.length; i++) {
                 const element = errors[i];
-                toastr_call("error","Error",element);             
+                toastr_call("error","{{__('page.error')}}",element);             
             } 
         }       
 

@@ -81,13 +81,12 @@
                                         </td>
                                         <td class="py-2" align="center">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
+                                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item px-3" href="{{route('purchase.detail', $item->id)}}"><i class="fa fa-eye"></i> {{__('page.details')}}</a>
                                                     <a class="dropdown-item px-3" href="{{route('payment.index', $item->id)}}"><i class="align-middle" data-feather="dollar-sign"></i> {{__('page.payment_list')}}</a>
                                                     <a class="dropdown-item px-3 btn-add-payment" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="credit-card"></i> {{__('page.add_payment')}}</a>
                                                     <a class="dropdown-item px-3" href="{{route('purchase.edit', $item->id)}}"><i class="align-middle" data-feather="edit"></i> {{__('page.edit')}}</a>
-                                                    <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item px-3" href="{{route('purchase.delete', $item->id)}}"><i class="align-middle" data-feather="trash-2"></i> {{__('page.delete')}}</a>
                                                 </div>
                                             </div>

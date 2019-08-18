@@ -131,13 +131,13 @@ class ProduceOrderController extends Controller
         if($request->has("gallery_images")){
             for ($i=0; $i < count($data['gallery_images']); $i++) { 
                 $picture = $data['gallery_images'][$i];
-                $imageName = time().'.'.$picture->getClientOriginalExtension();
+                $imageName = time().strval($i).'.'.$picture->getClientOriginalExtension();
                 $picture->move(public_path('images/uploaded/produce_images/gallery_images'), $imageName);
                 $image_path = 'images/uploaded/produce_images/gallery_images/'.$imageName;
                 Image::create([
                     'path' => $image_path,
                     'imageable_id' => $item->id,
-                    'imageable_type' => PurchaseOrder::class,
+                    'imageable_type' => ProduceOrder::class,
                 ]);
             }            
         }
@@ -214,13 +214,13 @@ class ProduceOrderController extends Controller
         if($request->has("gallery_images")){
             for ($i=0; $i < count($data['gallery_images']); $i++) { 
                 $picture = $data['gallery_images'][$i];
-                $imageName = time().'.'.$picture->getClientOriginalExtension();
+                $imageName = time().strval($i).'.'.$picture->getClientOriginalExtension();
                 $picture->move(public_path('images/uploaded/produce_images/gallery_images'), $imageName);
                 $image_path = 'images/uploaded/produce_images/gallery_images/'.$imageName;
                 Image::create([
                     'path' => $image_path,
                     'imageable_id' => $item->id,
-                    'imageable_type' => PurchaseOrder::class,
+                    'imageable_type' => ProduceOrder::class,
                 ]);
             }            
         }
@@ -256,12 +256,9 @@ class ProduceOrderController extends Controller
 
         return redirect(route('produce_order.index'))->with('success', __('page.created_successfully'));
     }
-
-
-
     
     public function detail(Request $request, $id){    
-        config(['site.page' => 'purchase_list']);
+        config(['site.page' => 'produce_order_list']);
         $order = ProduceOrder::find($id);
 
         return view('produce_order.detail', compact('order'));
@@ -276,9 +273,10 @@ class ProduceOrderController extends Controller
     }
 
     public function report($id){
-        $supplier = Supplier::find($id);
-        $pdf = PDF::loadView('produce_order.report', compact('supplier'));
+        $order = ProduceOrder::find($id);
+        $pdf = PDF::loadView('produce_order.report', compact('order'));
   
-        return $pdf->download('supplier_report_'.$supplier->name.'.pdf');
+        return $pdf->download('supplier_report_'.$order->reference_no.'.pdf');
+        // return view('produce_order.report', compact('order'));
     }
 }

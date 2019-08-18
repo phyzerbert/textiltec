@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3"><i class="fa fa-list"></i> Production Order List</h1>
+        <h1 class="h3 mb-3"><i class="fa fa-list"></i> {{__('page.production_order_list')}}</h1>
 
         <div class="row">
             <div class="col-12">
@@ -79,12 +79,12 @@
                                         </td>
                                         <td class="py-2" align="center">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
+                                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item px-3" href="{{route('produce_order.detail', $item->id)}}"><i class="fa fa-eye"></i> {{__('page.details')}}</a>
+                                                    <a class="dropdown-item px-3" href="{{route('produce_order.detail', $item->id)}}"><i class="align-middle" data-feather="eye"></i>  {{__('page.details')}}</a>
+                                                    <a class="dropdown-item px-3" href="{{route('produce_order.report', $item->id)}}"><i class="align-middle" data-feather="file-text"></i> {{__('page.report')}}</a>
                                                     <a class="dropdown-item px-3 btn-add-receive" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="archive"></i> {{__('page.receive')}}</a>
                                                     <a class="dropdown-item px-3" href="{{route('produce_order.edit', $item->id)}}"><i class="align-middle" data-feather="edit"></i> {{__('page.edit')}}</a>
-                                                    <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item px-3" href="{{route('produce_order.delete', $item->id)}}"><i class="align-middle" data-feather="trash-2"></i> {{__('page.delete')}}</a>
                                                 </div>
                                             </div>

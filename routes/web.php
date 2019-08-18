@@ -76,6 +76,7 @@ Route::post('/produce_order/save', 'ProduceOrderController@save')->name('produce
 Route::get('/produce_order/edit/{id}', 'ProduceOrderController@edit')->name('produce_order.edit');
 Route::post('/produce_order/update', 'ProduceOrderController@update')->name('produce_order.update');
 Route::get('/produce_order/detail/{id}', 'ProduceOrderController@detail')->name('produce_order.detail');
+Route::get('/produce_order/report/{id}', 'ProduceOrderController@report')->name('produce_order.report');
 Route::get('/produce_order/delete/{id}', 'ProduceOrderController@delete')->name('produce_order.delete');
 
 Route::any('/order_receive/index/{id}', 'ProduceOrderReceptionController@index')->name('order_receive.index');
