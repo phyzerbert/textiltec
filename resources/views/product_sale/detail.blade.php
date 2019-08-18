@@ -110,7 +110,7 @@
                                     </tbody>
                                     <tfoot class="tx-bold tx-black">
                                         <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.discount')}} (COP)</td>
+                                            <td colspan="4" style="text-align:right">{{__('page.discount')}} </td>
                                             <td>
                                                 @if(strpos( $sale->discount_string , '%' ) !== false)
                                                     {{$sale->discount_string}} ({{number_format($sale->discount)}})
@@ -120,7 +120,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.shipping')}} (COP)</td>
+                                            <td colspan="4" style="text-align:right">{{__('page.shipping')}} </td>
                                             <td>
                                                 @if(strpos( $sale->shipping_string , '%' ) !== false)
                                                     {{$sale->shipping_string}} ({{number_format($sale->shipping)}})
@@ -137,15 +137,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.total_amount')}} (COP)</td>
+                                            <td colspan="4" style="text-align:right">{{__('page.total_amount')}} </td>
                                             <td>{{number_format($sale->grand_total)}}</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.paid')}} (COP)</td>
+                                            <td colspan="4" style="text-align:right">{{__('page.paid')}} </td>
                                             <td>{{number_format($paid)}}</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.balance')}} (COP)</td>
+                                            <td colspan="4" style="text-align:right">{{__('page.balance')}} </td>
                                             <td>{{number_format($sale->grand_total - $paid)}}</td>
                                         </tr>
                                     </tfoot>

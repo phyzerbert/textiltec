@@ -239,6 +239,8 @@ return [
     'supplies_list' => 'Supplies List',
     'image_gallery' => 'Image Gallery',
     'production_order_report' => 'Production Order Report',
+    'product_sale_report' => 'Product Sale Report',
+    'products_list' => 'Products List',
 
 
 

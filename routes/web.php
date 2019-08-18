@@ -98,6 +98,8 @@ Route::post('/product_sale/save', 'ProductSaleController@save')->name('product_s
 Route::get('/product_sale/edit/{id}', 'ProductSaleController@edit')->name('product_sale.edit');
 Route::post('/product_sale/update', 'ProductSaleController@update')->name('product_sale.update');
 Route::get('/product_sale/detail/{id}', 'ProductSaleController@detail')->name('product_sale.detail');
+Route::get('/product_sale/report/{id}', 'ProductSaleController@report')->name('product_sale.report');
+Route::get('/product_sale/report_view/{id}', 'ProductSaleController@report_view')->name('product_sale.report_view');
 Route::get('/product_sale/delete/{id}', 'ProductSaleController@delete')->name('product_sale.delete');
 
 Route::get('get_supplies', 'VueController@get_supplies');

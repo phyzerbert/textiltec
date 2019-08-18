@@ -12,6 +12,7 @@ use App\Models\Payment;
 use App\Models\Product;
 
 use Auth;
+use PDF;
 
 class ProductSaleController extends Controller
 {
@@ -214,6 +215,18 @@ class ProductSaleController extends Controller
         $sale = ProductSale::find($id);
 
         return view('product_sale.detail', compact('sale'));
+    }
+
+    public function report($id){
+        $sale = ProductSale::find($id);
+        $pdf = PDF::loadView('product_sale.report', compact('sale'));  
+        return $pdf->download('product_sale_report_'.$sale->reference_no.'.pdf');
+    }
+    public function report_view($id){
+        $sale = ProductSale::find($id);
+        $pdf = PDF::loadView('product_sale.report', compact('sale'));  
+        // return $pdf->download('product_sale_report_'.$sale->reference_no.'.pdf');
+        return view('product_sale.report', compact('sale'));  
     }
 
     public function delete($id){

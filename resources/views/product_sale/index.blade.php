@@ -84,6 +84,7 @@
                                                 <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item px-3" href="{{route('product_sale.detail', $item->id)}}"><i class="align-middle" data-feather="eye"></i> {{__('page.details')}}</a>
+                                                    <a class="dropdown-item px-3" href="{{route('product_sale.report', $item->id)}}"><i class="align-middle mr-2 far fa-file-pdf"></i> {{__('page.report')}}</a>
                                                     <a class="dropdown-item px-3" href="{{route('payment.index', ['sale', $item->id])}}"><i class="align-middle" data-feather="dollar-sign"></i> {{__('page.payment_list')}}</a>
                                                     <a class="dropdown-item px-3 btn-add-payment" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="credit-card"></i> {{__('page.add_payment')}}</a>
                                                     <a class="dropdown-item px-3" href="{{route('product_sale.edit', $item->id)}}"><i class="align-middle" data-feather="edit"></i> {{__('page.edit')}}</a>
