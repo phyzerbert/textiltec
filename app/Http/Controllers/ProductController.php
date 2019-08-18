@@ -22,11 +22,14 @@ class ProductController extends Controller
     public function edit(Request $request){
         $request->validate([
             'name'=>'required',
+            'code'=>'required',
+            'price'=>'required',
         ]);
         
         $item = Product::find($request->get("id"));
         $item->name = $request->get("name");
         $item->code = $request->get("code");
+        $item->price = $request->get("price");
         $item->description = $request->get("description");
         if($request->has("image")){
             $picture = request()->file('image');
@@ -41,11 +44,14 @@ class ProductController extends Controller
     public function create(Request $request){
         $request->validate([
             'name'=>'required|string',
+            'code'=>'required',
+            'price'=>'required|numeric',
         ]);
 
         $item = new Product();
         $item->name = $request->get("name");
         $item->code = $request->get("code");
+        $item->price = $request->get("price");
         $item->description = $request->get("description");
         if($request->has("image")){
             $picture = request()->file('image');

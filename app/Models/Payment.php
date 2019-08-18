@@ -8,7 +8,18 @@ class Payment extends Model
 {
     protected $guarded = [];
 
-    public function purchase(){
-        return $this->belongsTo('App\Models\Purchase');
+    public function paymentable()
+    {
+        return $this->morphTo();
+    }
+
+    public function purchase()
+    {
+        return $this->morphedByMany('App\Models\PurchaseOrder', 'paymentable');
+    }
+
+    public function product_sale()
+    {
+        return $this->morphedByMany('App\Models\ProductSale', 'paymentable');
     }
 }

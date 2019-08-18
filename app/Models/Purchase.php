@@ -17,7 +17,7 @@ class Purchase extends Model
     }
 
     public function payments(){
-        return $this->hasMany('App\Models\Payment');
+        return $this->morphMany('App\Models\Payment', 'paymentable');
     }
 
     public function orders(){

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Purchase;
+use App\Models\ProductSale;
 
 class PaymentController extends Controller
 {
@@ -13,26 +14,38 @@ class PaymentController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request, $id)
+    public function index(Request $request, $type, $id)
     {
         config(['site.page' => 'purchase_list']);
-        $paymentable = Purchase::find($id);
+        if($type == 'purchase'){
+            $paymentable = Purchase::find($id);
+        } else if ($type == 'sale') {
+            $paymentable = ProductSale::find($id);
+        }
+        
         $data = $paymentable->payments;
-        return view('payment.index', compact('data', 'id'));
+        return view('payment.index', compact('data', 'type'));
     }
 
     public function create(Request $request){
         $request->validate([
             'date'=>'required|string',
             'reference_no'=>'required|string',
-            'purchase_id'=>'required',
+            'paymentable_id'=>'required',
         ]);
+
+        if($request->type == 'purchase'){
+            $paymentable_type = Purchase::class;
+        }else if($request->type == 'sale') {
+            $paymentable_type = ProductSale::class;
+        }
         
         $item = new Payment();
         $item->timestamp = $request->get('date').":00";
         $item->reference_no = $request->get('reference_no');
         $item->amount = $request->get('amount');
-        $item->purchase_id = $request->get('purchase_id');
+        $item->paymentable_id = $request->get('paymentable_id');
+        $item->paymentable_type = $paymentable_type;
         $item->note = $request->get('note');
         if($request->has("attachment")){
             $picture = request()->file('attachment');

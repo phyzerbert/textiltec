@@ -11,8 +11,4 @@ class PurchaseOrder extends Model
     public function produce() {
         return $this->belongsTo('App\Models\Produce');
     }
-
-    public function images() {
-        return $this->morphMany('App\Models\Image', 'imageable');
-    }
 }

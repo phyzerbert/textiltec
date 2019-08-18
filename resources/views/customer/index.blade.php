@@ -4,7 +4,7 @@
     <div class="container-fluid p-0">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">Suppliers</h1>
+            <h1 class="h3 mb-3">Customers</h1>
 
             <div class="row">
                 <div class="col-12">
@@ -20,8 +20,7 @@
                                         <th>{{__('page.name')}}</th>
                                         <th>{{__('page.company')}}</th>
                                         <th>{{__('page.phone')}}</th>
-                                        <th>{{__('page.email_address')}}</th>
-                                        <th style="width:120px;">{{__('page.total_purchases')}}</th>
+                                        <th style="width:120px;">{{__('page.total_sales')}}</th>
                                         <th style="width:120px !important;">{{__('page.total_amount')}}</th>
                                         <th>{{__('page.paid')}}</th>
                                         <th>{{__('page.balance')}}</th>
@@ -30,19 +29,19 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $footer_total_purchases = $footer_total_amount = $footer_paid = 0;
+                                        $footer_total_sales = $footer_total_amount = $footer_paid = 0;
                                     @endphp                               
                                     @foreach ($data as $item)
                                         @php
-                                            $purchases_array = $item->purchases()->pluck('id');
-                                            $total_purchases = $item->purchases()->count();
-                                            $mod_total_amount = $item->purchases();
-                                            $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $purchases_array)->where('paymentable_type', Purchase::class);
+                                            $sales_array = $item->sales()->pluck('id');
+                                            $total_sales = $item->sales()->count();
+                                            $mod_total_amount = $item->sales();
+                                            $mod_paid = \App\Models\Payment::whereIn('sale_id', $sales_array);
         
                                             $total_amount = $mod_total_amount->sum('grand_total');
                                             $paid = $mod_paid->sum('amount');  
         
-                                            $footer_total_purchases += $total_purchases;
+                                            $footer_total_sales += $total_sales;
                                             $footer_total_amount += $total_amount;
                                             $footer_paid += $paid;
                                         @endphp                              
@@ -50,28 +49,28 @@
                                             <input type="hidden" name="note" class="note" value="{{$item->note}}">
                                             <input type="hidden" name="address" class="address" value="{{$item->address}}">
                                             <input type="hidden" name="city" class="city" value="{{$item->city}}">
+                                            <input type="hidden" name="email" class="email" value="{{$item->email}}">
                                             <td class="wd-40">{{ $loop->index + 1 }}</td>
                                             <td class="name">{{$item->name}}</td>
                                             <td class="company">{{$item->company}}</td>
                                             <td class="phone_number">{{$item->phone_number}}</td>
-                                            <td class="email">{{$item->email}}</td>
-                                            <td style="width:120px !important;">{{number_format($total_purchases)}}</td>
+                                            <td style="width:120px !important;">{{number_format($total_sales)}}</td>
                                             <td style="width:120px !important;">{{number_format($total_amount)}}</td>                                        
                                             <td>{{number_format($paid)}}</td>
                                             <td>{{number_format($total_amount - $paid)}}</td>                                      
                                             <td>
                                                 {{-- <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('page.view')}}"><i class="align-middle" data-feather="file-text"></i></a> --}}
-                                                <a href="{{route('supplier.report', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.report')}}"><i class="align-middle" data-feather="file-text"></i></a>
+                                                <a href="{{route('customer.report', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.report')}}"><i class="align-middle" data-feather="file-text"></i></a>
                                                 <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
-												<a href="{{route('supplier.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
+												<a href="{{route('customer.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="5">{{__('page.total')}}</td>
-                                        <td>{{number_format($footer_total_purchases)}}</td>
+                                        <td colspan="4">{{__('page.total')}}</td>
+                                        <td>{{number_format($footer_total_sales)}}</td>
                                         <td>{{number_format($footer_total_amount)}}</td>
                                         <td>{{number_format($footer_paid)}}</td>
                                         <td>{{number_format($footer_total_amount - $footer_paid)}}</td>
@@ -107,7 +106,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{__('page.add_supplier')}}</h4>
+                    <h4 class="modal-title">{{__('page.add_customer')}}</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
                 <form action="" id="create_form" method="post">
@@ -175,7 +174,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{__('page.edit_supplier')}}</h4>
+                    <h4 class="modal-title">{{__('page.edit_customer')}}</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
                 <form action="" id="edit_form" method="post">
@@ -255,7 +254,7 @@
             $("#btn_create").click(function(){
                 $("#ajax-loading").show();
                 $.ajax({
-                    url: "{{route('supplier.create')}}",
+                    url: "{{route('customer.create')}}",
                     type: 'post',
                     dataType: 'json',
                     data: $('#create_form').serialize(),
@@ -318,7 +317,7 @@
                 let id = $(this).data("id");
                 let name = $(this).parents('tr').find(".name").text().trim();
                 let company = $(this).parents('tr').find(".company").text().trim();
-                let email = $(this).parents('tr').find(".email").text().trim();
+                let email = $(this).parents('tr').find(".email").val().trim();
                 let phone_number = $(this).parents('tr').find(".phone_number").text().trim();
                 let address = $(this).parents('tr').find(".address").val().trim();
                 let city = $(this).parents('tr').find(".city").val().trim();
@@ -340,7 +339,7 @@
             $("#btn_update").click(function(){
                 $("#ajax-loading").show();
                 $.ajax({
-                    url: "{{route('supplier.edit')}}",
+                    url: "{{route('customer.edit')}}",
                     type: 'post',
                     dataType: 'json',
                     data: $('#edit_form').serialize(),

@@ -18,6 +18,7 @@
                                     <th class="wd-50">#</th>
                                     <th>{{__('page.name')}}</th>
                                     <th>{{__('page.code')}}</th>
+                                    <th>{{__('page.price')}}</th>
                                     <th>{{__('page.quantity')}}</th>
                                     <th>{{__('page.description')}}</th>
                                     <th>{{__('page.action')}}</th>
@@ -39,6 +40,7 @@
                                             {{$item->name}}
                                         </td>
                                         <td class="code">{{$item->code}}</td>
+                                        <td class="price">{{number_format($item->price)}}</td>
                                         <td class="quantity">{{$quantity}}</td>
                                         <td class="description">{{$item->description}}</td>
                                         <td class="py-1">
@@ -83,6 +85,10 @@
                             <input class="form-control code" type="text" name="code" placeholder="{{__('page.code')}}">
                         </div>
                         <div class="form-group">
+                            <label class="control-label">{{__('page.price')}}</label>
+                            <input class="form-control price" type="number" name="price" placeholder="{{__('page.price')}}">
+                        </div>
+                        <div class="form-group">
                             <label class="control-label">{{__('page.description')}}</label>
                             <input class="form-control description" type="text" name="description" placeholder="{{__('page.description')}}">
                         </div>
@@ -117,6 +123,10 @@
                         <div class="form-group">
                             <label class="control-label">{{__('page.code')}}</label>
                             <input class="form-control code" type="text" name="code" placeholder="{{__('page.code')}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.price')}}</label>
+                            <input class="form-control price" type="number" name="price" placeholder="{{__('page.price')}}">
                         </div>
                         <div class="form-group">
                             <label class="control-label">{{__('page.description')}}</label>

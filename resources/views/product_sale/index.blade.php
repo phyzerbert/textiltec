@@ -8,15 +8,15 @@
 
 @section('content')
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3"><i class="fa fa-list"></i> Purchase List</h1>
+        <h1 class="h3 mb-3"><i class="fa fa-list"></i> Product Sale List</h1>
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         @include('elements.pagesize')                    
-                        @include('purchase.filter')
-                        <a href="{{route('purchase.create')}}" class="btn btn-success btn-sm float-right ml-3 mg-b-5" id="btn-add"><i class="fa fa-plus mg-r-2"></i> {{__('page.add_new')}}</a>                            
+                        @include('product_sale.filter')
+                        <a href="{{route('product_sale.create')}}" class="btn btn-success btn-sm float-right ml-3 mg-b-5" id="btn-add"><i class="fa fa-plus mg-r-2"></i> {{__('page.add_new')}}</a>                            
                         {{-- @include('elements.keyword') --}}
                     </div>
                     <div class="card-body">
@@ -35,8 +35,8 @@
                                         </span>
                                     </th>
                                     <th>{{__('page.reference_no')}}</th>
-                                    <th>{{__('page.supplier')}}</th>
-                                    <th>{{__('page.purchase_status')}}</th>
+                                    <th>{{__('page.customer')}}</th>
+                                    <th>{{__('page.sale_status')}}</th>
                                     <th>{{__('page.grand_total')}}</th>
                                     <th>{{__('page.paid')}}</th>
                                     <th>{{__('page.balance')}}</th>
@@ -59,7 +59,7 @@
                                         <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
                                         <td class="timestamp">{{date('Y-m-d H:i', strtotime($item->timestamp))}}</td>
                                         <td class="reference_no">{{$item->reference_no}}</td>
-                                        <td class="supplier" data-id="{{$item->supplier_id}}">{{$item->supplier->company}}</td>
+                                        <td class="customer" data-id="{{$item->customer_id}}">{{$item->customer->company}}</td>
                                         <td class="status">
                                             @if ($item->status == 1)
                                                 <span class="badge badge-success">{{__('page.received')}}</span>
@@ -83,11 +83,11 @@
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item px-3" href="{{route('purchase.detail', $item->id)}}"><i class="fa fa-eye"></i> {{__('page.details')}}</a>
-                                                    <a class="dropdown-item px-3" href="{{route('payment.index', ['purchase', $item->id])}}"><i class="align-middle" data-feather="dollar-sign"></i> {{__('page.payment_list')}}</a>
+                                                    <a class="dropdown-item px-3" href="{{route('product_sale.detail', $item->id)}}"><i class="align-middle" data-feather="eye"></i> {{__('page.details')}}</a>
+                                                    <a class="dropdown-item px-3" href="{{route('payment.index', ['sale', $item->id])}}"><i class="align-middle" data-feather="dollar-sign"></i> {{__('page.payment_list')}}</a>
                                                     <a class="dropdown-item px-3 btn-add-payment" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="credit-card"></i> {{__('page.add_payment')}}</a>
-                                                    <a class="dropdown-item px-3" href="{{route('purchase.edit', $item->id)}}"><i class="align-middle" data-feather="edit"></i> {{__('page.edit')}}</a>
-                                                    <a class="dropdown-item px-3" href="{{route('purchase.delete', $item->id)}}"><i class="align-middle" data-feather="trash-2"></i> {{__('page.delete')}}</a>
+                                                    <a class="dropdown-item px-3" href="{{route('product_sale.edit', $item->id)}}"><i class="align-middle" data-feather="edit"></i> {{__('page.edit')}}</a>
+                                                    <a class="dropdown-item px-3" href="{{route('product_sale.delete', $item->id)}}"><i class="align-middle" data-feather="trash-2"></i> {{__('page.delete')}}</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -110,10 +110,9 @@
                             </div>
                             <div class="float-right" style="margin: 0;">
                                 {!! $data->appends([
-                                    'supplier_id' => $supplier_id,
+                                    'customer_id' => $customer_id,
                                     'reference_no' => $reference_no,
                                     'period' => $period,
-                                    'expiry_period' => $expiry_period,
                                 ])->links() !!}
                             </div>
                         </div>
@@ -133,8 +132,8 @@
                 </div>
                 <form action="{{route('payment.create')}}" id="payment_form" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="type" value="purchase">
-                    <input type="hidden" class="purchase_id" name="paymentable_id" />
+                    <input type="hidden" name="type" value="sale">
+                    <input type="hidden" class="product_sale_id" name="paymentable_id" />
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="control-label">{{__('page.date')}}</label>
@@ -181,7 +180,7 @@
                 .wrap('<div class="position-relative" style="width: 200px;"></div>')
                 .select2({
                     width: '100%',
-                    placeholder: '{!! __('page.supplier') !!}'
+                    placeholder: '{!! __('page.customer') !!}'
                 });                    
         });
 
@@ -193,7 +192,7 @@
             // $("#payment_form input.form-control").val('');
             let id = $(this).data('id');
             let balance = $(this).parents('tr').find('.balance').data('value');
-            $("#payment_form .purchase_id").val(id);
+            $("#payment_form .product_sale_id").val(id);
             $("#payment_form .amount").val(balance);
             $("#paymentModal").modal();
         });
@@ -217,7 +216,7 @@
         $("#btn-reset").click(function(){
             $("#search_company").val('');
             $("#search_store").val('');
-            $("#search_supplier").val('').change();
+            $("#search_customer").val('').change();
             $("#search_reference_no").val('');
             $("#period").val('');
         });

@@ -13,6 +13,10 @@ use Auth;
 
 class PurchaseController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request) {
         config(['site.page' => 'purchase_list']);
         $user = Auth::user();

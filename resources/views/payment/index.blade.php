@@ -17,7 +17,7 @@
     <div class="container-fluid p-0">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">Payment List</h1>
+            <h1 class="h3 mb-3">{{__('page.payment_list')}}</h1>
 
             <div class="row">
                 <div class="col-12">
@@ -57,8 +57,13 @@
                             </table>
                             <div class="row">
                                 <div class="col-md-12 mt-3 text-right">
-                                    <a href="{{route('purchase.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_purchase')}}</a>                                       
-                                    <a href="{{route('purchase.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.purchases_list')}}</a>
+                                    @if($type == 'purchase')
+                                        <a href="{{route('purchase.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_purchase')}}</a>                                       
+                                        <a href="{{route('purchase.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.purchases_list')}}</a>
+                                    @elseif($type == 'sale')
+                                        <a href="{{route('product_sale.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_product_sale')}}</a>                                       
+                                        <a href="{{route('product_sale.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.product_sale_list')}}</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
