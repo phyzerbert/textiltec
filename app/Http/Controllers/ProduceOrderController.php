@@ -277,6 +277,9 @@ class ProduceOrderController extends Controller
         $pdf = PDF::loadView('produce_order.report', compact('order'));
   
         return $pdf->download('supplier_report_'.$order->reference_no.'.pdf');
-        // return view('produce_order.report', compact('order'));
+    }
+    public function report_view($id){
+        $order = ProduceOrder::find($id);
+        return view('produce_order.report', compact('order'));
     }
 }
