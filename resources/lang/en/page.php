@@ -192,6 +192,7 @@ return [
     'total_cost' => 'Total Cost',
     'production_order_date' => 'Production Order Date',
     'received_quantity' => 'Received Quantity',
+    'receive_date' => 'Receive Date',
 
 
     // ******** Modal ********
@@ -226,10 +227,7 @@ return [
     'supplier_management' => 'Supplier Management',
     'user_management' => 'User Management',
     'category_management' => 'Category Management',
-    'company_management' => 'Company Management',
-    'store_management' => 'Store Management',
     'payment_management' => 'Payment Management',
-    'tax_rate_management' => 'Tax Rate Management',
     'user_purchases' => 'User Purchases',
     'user_sales' => 'User Sales',
     'user_payments' => 'User Payments',
@@ -239,6 +237,8 @@ return [
     'customer_payments' => 'Customer Payments',
     'production_order_list' => 'Production Order List',
     'edit_production_order' => 'Edit Production Order',
+    'supply_category' => 'Supply Category',
+    'workshop_management' => 'Workshop Management',
 
 
 
@@ -294,10 +294,5 @@ return [
     'confirm_password' => 'Confirm Password',
     'save_changes' => 'Save Changes',
 
-    // ******** Phone Verification ********
-    'invalid_verification_request' => 'Invalid verification request',
-    'concurrent_verifications_to_the_same_number_are_not_allowed' => 'Concurrent verifications to the same number are not allowed',
-    'invalid_credentials_were_provided' => 'Invalid credentials were provided',
-    'internal_error' => 'Internal Error',
 
 ];

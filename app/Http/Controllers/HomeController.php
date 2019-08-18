@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        config(['site.page' => 'home']);
         return view('dashboard.home');
     }
 

@@ -97,3 +97,10 @@ input[type=file][data-fouc] {
 .top-search-form .select2-container--bootstrap4 .select2-selection--single .select2-selection__arrow {
     height: 25px !important;
 }
+
+li.sidebar-item.active>a.sidebar-link {
+    background: #ddd;
+}
+.bg-nav {
+    background-color: #009688 !important;
+}

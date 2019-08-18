@@ -13,6 +13,7 @@ use App\Models\ProduceOrderSupply;
 use App\Models\Image;
 
 use Auth;
+use PDF;
 
 class ProduceOrderController extends Controller
 {
@@ -272,5 +273,12 @@ class ProduceOrderController extends Controller
         $item->receives()->delete();
         $item->delete();
         return back()->with("success", __('page.deleted_successfully'));
+    }
+
+    public function report($id){
+        $supplier = Supplier::find($id);
+        $pdf = PDF::loadView('produce_order.report', compact('supplier'));
+  
+        return $pdf->download('supplier_report_'.$supplier->name.'.pdf');
     }
 }

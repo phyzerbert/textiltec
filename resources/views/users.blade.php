@@ -4,13 +4,13 @@
     <div class="container p-0">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">User Management</h1>
+            <h1 class="h2 mb-3"><i class="align-middle" data-feather="users"></i> {{__('page.user_management')}}</h1>
 
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> Add New</button>
+                            <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> {{__('page.add_new')}}</button>
                         </div>
                         <div class="card-body">                            
                             <table class="table table-bordered table-hover">
