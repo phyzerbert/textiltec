@@ -25,6 +25,8 @@
             <h4 class="mt-3">{{__('page.received_quantity')}} : <u class="value">{{$order->receptions()->sum('quantity')}}</u></h4>
             <h4 class="mt-3">{{__('page.workshop')}} : <u class="value">{{$order->workshop->name}}</u></h4>
             <h4 class="mt-3">{{__('page.manufacturing_cost')}} : <u class="value">{{number_format($order->manufacturing_cost)}}</u></h4>
+            <h4 class="mt-3">{{__('page.responsibility')}} : <u class="value">{{$order->responsibility}}</u></h4>
+            <h4 class="mt-3">{{__('page.description')}} : <u class="value">{{$order->description}}</u></h4>
         </div>
         <div class="w-50 float-right">
             <div class="card">
@@ -33,11 +35,11 @@
                 </div>
             </div>
         </div>
-    </div>    
-    <br />
+        <div style="clear:both"></div>
+    </div>  
     <div class="">
         <h3 class="my-3">{{__('page.supplies_list')}}</h3>
-        <table class="table table-bordered table-colored table-info">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th class="wd-40">#</th>
