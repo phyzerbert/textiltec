@@ -81,8 +81,8 @@
                                         <a href="#" class="btn btn-sm btn-primary mb-2 add-product" style="float:right" @click="add_item()"><div><i class="fa fa-plus"></i> Add</div></a>
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-colored table-success" id="supply_order_table">
-                                            <thead>
+                                        <table class="table table-bordered" id="supply_order_table">
+                                            <thead class="table-success">
                                                 <tr>
                                                     <th>{{__('page.name')}}</th>
                                                     <th>{{__('page.expiry_date')}}</th>
