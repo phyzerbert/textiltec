@@ -265,6 +265,8 @@ return [
     'total_customers' => 'Total Customers',
     'total_supplies' => 'Total Supplies',
     'total_products' => 'Total Products',
+    'overview_supply' => 'Overview Supply',
+    'overview_product' => 'Overview Product',
 
     // ******** Transaction ********
     'select_type' => 'Select a type',

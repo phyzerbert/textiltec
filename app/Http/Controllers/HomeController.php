@@ -29,7 +29,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         config(['site.page' => 'home']);
         $return['total_suppliers'] = Supplier::count();
@@ -60,7 +60,11 @@ class HomeController extends Controller
         }
         $return['total_product_quantity'] = $product_in_quantity - $product_out_quantity;
 
+        $period = '';
 
+        if($request->period != ''){
+            $period = $request->period;            
+        }
 
 
         // dump($return);
@@ -70,7 +74,7 @@ class HomeController extends Controller
 
 
 
-        return view('dashboard.home', compact('return'));
+        return view('dashboard.home', compact('return', 'period'));
     }
 
     public function set_pagesize(Request $request){

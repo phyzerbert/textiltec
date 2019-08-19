@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('lang/{locale}', 'IndexController@lang')->name('lang');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::any('/home', 'HomeController@index')->name('home');
 
 Route::any('/supplier/index', 'SupplierController@index')->name('supplier.index');
 Route::post('/supplier/create', 'SupplierController@create')->name('supplier.create');
