@@ -13,7 +13,7 @@
 @endsection
 @section('content')
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3"><i class="fa fa-cubes"></i> Produce Order Details</h1>
+        <h1 class="h3 mb-3"><i class="fa fa-cubes"></i> {{__('page.production_order_details')}}</h1>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -69,60 +69,62 @@
                                     @endforeach
                                 </div>
                                 <h3><i class="align-middle" data-feather="codepen"></i> {{__('page.supplies_list')}}</h3>
-                                
-                                <table class="table table-bordered table-colored table-info">
-                                    <thead>
-                                        <tr>
-                                            <th class="wd-40">#</th>
-                                            <th>{{__('page.product_name_code')}}</th>
-                                            <th>{{__('page.cost')}}</th>
-                                            <th>{{__('page.quantity')}}</th>
-                                            <th>{{__('page.subtotal')}}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $total_quantity = 0;
-                                            $total_amount = 0;
-                                        @endphp
-                                        @foreach ($order->supplies as $item)
-                                        @php
-                                            $quantity = $item->quantity;
-                                            $cost = $item->cost;
-                                            $subtotal = $item->subtotal;
-        
-                                            $total_quantity += $quantity;
-                                            $total_amount += $subtotal;
-                                        @endphp
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead class="table-info">
                                             <tr>
-                                                <td>{{$loop->index+1}}</td>
-                                                <td>@isset($item->supply->name){{$item->supply->name}} ({{$item->supply->code}})@endisset</td>
-                                                <td>{{number_format($item->cost)}}</td>
-                                                <td>{{$item->quantity}}</td>
-                                                <td>{{number_format($item->subtotal)}}</td>
+                                                <th class="wd-40">#</th>
+                                                <th>{{__('page.product_name_code')}}</th>
+                                                <th>{{__('page.cost')}}</th>
+                                                <th>{{__('page.quantity')}}</th>
+                                                <th>{{__('page.subtotal')}}</th>
                                             </tr>
-                                        @endforeach
-                                        <tr>
-                                            <td colspan="3" class="tx-bold" style="text-align:right">{{__('page.total')}} (COP)</td>
-                                            <td>{{$total_quantity}}</td>
-                                            <td>{{number_format($total_amount)}}</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot class="tx-bold tx-black">
-                                        <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.supply_cost')}}</td>
-                                            <td>{{number_format($total_amount)}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.manufacturing_cost')}} </td>
-                                            <td>{{number_format($order->manufacturing_cost)}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.total_cost')}} </td>
-                                            <td>{{number_format($order->total_cost)}}</td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $total_quantity = 0;
+                                                $total_amount = 0;
+                                            @endphp
+                                            @foreach ($order->supplies as $item)
+                                            @php
+                                                $quantity = $item->quantity;
+                                                $cost = $item->cost;
+                                                $subtotal = $item->subtotal;
+            
+                                                $total_quantity += $quantity;
+                                                $total_amount += $subtotal;
+                                            @endphp
+                                                <tr>
+                                                    <td>{{$loop->index+1}}</td>
+                                                    <td>@isset($item->supply->name){{$item->supply->name}} ({{$item->supply->code}})@endisset</td>
+                                                    <td>{{number_format($item->cost)}}</td>
+                                                    <td>{{$item->quantity}}</td>
+                                                    <td>{{number_format($item->subtotal)}}</td>
+                                                </tr>
+                                            @endforeach
+                                            <tr>
+                                                <td colspan="3" class="tx-bold" style="text-align:right">{{__('page.total')}} (COP)</td>
+                                                <td>{{$total_quantity}}</td>
+                                                <td>{{number_format($total_amount)}}</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot class="tx-bold tx-black">
+                                            <tr>
+                                                <td colspan="4" style="text-align:right">{{__('page.supply_cost')}}</td>
+                                                <td>{{number_format($total_amount)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" style="text-align:right">{{__('page.manufacturing_cost')}} </td>
+                                                <td>{{number_format($order->manufacturing_cost)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" style="text-align:right">{{__('page.total_cost')}} </td>
+                                                <td>{{number_format($order->total_cost)}}</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                
                                 <div class="row mt-5">
                                     <div class="col-md-12 text-right">
                                         <a href="{{route('produce_order.index')}}" class="btn btn-success"><i class="fa fa-list"></i>  {{__('page.production_order_list')}}</a>

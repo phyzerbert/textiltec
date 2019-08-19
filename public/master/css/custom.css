@@ -106,9 +106,11 @@ li.sidebar-item.active>a.sidebar-link {
 }
 
 
-.table-bordered td, .table-bordered th {
+.table-responsive .table-bordered td, 
+.table-responsive .table-bordered th {
     border: 1px solid #dee2e6 !important;
 }
+
 
 td, th {
     white-space: nowrap;

@@ -67,93 +67,95 @@
                                 </div>
                             </div>
                             <div class="col-lg-8">
-                                <h3>Order Details</h3>
-                                
-                                <table class="table table-bordered table-colored table-info">
-                                    <thead>
-                                        <tr>
-                                            <th class="wd-40">#</th>
-                                            <th>{{__('page.product_name_code')}}</th>
-                                            <th>{{__('page.cost')}}</th>
-                                            <th>{{__('page.quantity')}}</th>
-                                            <th>{{__('page.subtotal')}}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $total_quantity = 0;
-                                            $total_amount = 0;
-                                            $paid = $purchase->payments()->sum('amount');
-                                        @endphp
-                                        @foreach ($purchase->orders as $item)
-                                        @php
-                                            $quantity = $item->quantity;
-                                            $cost = $item->cost;
-                                            $subtotal = $item->subtotal;
-        
-                                            $total_quantity += $quantity;
-                                            $total_amount += $subtotal;
-                                        @endphp
+                                <h3><i class="far fa-list-alt"></i> {{__('page.supplies_list')}}</h3>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead class="table-info">
                                             <tr>
-                                                <td>{{$loop->index+1}}</td>
-                                                <td>@isset($item->product->name){{$item->product->name}} ({{$item->product->code}})@endisset</td>
-                                                <td>{{number_format($item->cost)}}</td>
-                                                <td>{{$item->quantity}}</td>
-                                                <td>{{number_format($item->subtotal)}}</td>
+                                                <th class="wd-40">#</th>
+                                                <th>{{__('page.supply_name_code')}}</th>
+                                                <th>{{__('page.cost')}}</th>
+                                                <th>{{__('page.quantity')}}</th>
+                                                <th>{{__('page.subtotal')}}</th>
                                             </tr>
-                                        @endforeach
-                                        <tr>
-                                            <td colspan="3" class="tx-bold" style="text-align:right">{{__('page.total')}} (COP)</td>
-                                            <td>{{$total_quantity}}</td>
-                                            <td>{{number_format($total_amount)}}</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot class="tx-bold tx-black">
-                                        <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.discount')}} (COP)</td>
-                                            <td>
-                                                @if(strpos( $purchase->discount_string , '%' ) !== false)
-                                                    {{$purchase->discount_string}} ({{number_format($purchase->discount)}})
-                                                @else
-                                                    {{number_format($purchase->discount)}}
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.shipping')}} (COP)</td>
-                                            <td>
-                                                @if(strpos( $purchase->shipping_string , '%' ) !== false)
-                                                    {{$purchase->shipping_string}} ({{number_format($purchase->shipping)}})
-                                                @else
-                                                    {{number_format($purchase->shipping)}}
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.returns')}}</td>
-                                            <td>
-                                                {{number_format($purchase->returns)}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.total_amount')}} (COP)</td>
-                                            <td>{{number_format($purchase->grand_total)}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.paid')}} (COP)</td>
-                                            <td>{{number_format($paid)}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" style="text-align:right">{{__('page.balance')}} (COP)</td>
-                                            <td>{{number_format($purchase->grand_total - $paid)}}</td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $total_quantity = 0;
+                                                $total_amount = 0;
+                                                $paid = $purchase->payments()->sum('amount');
+                                            @endphp
+                                            @foreach ($purchase->orders as $item)
+                                            @php
+                                                $quantity = $item->quantity;
+                                                $cost = $item->cost;
+                                                $subtotal = $item->subtotal;
+            
+                                                $total_quantity += $quantity;
+                                                $total_amount += $subtotal;
+                                            @endphp
+                                                <tr>
+                                                    <td>{{$loop->index+1}}</td>
+                                                    <td>@isset($item->product->name){{$item->product->name}} ({{$item->product->code}})@endisset</td>
+                                                    <td>{{number_format($item->cost)}}</td>
+                                                    <td>{{$item->quantity}}</td>
+                                                    <td>{{number_format($item->subtotal)}}</td>
+                                                </tr>
+                                            @endforeach
+                                            <tr>
+                                                <td colspan="3" class="tx-bold" style="text-align:right">{{__('page.total')}} (COP)</td>
+                                                <td>{{$total_quantity}}</td>
+                                                <td>{{number_format($total_amount)}}</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot class="tx-bold tx-black">
+                                            <tr>
+                                                <td colspan="4" style="text-align:right">{{__('page.discount')}} (COP)</td>
+                                                <td>
+                                                    @if(strpos( $purchase->discount_string , '%' ) !== false)
+                                                        {{$purchase->discount_string}} ({{number_format($purchase->discount)}})
+                                                    @else
+                                                        {{number_format($purchase->discount)}}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" style="text-align:right">{{__('page.shipping')}} (COP)</td>
+                                                <td>
+                                                    @if(strpos( $purchase->shipping_string , '%' ) !== false)
+                                                        {{$purchase->shipping_string}} ({{number_format($purchase->shipping)}})
+                                                    @else
+                                                        {{number_format($purchase->shipping)}}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td colspan="4" style="text-align:right">{{__('page.returns')}}</td>
+                                                <td>
+                                                    {{number_format($purchase->returns)}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" style="text-align:right">{{__('page.total_amount')}} (COP)</td>
+                                                <td>{{number_format($purchase->grand_total)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" style="text-align:right">{{__('page.paid')}} (COP)</td>
+                                                <td>{{number_format($paid)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" style="text-align:right">{{__('page.balance')}} (COP)</td>
+                                                <td>{{number_format($purchase->grand_total - $paid)}}</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                
                                 <div class="row mt-5">
                                     <div class="col-md-12 text-right">
-                                        <a href="{{route('purchase.index')}}" class="btn btn-success"><i class="fa fa-credit-card"></i>  {{__('page.purchases_list')}}</a>
-                                        <a href="{{route('payment.index', $purchase->id)}}" class="btn btn-info"><i class="fa fa-list"></i>  {{__('page.payment_list')}}</a>
+                                        <a href="{{route('purchase.index')}}" class="btn btn-success"><i class="far fa-list-alt"></i>  {{__('page.purchases_list')}}</a>
+                                        <a href="{{route('payment.index', ['purchase', $purchase->id])}}" class="btn btn-info"><i class="far fa-credit-card"></i>  {{__('page.payment_list')}}</a>
                                     </div>
                                 </div>
                             </div>
