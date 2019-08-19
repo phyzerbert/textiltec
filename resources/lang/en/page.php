@@ -261,20 +261,10 @@ return [
     'sale_date' => 'Sale Date',
 
     // ******** Dashboard ********
-    'overview' => 'Overview',
-    'today_purchases' => 'Today Purchases',
-    'week_purchases' => 'Week Purchases',
-    'month_purchases' => 'Month Purchases',
-    'overall_purchases' => 'Overall Purchases',
-    'company_balance' => 'Company Balance',
-    'today_sales' => 'Today Sales',
-    'week_sales' => 'Week Sales',
-    'month_sales' => 'Month Sales',
-    'overall_sales' => 'Overall Sales',
-    'expired_purchases' => 'Expired Purchases',
-    'customer_company' => 'Customer Company',
-    'supplier_company' => 'Supplier Company',
-    'expiries_in_5days' => 'Expiries In 5 Days',
+    'total_suppliers' => 'Total Suppliers',
+    'total_customers' => 'Total Customers',
+    'total_supplies' => 'Total Supplies',
+    'total_products' => 'Total Products',
 
     // ******** Transaction ********
     'select_type' => 'Select a type',

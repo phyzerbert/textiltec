@@ -11,4 +11,8 @@ class Product extends Model
     public function produce_orders(){
         return $this->hasMany('App\Models\ProduceOrder');
     }
+
+    public function sale_orders(){
+        return $this->hasMany('App\Models\SaleOrder');
+    }
 }
