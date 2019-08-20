@@ -13,8 +13,8 @@
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Username" required autocomplete="name" autofocus>
+                                    <label>{{__('page.username')}}</label>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{__('page.username')}}" required autocomplete="name" autofocus>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -22,8 +22,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
+                                    <label>{{__('page.password')}}</label>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{__('page.password')}}" required autocomplete="current-password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center mt-3">
-                                    <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Sign in</button>
+                                    <button type="submit" class="btn btn-lg btn-primary" style="width:200px"><i class="" data-feather="log-in"></i> {{__('page.sign_in')}}</button>
                                 </div>
                             </form>
                         </div>

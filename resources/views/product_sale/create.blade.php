@@ -78,7 +78,7 @@
                                     <div>
                                         <h5 class="my-1" style="float:left">{{__('page.order_items')}}</h5>
                                         {{-- <button type="button" class="btn btn-primary mg-b-10 add-product" style="float:right">ADD</button> --}}
-                                        <a href="#" class="btn btn-sm btn-primary mb-2 add-product" style="float:right" @click="add_item()" title="{{__('page.right_ctrl_key')}}"><div><i class="fa fa-plus"></i> Add</div></a>
+                                        <a href="#" class="btn btn-sm btn-primary mb-2 add-product" style="float:right" @click="add_item()" title="{{__('page.right_ctrl_key')}}"><div><i class="fa fa-plus"></i> {{__('page.add')}}</div></a>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="product_order_table">
@@ -146,9 +146,67 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="text-right">Purchase: @{{formatPrice(total.price)}} - Discount: @{{formatPrice(discount)}} - Shipping: @{{formatPrice(shipping)}} - Returns: @{{formatPrice(returns)}} = Grand Total: @{{formatPrice(grand_total)}}</p>
+                                        <div class="col-12 col-md-6 col-xl d-flex">
+                                            <div class="card flex-fill">
+                                                <div class="card-body py-4">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h3 class="mb-2">@{{formatPrice(total.price)}}</h3>
+                                                            <div class="mb-0">{{__('page.sale')}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-xl d-flex">
+                                            <div class="card flex-fill">
+                                                <div class="card-body py-4">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h3 class="mb-2">@{{formatPrice(discount)}}</h3>
+                                                            <div class="mb-0">{{__('page.discount')}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-xl d-flex">
+                                            <div class="card flex-fill">
+                                                <div class="card-body py-4">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h3 class="mb-2">@{{formatPrice(shipping)}}</h3>
+                                                            <div class="mb-0">{{__('page.shipping')}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-xl d-flex">
+                                            <div class="card flex-fill">
+                                                <div class="card-body py-4">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h3 class="mb-2">@{{formatPrice(returns)}}</h3>
+                                                            <div class="mb-0">{{__('page.returns')}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-xl d-flex">
+                                            <div class="card flex-fill">
+                                                <div class="card-body py-4">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h3 class="mb-2">@{{formatPrice(grand_total)}}</h3>
+                                                            <div class="mb-0">{{__('page.grand_total')}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 

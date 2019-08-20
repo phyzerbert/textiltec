@@ -34,7 +34,7 @@
                     </div>
                 </a>
                 <a class="nav-link nav-link-user dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-                    <img src="@if($user->picture){{asset($user->picture)}} @else {{asset('images/avatar.png')}} @endif" class="avatar img-fluid rounded mr-1" alt="{{$user->first_name}} {{$user->last_name}}" /> <span class="text-dark">{{$user->first_name}} {{$user->last_name}}</span>
+                    <img src="@if($user->picture){{asset($user->picture)}} @else {{asset('images/avatar.png')}} @endif" class="avatar img-fluid rounded-circle mr-1" alt="{{$user->first_name}} {{$user->last_name}}" /> <span class="text-dark">{{$user->first_name}} {{$user->last_name}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="{{ route('profile') }}"><i class="align-middle" data-feather="user"></i> {{__('page.profile')}}</a>
