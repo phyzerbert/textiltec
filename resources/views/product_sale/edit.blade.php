@@ -80,7 +80,7 @@
                                     <div>
                                         <h5 class="my-1" style="float:left">{{__('page.order_items')}}</h5>
                                         {{-- <button type="button" class="btn btn-primary mg-b-10 add-product" style="float:right">ADD</button> --}}
-                                        <a href="#" class="btn btn-sm btn-primary mb-2 add-product" style="float:right" @click="add_item()"><div><i class="fa fa-plus"></i> Add</div></a>
+                                        <a href="#" class="btn btn-sm btn-primary mb-2 add-product" style="float:right" @click="add_item()" title="{{__('page.right_ctrl_key')}}"><div><i class="fa fa-plus"></i> Add</div></a>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-colored table-success" id="product_order_table">

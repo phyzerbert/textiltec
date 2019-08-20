@@ -97,6 +97,8 @@ return [
     'active' => 'Active',
     'inactive' => 'Inactive',
     'deactive' => 'Deactive',
+    'right_alt_key' => 'Right Alt Key',
+    'right_ctrl_key' => 'Right Ctrl Key',
     'created_successfully' => 'Created Successfully',
     'updated_successfully' => 'Updated Successfully',
     'deleted_successfully' => 'Deleted Successfully',
