@@ -45,8 +45,8 @@
     </div>  
     <div class="">
         <h3 class="my-3">{{__('page.supplies_list')}}</h3>
-        <table class="table table-bordered">
-            <thead>
+        <table class="table">
+            <thead class="table-primary">
                 <tr>
                     <th class="wd-40">#</th>
                     <th>{{__('page.product_name_code')}}</th>
@@ -101,14 +101,22 @@
     </div>
     <div class="mt-3">
         <table class="table">
-            <thead>
+            <thead class="table-success font-weight-bold">
                 <tr>
                     <td>{{__('page.total_supply_cost')}}</td>
-                    <td>{{__('page.total_manufacturing_cost')}}</td>
+                    <td>{{__('page.total_manufacture_cost')}}</td>
                     <td>{{__('page.total_production_cost')}}</td>
                     <td>{{__('page.product_cost')}}</td>
                 </tr>
             </thead>
+            <tbody>
+                <tr>
+                    <td>{{number_format($order->quantity * $order->supply_cost)}}</td>
+                    <td>{{number_format($order->quantity * $order->manufacturing_cost)}}</td>
+                    <td>{{number_format($order->quantity * $order->total_cost)}}</td>
+                    <td>{{number_format($order->supply_cost + $order->manufacturing_cost )}}</td>
+                </tr>
+            </tbody>
         </table>
     </div>
     
