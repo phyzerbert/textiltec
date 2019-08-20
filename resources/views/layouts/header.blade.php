@@ -16,7 +16,7 @@
                             <img src="{{asset('images/lang/en.png')}}" width="30px">&nbsp;&nbsp;English
                             @break
                         @case('es')
-                            <img src="{{asset('images/lang/es.png')}}" width="30px">&nbsp;&nbsp;Spanish
+                            <img src="{{asset('images/lang/es.png')}}" width="30px">&nbsp;&nbsp;Espanol
                             @break
                         @default
                             <img src="{{asset('images/lang/en.png')}}" width="30px">&nbsp;&nbsp;English
@@ -24,7 +24,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="{{route('lang', 'en')}}"><img src="{{asset('images/lang/en.png')}}" class="rounded-circle" width="30" height="28">  English</a>
-                    <a class="dropdown-item" href="{{route('lang', 'es')}}"><img src="{{asset('images/lang/es.png')}}" class="rounded-circle" width="30" height="28">  Spanish</a>
+                    <a class="dropdown-item" href="{{route('lang', 'es')}}"><img src="{{asset('images/lang/es.png')}}" class="rounded-circle" width="30" height="28">  Espanol</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

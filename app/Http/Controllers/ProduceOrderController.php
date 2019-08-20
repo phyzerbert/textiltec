@@ -103,6 +103,11 @@ class ProduceOrderController extends Controller
         $item->timestamp = $data['date'].":00";
         $item->reference_no = $data['reference_number'];
         $item->product_id = $data['product'];
+
+        $product = Product::find($data['product']);
+        $product->price = $data['supply_cost'] * $data['product_quantity'];
+        $product->save();
+
         $item->workshop_id = $data['workshop'];
         if($data['deadline'] != ''){
             $item->deadline = $data['deadline'];
