@@ -178,7 +178,7 @@
     $(document).ready(function () {
         $('.select2').each(function() {
             $(this)
-                .wrap('<div class="position-relative" style="width: 200px;"></div>')
+                .wrap('<div class="position-relative mb-2" style="width: 200px;"></div>')
                 .select2({
                     width: '100%',
                     placeholder: '{!! __('page.customer') !!}'
