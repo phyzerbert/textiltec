@@ -97,6 +97,14 @@ var app = new Vue({
         this.init();
         this.add_item()
     },
+    created: function() {
+        var self = this
+        $(document).keydown(function(e){
+            if(e.keyCode == 21){
+                self.add_item()
+            }
+        });
+    },
     updated: function() {
         this.calc_subtotal()
         this.calc_discount_shipping()
