@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">{{__('page.reference_number')}} <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="reference_number" value="{{ old('reference_number') }}" required placeholder="{{__('page.reference_number')}}">
+                                        <input class="form-control" type="text" name="reference_number" value="{{ $next_reference_no }}" required placeholder="{{__('page.reference_number')}}">
                                         @error('reference_number')
                                             <span class="invalid-feedback d-block" role="alert">
                                                 <strong>{{ $message }}</strong>

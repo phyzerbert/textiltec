@@ -38,6 +38,11 @@ Route::post('/scategory/create', 'ScategoryController@create')->name('scategory.
 Route::post('/scategory/edit', 'ScategoryController@edit')->name('scategory.edit');
 Route::get('/scategory/delete/{id}', 'ScategoryController@delete')->name('scategory.delete');
 
+Route::any('/pcategory/index', 'PcategoryController@index')->name('pcategory.index');
+Route::post('/pcategory/create', 'PcategoryController@create')->name('pcategory.create');
+Route::post('/pcategory/edit', 'PcategoryController@edit')->name('pcategory.edit');
+Route::get('/pcategory/delete/{id}', 'PcategoryController@delete')->name('pcategory.delete');
+
 Route::any('/workshop/index', 'WorkshopController@index')->name('workshop.index');
 Route::post('/workshop/create', 'WorkshopController@create')->name('workshop.create');
 Route::post('/workshop/edit', 'WorkshopController@edit')->name('workshop.edit');

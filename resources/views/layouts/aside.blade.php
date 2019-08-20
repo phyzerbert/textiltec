@@ -69,6 +69,7 @@
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">{{__('page.settings')}}</span>
                 </a>
                 <ul id="layouts" class="sidebar-dropdown list-unstyled collapse ">
+                    <li class="sidebar-item @if($page == 'pcategory') active @endif"><a class="sidebar-link" href="{{route('pcategory.index')}}">{{__('page.product_category')}}</a></li>
                     <li class="sidebar-item @if($page == 'scategory') active @endif"><a class="sidebar-link" href="{{route('scategory.index')}}">{{__('page.supply_category')}}</a></li>
                     <li class="sidebar-item @if($page == 'workshop') active @endif"><a class="sidebar-link" href="{{route('workshop.index')}}">{{__('page.workshop')}}</a></li>
                 </ul>

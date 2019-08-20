@@ -237,6 +237,7 @@ return [
     'customer_payments' => 'Customer Payments',
     'production_order_list' => 'Production Order List',
     'edit_production_order' => 'Edit Production Order',
+    'product_category' => 'Product Category',
     'supply_category' => 'Supply Category',
     'workshop_management' => 'Workshop Management',
     'supplies_list' => 'Supplies List',

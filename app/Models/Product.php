@@ -15,4 +15,8 @@ class Product extends Model
     public function sale_orders(){
         return $this->hasMany('App\Models\SaleOrder');
     }
+
+    public function category(){
+        return $this->belongsTo('App\Models\Pcategory', 'category_id');
+    }
 }

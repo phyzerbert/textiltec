@@ -8,7 +8,7 @@ class Scategory extends Model
 {
     protected $guarded = [];
 
-    public function supply(){
+    public function supplies(){
         return $this->hasMany('App\Models\Supply');
     }
 }

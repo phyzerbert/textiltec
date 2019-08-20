@@ -249,6 +249,24 @@
                                 <strong></strong>
                             </span>
                         </div>
+                        @php
+                            $categories = \App\Models\Pcategory::all();
+                        @endphp
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.category')}}</label>
+                            <select name="category_id" class="form-control category_id">
+                                @foreach ($categories as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach                                
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.price')}}</label>
+                            <input class="form-control price" type="text" name="price" placeholder="{{__('page.price')}}">
+                            <span id="price_error" class="invalid-feedback">
+                                <strong></strong>
+                            </span>
+                        </div>
                         <div class="form-group">
                             <label class="control-label">{{__('page.description')}}</label>
                             <input class="form-control description" type="text" name="description" placeholder="{{__('page.description')}}">

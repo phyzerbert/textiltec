@@ -65,7 +65,8 @@ class ProductSaleController extends Controller
         config(['site.page' => 'add_product_sale']);
         $customers = Customer::all();
         $products = Product::all();
-        return view('product_sale.create', compact('customers', 'products'));
+        $next_reference_no = 'FV-'.str_pad(ProductSale::max('id') + 1, 6, "0", STR_PAD_LEFT);
+        return view('product_sale.create', compact('customers', 'products', 'next_reference_no'));
     }
 
     public function save(Request $request){

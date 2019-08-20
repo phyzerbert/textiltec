@@ -19,12 +19,12 @@
         }
     </style>
 </head>
-<body>
-    <h1 class="text-center">{{__('page.product_sale_report')}}</h1>
+<body>    
     <br />
     <div class="w-100">
         <div class="w-50 float-left">
-            <h4>{{__('page.production_order_date')}} : <u class="value">{{date('Y-m-d H:i', strtotime($sale->timestamp))}}</u></h4>
+            <h1 style="font-size:30px;">{{__('page.product_sale_report')}}</h1>
+            <h4 class="mt-3">{{__('page.sale_date')}} : <u class="value">{{date('Y-m-d H:i', strtotime($sale->timestamp))}}</u></h4>
             <h4 class="mt-3">{{__('page.reference_no')}} : <u class="value">{{$sale->reference_no}}</u></h4>
             <h4 class="mt-3">{{__('page.customer')}} : <u class="value">{{$sale->customer->company}}</u></h4>
             
@@ -41,8 +41,8 @@
     </div>  
     <div class="">
         <h3 class="my-3">{{__('page.products_list')}}</h3>
-        <table class="table table-bordered">
-            <thead>
+        <table class="table">
+            <thead class="table-primary" style="">
                 <tr>
                     <th class="wd-40">#</th>
                     <th>{{__('page.product_name_code')}}</th>
@@ -123,6 +123,8 @@
             </tfoot>
         </table>
     </div>
+
+    <h1 class="text-right mr-3">{{config('app.name')}}</h1>
     
 </body>
 </html>

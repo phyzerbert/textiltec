@@ -18,6 +18,7 @@
                                     <th class="wd-50">#</th>
                                     <th>{{__('page.name')}}</th>
                                     <th>{{__('page.code')}}</th>
+                                    <th>{{__('page.category')}}</th>
                                     <th>{{__('page.price')}}</th>
                                     <th>{{__('page.quantity')}}</th>
                                     <th>{{__('page.description')}}</th>
@@ -40,7 +41,8 @@
                                             {{$item->name}}
                                         </td>
                                         <td class="code">{{$item->code}}</td>
-                                        <td class="price">{{number_format($item->price)}}</td>
+                                        <td class="category" data-value="{{$item->category_id}}">@isset($item->category->name){{$item->category->name}}@endisset</td>
+                                        <td class="price" data-value="{{$item->price}}">{{number_format($item->price)}}</td>
                                         <td class="quantity">{{$quantity}}</td>
                                         <td class="description">{{$item->description}}</td>
                                         <td class="py-1">
@@ -85,6 +87,14 @@
                             <input class="form-control code" type="text" name="code" placeholder="{{__('page.code')}}">
                         </div>
                         <div class="form-group">
+                            <label class="control-label">{{__('page.category')}}</label>
+                            <select name="category_id" class="form-control category_id">
+                                @foreach ($categories as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach                                
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label">{{__('page.price')}}</label>
                             <input class="form-control price" type="number" name="price" placeholder="{{__('page.price')}}">
                         </div>
@@ -123,6 +133,14 @@
                         <div class="form-group">
                             <label class="control-label">{{__('page.code')}}</label>
                             <input class="form-control code" type="text" name="code" placeholder="{{__('page.code')}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.category')}}</label>
+                            <select name="category_id" class="form-control category_id">
+                                @foreach ($categories as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach                                
+                            </select>
                         </div>
                         <div class="form-group">
                             <label class="control-label">{{__('page.price')}}</label>
@@ -167,12 +185,16 @@
             $(".btn-edit").click(function(){
                 let id = $(this).data("id");
                 let name = $(this).parents('tr').find(".name").data('value');
+                let category = $(this).parents('tr').find(".category").data('value');
                 let code = $(this).parents('tr').find(".code").text().trim();
+                let price = $(this).parents('tr').find(".price").data('value');
                 let description = $(this).parents('tr').find(".description").text().trim();
                 $("#edit_form input.form-control").val('');
                 $("#editModal .id").val(id);
                 $("#editModal .name").val(name);
                 $("#editModal .code").val(code);
+                $("#editModal .price").val(price);
+                $("#editModal .category_id").val(category).change();
                 $("#editModal .description").val(description);
                 $("#editModal").modal();
             });
