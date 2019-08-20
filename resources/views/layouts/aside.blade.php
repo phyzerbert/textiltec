@@ -61,8 +61,9 @@
             <li class="sidebar-item @if($page == 'user') active @endif"><a href="{{route('users.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="users"></i> <span class="align-middle">{{__('page.user_management')}}</span></a></li>
             <li class="sidebar-item @if($page == 'supplier') active @endif"><a href="{{route('supplier.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="truck"></i> <span class="align-middle">{{__('page.supplier_management')}}</span></a></li>
             <li class="sidebar-item @if($page == 'customer') active @endif"><a href="{{route('customer.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">{{__('page.customer_management')}}</span></a></li>
+            <li class="sidebar-item @if($page == 'workshop') active @endif"><a href="{{route('workshop.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="layers"></i> <span class="align-middle">{{__('page.workshop_management')}}</span></a></li>
             @php
-                $settings_items = ['scategory', 'pcategory', 'workshop'];
+                $settings_items = ['scategory', 'pcategory'];
             @endphp
             <li class="sidebar-item @if(in_array($page, $settings_items)) active @endif">
                 <a href="#layouts" data-toggle="collapse" class="font-weight-bold sidebar-link collapsed">
@@ -71,7 +72,6 @@
                 <ul id="layouts" class="sidebar-dropdown list-unstyled collapse ">
                     <li class="sidebar-item @if($page == 'pcategory') active @endif"><a class="sidebar-link" href="{{route('pcategory.index')}}">{{__('page.product_category')}}</a></li>
                     <li class="sidebar-item @if($page == 'scategory') active @endif"><a class="sidebar-link" href="{{route('scategory.index')}}">{{__('page.supply_category')}}</a></li>
-                    <li class="sidebar-item @if($page == 'workshop') active @endif"><a class="sidebar-link" href="{{route('workshop.index')}}">{{__('page.workshop')}}</a></li>
                 </ul>
             </li>
         </ul>

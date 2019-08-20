@@ -442,7 +442,7 @@
 
                 // Resize function
                 var triggerChartResize = function() {
-                    product_basic_element && area_sproduct.resize();
+                    product_basic_element && area_product.resize();
                 };
 
                 // On sidebar width change

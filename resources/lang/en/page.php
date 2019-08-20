@@ -193,6 +193,7 @@ return [
     'production_order_date' => 'Production Order Date',
     'received_quantity' => 'Received Quantity',
     'receive_date' => 'Receive Date',
+    'count_of_production' => 'Count Of Production',
 
 
     // ******** Modal ********
