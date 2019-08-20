@@ -125,6 +125,7 @@ class ProduceOrderController extends Controller
         $item->supply_cost = $data['supply_cost'];
         $item->manufacturing_cost = $data['manufacturing_cost'];
         $item->total_cost = $data['total_cost'];
+        $item->production_cost = $data['production_cost'];
 
         $item->save();
 
@@ -208,6 +209,7 @@ class ProduceOrderController extends Controller
         $item->supply_cost = $data['supply_cost'];
         $item->manufacturing_cost = $data['manufacturing_cost'];
         $item->total_cost = $data['total_cost'];
+        $item->production_cost = $data['production_cost'];
 
         $item->save();
 

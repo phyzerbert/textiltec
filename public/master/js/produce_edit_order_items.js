@@ -12,7 +12,7 @@ var app = new Vue({
         reference_no: '',
         product_id: '',
         workshop_id: '',
-        quantity: '',
+        product_quantity: '',
         deadline: '',
         responsibility: '',
         description: '',
@@ -50,7 +50,7 @@ var app = new Vue({
                     this.date = data.timestamp.substring(0, 16)
                     this.reference_no = data.reference_no
                     this.product_id = data.product_id
-                    this.quantity = data.quantity
+                    this.product_quantity = data.quantity
                     this.workshop_id = data.workshop_id
                     this.description = data.description
                     this.responsibility = data.responsibility
@@ -103,10 +103,10 @@ var app = new Vue({
             let total_cost = 0;
             for(let i = 0; i < data.length; i++) {
                 this.order_items[i].sub_total = parseInt(data[i].cost) * data[i].quantity
-                total_quantity += parseInt(data[i].quantity)
+                total_quantity += parseFloat(data[i].quantity)
                 total_cost += data[i].sub_total
             }
-            this.total.quantity = total_quantity
+            // this.total.quantity = total_quantity
             this.total.cost = total_cost
         },        
         calc_total_cost() {

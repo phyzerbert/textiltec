@@ -28,7 +28,8 @@ class CreateProduceOrdersTable extends Migration
             $table->date('max_date')->nullable();
             $table->integer('supply_cost')->nullable();
             $table->integer('manufacturing_cost')->nullable();
-            $table->string('total_cost')->nullable();
+            $table->integer('total_cost')->nullable();
+            $table->integer('production_cost')->nullable();
             $table->timestamps();
         });
     }

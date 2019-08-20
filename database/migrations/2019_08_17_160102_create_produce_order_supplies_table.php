@@ -18,7 +18,7 @@ class CreateProduceOrderSuppliesTable extends Migration
             $table->integer('produce_order_id')->nullable();
             $table->integer('supply_id')->nullable();
             $table->integer('cost')->nullable();
-            $table->integer('quantity')->nullable();
+            $table->decimal('quantity', 8, 2)->nullable();
             $table->integer('subtotal')->nullable();
             $table->timestamps();
         });

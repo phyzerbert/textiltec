@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">{{__('page.quantity')}} <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="number" name="product_quantity" v-model="quantity" required placeholder="{{__('page.quantity')}}">
+                                        <input class="form-control" type="number" name="product_quantity" v-model="product_quantity" required placeholder="{{__('page.quantity')}}">
                                         @error('product_quantity')
                                             <span class="invalid-feedback d-block" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -126,7 +126,7 @@
                                                         </select>
                                                     </td>
                                                     <td><input type="number" class="form-control form-control-sm cost" name="cost[]" v-model="item.cost" required placeholder="{{__('page.cost')}}" /></td>
-                                                    <td><input type="number" class="form-control form-control-sm quantity" name="quantity[]" v-model="item.quantity" required placeholder="{{__('page.quantity')}}" /></td>
+                                                    <td><input type="number" class="form-control form-control-sm quantity" name="quantity[]" min="0" step="0.01" v-model="item.quantity" required placeholder="{{__('page.quantity')}}" /></td>
                                                     <td class="subtotal">
                                                         @{{formatPrice(item.sub_total)}}
                                                         <input type="hidden" name="subtotal[]" :value="item.sub_total" />
@@ -139,8 +139,8 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colspan="2">{{__('page.total')}}</td>
-                                                    <td class="total_quantity">@{{total.quantity}}</td>
+                                                    <td colspan="3">{{__('page.total')}}</td>
+                                                    {{-- <td class="total_quantity">@{{total.quantity}}</td> --}}
                                                     <td class="total" colspan="2">
                                                         @{{formatPrice(total.cost)}}
                                                         <input type="hidden" name="supply_cost" :value="total.cost" />
@@ -166,8 +166,8 @@
                                                 <div class="card-body py-4">
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            <h3 class="mb-2">@{{formatPrice(total.cost)}}</h3>
-                                                            <div class="mb-0">Cost Of Supplies</div>
+                                                            <h3 class="mb-2">@{{formatPrice(total.cost * product_quantity)}}</h3>
+                                                            <div class="mb-0">{{__('page.supply_cost')}}</div>
                                                         </div>
                                                         <div class="col-4 ml-auto text-right">
                                                             <div class="d-inline-block mt-2">
@@ -183,8 +183,8 @@
                                                 <div class="card-body py-4">
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            <h3 class="mb-2">@{{formatPrice(manufacturing_cost)}}</h3>
-                                                            <div class="mb-0">Manufacturing Cost</div>
+                                                            <h3 class="mb-2">@{{formatPrice(manufacturing_cost * product_quantity)}}</h3>
+                                                            <div class="mb-0">{{__('page.manufacturing_cost')}}</div>
                                                         </div>
                                                         <div class="col-4 ml-auto text-right">
                                                             <div class="d-inline-block mt-2">
@@ -201,10 +201,11 @@
                                                     <div class="row">
                                                         <div class="col-8">
                                                             <h3 class="mb-2">
-                                                                @{{formatPrice(total_cost)}}
+                                                                @{{formatPrice(total_cost * product_quantity)}}
                                                                 <input type="hidden" name="total_cost" :value="total_cost" />
+                                                                <input type="hidden" name="production_cost" :value="total_cost * product_quantity" />
                                                             </h3>
-                                                            <div class="mb-0">Total Cost</div>
+                                                            <div class="mb-0">{{__('page.total_cost')}}</div>
                                                         </div>
                                                         <div class="col-4 ml-auto text-right">
                                                             <div class="d-inline-block mt-2">

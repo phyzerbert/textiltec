@@ -7,6 +7,7 @@ var app = new Vue({
             quantity: 0,
             cost: 0
         },
+        product_quantity: 0,
         manufacturing_cost: 0,
         grand_total: 0,
     },
@@ -42,14 +43,14 @@ var app = new Vue({
             let total_cost = 0;
             for(let i = 0; i < data.length; i++) {
                 this.order_items[i].sub_total = parseInt(data[i].cost) * data[i].quantity
-                total_quantity += parseInt(data[i].quantity)
+                total_quantity += parseFloat(data[i].quantity)
                 total_cost += data[i].sub_total
             }
             this.total.quantity = total_quantity
             this.total.cost = total_cost
         },
         calc_grand_total() {
-            this.grand_total = parseInt(this.total.cost) + parseInt(this.manufacturing_cost)
+            this.grand_total = (parseInt(this.total.cost) + parseInt(this.manufacturing_cost)) * this.product_quantity
         },
         remove(i) {
             this.order_items.splice(i, 1)
