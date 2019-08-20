@@ -4,7 +4,7 @@
     <div class="container p-0">
         <div class="container-fluid p-0">
 
-            <h1 class="h2 mb-3">{{__('page.product_category')}}</h1>
+            <h1 class="h2 mb-3"><i data-feather="share-2"></i> {{__('page.product_category')}}</h1>
 
             <div class="row">
                 <div class="col-12">

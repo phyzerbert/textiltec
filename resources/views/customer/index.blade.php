@@ -4,13 +4,13 @@
     <div class="container-fluid p-0">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">Customers</h1>
+            <h1 class="h3 mb-3"><i class="aling-middle" data-feather="shopping-bag"></i> {{__('page.customer_management')}}</h1>
 
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> Add New</button>
+                            <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> {{__('page.add_new')}}</button>
                         </div>
                         <div class="card-body table-responsive">
                             <table id="datatables-basic" class="table table-striped table-bordered table-hover" style="width:100%">

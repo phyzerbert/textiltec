@@ -4,7 +4,7 @@
     <div class="container p-0">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3"><i class="align-middle" data-feather="command"></i> {{__('page.workshop_management')}}</h1>
+            <h1 class="h3 mb-3"><i class="align-middle" data-feather="layers"></i> {{__('page.workshop_management')}}</h1>
 
             <div class="row">
                 <div class="col-12">
