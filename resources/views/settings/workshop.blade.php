@@ -19,6 +19,9 @@
                                         <th class="wd-50">#</th>
                                         <th>{{__('page.name')}}</th>
                                         <th>{{__('page.count_of_production')}}</th>
+                                        <th>{{__('page.manufactured')}}</th>
+                                        <th>{{__('page.sales')}}</th>
+                                        {{-- <th>{{__('page.balance')}}</th> --}}
                                         <th>{{__('page.action')}}</th>
                                     </tr>
                                 </thead>
@@ -26,11 +29,22 @@
                                     @foreach ($data as $item)
                                         @php
                                             $produce_count = $item->produce_orders()->count();
+                                            $produce_quantity = $item->produce_orders()->sum('quantity');
+                                            // $produce_orders_array = $item->producte_orders->pluck('id');
+                                            $products_array = $item->products()->pluck('id');
+                                            $sales_count = \App\Models\SaleOrder::whereIn('product_id', $products_array)->distinct('product_id')->count();
+                                            $sales_quantity = \App\Models\SaleOrder::whereIn('product_id', $products_array)->sum('quantity');
+
+                                            // $paid = \App\Models\Payment::whereIn('paymentable_id', $product_sales)->where('paymentable_type', ProductSale::class)->sum('amount');
+                                            // $balance = $paid - $manufactured;
                                         @endphp
                                         <tr>
                                             <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
                                             <td class="name">{{$item->name}}</td>
                                             <td class="produce_count">{{$produce_count}}</td>
+                                            <td class="manufactured">{{$produce_count}} / {{$produce_quantity}}</td>
+                                            <td class="paid">{{$sales_count}} / {{$sales_quantity}}</td>
+                                            {{-- <td class="balance">{{$balance}}</td> --}}
                                             <td class="py-1">
                                                 <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
                                                 <a href="{{route('workshop.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
