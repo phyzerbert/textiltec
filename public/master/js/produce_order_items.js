@@ -99,7 +99,15 @@ var app = new Vue({
                 app.order_items[index].sub_total = ui.item.cost
             }
         });
-    }    
+    },
+    created: function() {
+        var self = this
+        $(document).keydown(function(e){
+            if(e.keyCode == 21){
+                self.add_item()
+            }
+        });
+    }
 });
 
 

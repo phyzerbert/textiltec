@@ -103,14 +103,14 @@
                                                 </tr>
                                             @endforeach
                                             <tr>
-                                                <td colspan="3" class="tx-bold" style="text-align:right">{{__('page.total')}} (COP)</td>
+                                                <td colspan="3" class="tx-bold" style="text-align:right">{{__('page.total')}} </td>
                                                 <td>{{$total_quantity}}</td>
                                                 <td>{{number_format($total_amount)}}</td>
                                             </tr>
                                         </tbody>
                                         <tfoot class="tx-bold tx-black">
                                             <tr>
-                                                <td colspan="4" style="text-align:right">{{__('page.supply_cost')}}</td>
+                                                <td colspan="4" style="text-align:right">{{__('page.supply_cost')}} </td>
                                                 <td>{{number_format($total_amount)}}</td>
                                             </tr>
                                             <tr>
@@ -124,9 +124,78 @@
                                         </tfoot>
                                     </table>
                                 </div>
-                                
                                 <div class="row mt-5">
-                                    <div class="col-md-12 text-right">
+                                    <div class="col-12 col-md-6 col-xl d-flex">
+                                        <div class="card flex-fill">
+                                            <div class="card-body py-4">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <h3 class="mb-2">{{number_format($order->quantity * $total_amount)}}</h3>
+                                                        <div class="mb-0">{{__('page.total_supply_cost')}}</div>
+                                                    </div>
+                                                    <div class="col-4 ml-auto text-right">
+                                                        <div class="d-inline-block mt-2">
+                                                            <i class="feather-lg text-primary" data-feather="truck"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-xl d-flex">
+                                        <div class="card flex-fill">
+                                            <div class="card-body py-4">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <h3 class="mb-2">{{number_format($order->quantity * $order->manufacturing_cost)}}</h3>
+                                                        <div class="mb-0">{{__('page.total_manufacture_cost')}}</div>
+                                                    </div>
+                                                    <div class="col-4 ml-auto text-right">
+                                                        <div class="d-inline-block mt-2">
+                                                            <i class="feather-lg text-warning" data-feather="activity"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-xl d-flex">
+                                        <div class="card flex-fill">
+                                            <div class="card-body py-4">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <h3 class="mb-2">{{number_format($order->quantity * ($order->manufacturing_cost + $total_amount))}}</h3>
+                                                        <div class="mb-0">{{__('page.total_production_cost')}}</div>
+                                                    </div>
+                                                    <div class="col-4 ml-auto text-right">
+                                                        <div class="d-inline-block mt-2">
+                                                            <i class="feather-lg text-danger" data-feather="dollar-sign"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-xl d-flex">
+                                        <div class="card flex-fill">
+                                            <div class="card-body py-4">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <h3 class="mb-2">{{number_format($order->manufacturing_cost + $total_amount)}}</h3>
+                                                        <div class="mb-0">{{__('page.product_cost')}}</div>
+                                                    </div>
+                                                    <div class="col-4 ml-auto text-right">
+                                                        <div class="d-inline-block mt-2">
+                                                            <i class="feather-lg text-info" data-feather="dollar-sign"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-md-12 text-right">                                        
                                         <a href="{{route('produce_order.index')}}" class="btn btn-success"><i class="fa fa-list"></i>  {{__('page.production_order_list')}}</a>
                                     </div>
                                 </div>

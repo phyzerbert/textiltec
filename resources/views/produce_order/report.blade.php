@@ -99,6 +99,18 @@
             </tfoot>
         </table>
     </div>
+    <div class="mt-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>{{__('page.total_supply_cost')}}</td>
+                    <td>{{__('page.total_manufacturing_cost')}}</td>
+                    <td>{{__('page.total_production_cost')}}</td>
+                    <td>{{__('page.product_cost')}}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
     
 </body>
 </html>
