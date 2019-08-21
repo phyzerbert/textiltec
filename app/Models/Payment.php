@@ -18,6 +18,11 @@ class Payment extends Model
         return $this->morphedByMany('App\Models\PurchaseOrder', 'paymentable');
     }
 
+    public function produce_order()
+    {
+        return $this->morphedByMany('App\Models\ProduceOrder', 'paymentable');
+    }
+
     public function product_sale()
     {
         return $this->morphedByMany('App\Models\ProductSale', 'paymentable');

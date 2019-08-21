@@ -19,8 +19,4 @@ class Workshop extends Model
         return $mod->whereIn('id', $products);
     }
     
-    public function payments(){
-        return $this->morphMany('App\Models\Payment', 'paymentable');
-    }
-    
 }

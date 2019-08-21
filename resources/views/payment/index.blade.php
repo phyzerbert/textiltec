@@ -63,8 +63,9 @@
                                     @elseif($type == 'sale')
                                         <a href="{{route('product_sale.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_product_sale')}}</a>                                       
                                         <a href="{{route('product_sale.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.product_sale_list')}}</a>
-                                    @elseif($type == 'workshop')
-                                        <a href="{{route('workshop.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.workshop')}}</a>
+                                    @elseif($type == 'produce')
+                                        <a href="{{route('produce_order.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_production_order')}}</a>                                       
+                                        <a href="{{route('produce_order.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.production_order')}}</a>
                                     @endif
                                 </div>
                             </div>

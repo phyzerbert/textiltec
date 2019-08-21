@@ -42,20 +42,24 @@
                                     <th>{{__('page.supply_cost')}}</th>
                                     <th>{{__('page.manufacturing_cost')}}</th>
                                     <th>{{__('page.production_cost')}}</th>
+                                    <th>{{__('page.paid')}}</th>
+                                    <th>{{__('page.balance')}}</th>
                                     <th>{{__('page.status')}}</th>
                                     <th>{{__('page.action')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php
-                                    $footer_supply_cost = $footer_manufacturing_cost = $footer_total_cost = 0;
+                                    $footer_supply_cost = $footer_manufacturing_cost = $footer_total_cost = $footer_total_paid = 0;
                                 @endphp
                                 @foreach ($data as $item)
                                     @php
                                         $received_quantity = $item->receptions()->sum('quantity');
+                                        $paid = $item->payments()->sum('amount');
                                         $footer_supply_cost += $item->supply_cost * $item->quantity;
                                         $footer_manufacturing_cost += $item->manufacturing_cost * $item->quantity;
                                         $footer_total_cost += $item->total_cost * $item->quantity;
+                                        $footer_total_paid += $paid;
                                     @endphp
                                     <tr>
                                         <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
@@ -68,6 +72,8 @@
                                         <td class="supply_cost"> {{number_format($item->supply_cost * $item->quantity)}} </td>
                                         <td class="manufacturing_cost"> {{number_format($item->manufacturing_cost * $item->quantity)}} </td>
                                         <td class="production_cost"> {{number_format($item->total_cost * $item->quantity)}} </td>
+                                        <td class="paid"> {{number_format($paid)}} </td>
+                                        <td class="balance" data-value="{{$item->manufacturing_cost * $item->quantity - $paid}}"> {{number_format($item->manufacturing_cost * $item->quantity - $paid)}} </td>
                                         <td>
                                             @if ($received_quantity == 0)
                                                 <span class="badge badge-danger">{{__('page.pending')}}</span>
@@ -82,6 +88,8 @@
                                                 <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item px-3" href="{{route('produce_order.detail', $item->id)}}"><i class="align-middle" data-feather="eye"></i>  {{__('page.details')}}</a>
+                                                    <a class="dropdown-item px-3" href="{{route('payment.index', ['produce', $item->id])}}"><i class="align-middle" data-feather="dollar-sign"></i> {{__('page.payment_list')}}</a>
+                                                    <a class="dropdown-item px-3 btn-add-payment" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="credit-card"></i> {{__('page.add_payment')}}</a>
                                                     <a class="dropdown-item px-3" href="{{route('produce_order.report', $item->id)}}"><i class="align-middle mr-2 far fa-file-pdf"></i> {{__('page.report')}}</a>
                                                     <a class="dropdown-item px-3 btn-add-receive" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="archive"></i> {{__('page.receive')}}</a>
                                                     <a class="dropdown-item px-3" href="{{route('produce_order.edit', $item->id)}}"><i class="align-middle" data-feather="edit"></i> {{__('page.edit')}}</a>
@@ -98,6 +106,8 @@
                                     <td>{{number_format($footer_supply_cost)}}</td>
                                     <td>{{number_format($footer_manufacturing_cost)}}</td>
                                     <td>{{number_format($footer_total_cost)}}</td>
+                                    <td>{{number_format($footer_total_paid)}}</td>
+                                    <td>{{number_format($footer_manufacturing_cost - $footer_total_paid)}}</td>
                                     <td colspan="2"></td>
                                 </tr>
                             </tfoot>
@@ -142,6 +152,48 @@
                         <div class="form-group">
                             <label class="control-label">{{__('page.quantity')}}</label>
                             <input class="form-control quantity" type="text" name="quantity" required placeholder="{{__('page.quantity')}}">
+                        </div> 
+                    </div>    
+                    <div class="modal-footer">
+                        <button type="submit" id="btn_create" class="btn btn-primary btn-submit"><i class="fa fa-check mg-r-10"></i>&nbsp;{{__('page.save')}}</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mg-r-10"></i>&nbsp;{{__('page.close')}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="paymentModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{__('page.add_payment')}}</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <form action="{{route('payment.create')}}" id="payment_form" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="type" value="produce">
+                    <input type="hidden" class="product_sale_id" name="paymentable_id" />
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.date')}}</label>
+                            <input class="form-control date" type="text" name="date" autocomplete="off" value="{{date('Y-m-d H:i')}}" placeholder="{{__('page.date')}}">
+                        </div>                        
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.reference_no')}}</label>
+                            <input class="form-control reference_no" type="text" name="reference_no" required placeholder="{{__('page.reference_no')}}">
+                        </div>                                                
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.amount')}}</label>
+                            <input class="form-control amount" type="text" name="amount" required placeholder="{{__('page.amount')}}">
+                        </div>                                               
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.attachment')}}</label>
+                            <input type="file" name="attachment" id="file2" class="file-input-styled">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.note')}}</label>
+                            <textarea class="form-control note" type="text" name="note" placeholder="{{__('page.note')}}"></textarea>
                         </div> 
                     </div>    
                     <div class="modal-footer">
@@ -199,6 +251,23 @@
 
         $("#keyword_filter").change(function(){
             $("#keyword_filter_form").submit();
+        });
+
+        $("#payment_form input.date").datetimepicker({
+            dateFormat: 'yy-mm-dd',
+        });
+        
+        $(".btn-add-payment").click(function(){
+            // $("#payment_form input.form-control").val('');
+            let id = $(this).data('id');
+            let balance = $(this).parents('tr').find('.balance').data('value');
+            $("#payment_form .product_sale_id").val(id);
+            $("#payment_form .amount").val(balance);
+            $("#paymentModal").modal();
+        });
+
+        $('.file-input-styled').uniform({
+            fileButtonClass: 'action btn bg-primary tx-white'
         });
 
         $("#btn-reset").click(function(){

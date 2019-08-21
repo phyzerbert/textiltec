@@ -28,4 +28,8 @@ class ProduceOrder extends Model
     {
         return $this->morphMany('App\Models\Image', 'imageable');
     }
+        
+    public function payments(){
+        return $this->morphMany('App\Models\Payment', 'paymentable');
+    }
 }

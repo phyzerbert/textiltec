@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Purchase;
 use App\Models\ProductSale;
-use App\Models\Workshop;
+use App\Models\ProduceOrder;
 
 class PaymentController extends Controller
 {
@@ -22,8 +22,8 @@ class PaymentController extends Controller
             $paymentable = Purchase::find($id);
         } else if ($type == 'sale') {
             $paymentable = ProductSale::find($id);
-        } else if ($type == 'workshop') {
-            $paymentable = Workshop::find($id);
+        } else if ($type == 'produce') {
+            $paymentable = ProduceOrder::find($id);
         }
         
         $data = $paymentable->payments;
@@ -41,8 +41,8 @@ class PaymentController extends Controller
             $paymentable_type = Purchase::class;
         } else if ($request->type == 'sale') {
             $paymentable_type = ProductSale::class;
-        } else if ($request->type == 'workshop') {
-            $paymentable_type = Workshop::class;
+        } else if ($request->type == 'produce') {
+            $paymentable_type = ProduceOrder::class;
         }
         
         $item = new Payment();

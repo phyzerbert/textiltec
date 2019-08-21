@@ -41,7 +41,9 @@
                                             $products_array = $item->products()->pluck('id');
                                             $sales_count = \App\Models\SaleOrder::whereIn('product_id', $products_array)->distinct('product_id')->count();
                                             $sales_quantity = \App\Models\SaleOrder::whereIn('product_id', $products_array)->sum('quantity');
-                                            $paid = $item->payments->sum('amount');
+
+                                            $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $produce_orders_array)->where('paymentable_type', "App\Models\ProduceOrder");
+                                            $paid = $mod_paid->sum('amount');
 
                                             $balance = $produce_manufactured - $paid;
                                         @endphp
@@ -55,8 +57,6 @@
                                             <td class="py-1">
                                                 <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
                                                 <a href="{{route('workshop.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
-                                                <a href="#" class="btn-add-payment" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.payment')}}"><i class="align-middle" data-feather="credit-card"></i></a>
-                                                <a href="{{route('payment.index', ['workshop', $item->id])}}" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.payment_list')}}"><i class="align-middle" data-feather="dollar-sign"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

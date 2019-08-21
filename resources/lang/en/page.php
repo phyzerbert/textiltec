@@ -73,6 +73,7 @@ return [
     'view_reports' => 'View Reports',
     'add_product_sale' => 'Add Product Sale',
     'product_sale_list' => 'Product Sale List',
+    'add_production_order' => 'Add Production Order',
     'save' => 'Save',
     'close' => 'Close',
     'back' => 'Back',
