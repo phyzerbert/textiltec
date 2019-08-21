@@ -123,7 +123,7 @@
                                     </table>
                                 </div>
                                 <div class="row mt-5">
-                                    <div class="col-12 col-md-6 col-xl d-flex">
+                                    <div class="col-12 col-md-6">
                                         <div class="card flex-fill">
                                             <div class="card-body py-4">
                                                 <div class="row">
@@ -140,7 +140,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-xl d-flex">
+                                    <div class="col-12 col-md-6">
                                         <div class="card flex-fill">
                                             <div class="card-body py-4">
                                                 <div class="row">
@@ -157,7 +157,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-xl d-flex">
+                                    <div class="col-12 col-md-6">
                                         <div class="card flex-fill">
                                             <div class="card-body py-4">
                                                 <div class="row">
@@ -174,7 +174,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-xl d-flex">
+                                    <div class="col-12 col-md-6">
                                         <div class="card flex-fill">
                                             <div class="card-body py-4">
                                                 <div class="row">
