@@ -30,9 +30,9 @@
                                     <th>{{__('page.name')}}</th>
                                     <th>{{__('page.code')}}</th>
                                     <th>{{__('page.category')}}</th>
-                                    <th>{{__('page.unit')}}</th>
                                     <th>{{__('page.price')}}</th>
                                     <th>{{__('page.quantity')}}</th>
+                                    <th>{{__('page.unit')}}</th>
                                     <th>{{__('page.description')}}</th>
                                     <th>{{__('page.action')}}</th>
                                 </tr>
@@ -57,9 +57,9 @@
                                         </td>
                                         <td class="code">{{$item->code}}</td>
                                         <td class="category" data-value="{{$item->category_id}}">@isset($item->category->name){{$item->category->name}}@endisset</td>
-                                        <td class="unit">{{$item->unit}}</td>
                                         <td class="price" data-value="{{$item->price}}">{{number_format($price)}}</td>
                                         <td class="quantity">{{$quantity}}</td>
+                                        <td class="unit">{{$item->unit}}</td>
                                         <td class="description">{{$item->description}}</td>
                                         <td class="py-1">
                                             <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
