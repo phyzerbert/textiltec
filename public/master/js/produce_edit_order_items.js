@@ -68,6 +68,7 @@ var app = new Vue({
                                     supply_id: order.supply_id,
                                     supply_name_code: response1.data.name + "(" + response1.data.code + ")",
                                     cost: order.cost,
+                                    unit: response1.data.unit,
                                     quantity: order.quantity,
                                     sub_total: order.subtotal,
                                     order_id: order.id,
@@ -89,6 +90,7 @@ var app = new Vue({
                         supply_id: response.data.id,
                         supply_name_code: response.data.name + "(" + response.data.code + ")",
                         cost: response.data.cost,
+                        unit: response.data.unit,
                         quantity: 1,
                         sub_total: response.data.cost,
                     })
@@ -125,6 +127,7 @@ var app = new Vue({
             .then(response1 => {
                 order_item.supply_name_code = response1.data.name + "(" + response1.data.code + ")"
                 order_item.cost = response1.data.cost
+                order_item.unit = response1.data.unit
                 order_item.quantity = 1
                 order_item.sub_total = response1.data.cost
             })
