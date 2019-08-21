@@ -19,11 +19,11 @@
                                 <tr class="bg-blue">
                                     <th style="width:30px;">#</th>
                                     <th>{{__('page.code')}}</th>
-                                    <th>{{__('page.name')}}</th>
                                     <th>{{__('page.category')}}</th>
+                                    <th>{{__('page.name')}}</th>
+                                    <th>{{__('page.color')}}</th>
                                     <th>{{__('page.cost')}}</th>
                                     <th>{{__('page.unit')}}</th>
-                                    <th>{{__('page.color')}}</th>
                                     <th>{{__('page.quantity')}}</th>
                                     <th>{{__('page.alert_quantity')}}</th>
                                     <th>{{__('page.action')}}</th>
@@ -39,11 +39,11 @@
                                     <tr>
                                         <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
                                         <td class="code">{{$item->code}}</td>
-                                        <td class="name">{{$item->name}}</td>
                                         <td class="category">@isset($item->category->name){{$item->category->name}}@endisset</td>
+                                        <td class="name">{{$item->name}}</td>
+                                        <td class="color">{{$item->color}}</td>
                                         <td class="cost">{{number_format($item->cost)}}</td>
                                         <td class="unit">{{$item->unit}}</td>
-                                        <td class="color">{{$item->color}}</td>
                                         <td class="quantity @if($quantity <= $item->alert_quantity) text-danger @endif">{{$quantity}}</td>
                                         <td class="alert_quantity">{{$item->alert_quantity}}</td>
                                         <td class="py-1">
