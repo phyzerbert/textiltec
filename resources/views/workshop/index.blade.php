@@ -32,7 +32,9 @@
                                             $produce_count = $item->produce_orders()->count();
                                             $produce_quantity = $item->produce_orders->sum('quantity');
                                             $produce_orders_array = $item->produce_orders->pluck('id');
-                                            $produce_manufactured = $item->produce_orders->sum('manufacturing_cost');
+                                            $produce_manufactured = $item->produce_orders->sum(function ($order) {
+                                                return $order->quantity * $order->manufacturing_cost;
+                                            });
                                             // $purchases = $item->produce_orders->sum('production_cost');
                                             $products_array = $item->products()->pluck('id');
                                             $sales_count = \App\Models\SaleOrder::whereIn('product_id', $products_array)->distinct('product_id')->count();

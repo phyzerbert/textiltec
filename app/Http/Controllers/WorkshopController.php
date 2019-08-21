@@ -16,7 +16,7 @@ class WorkshopController extends Controller
     {
         config(['site.page' => 'workshop']);
         $data = Workshop::paginate(15);
-        return view('settings.workshop', compact('data'));
+        return view('workshop.index', compact('data'));
     }
 
     public function edit(Request $request){
