@@ -126,9 +126,15 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="card card-body">
-                    <div id="product_chart" style="height:400px;"></div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="feather-lg" data-feather="box"></i> {{__('page.overview_product')}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="product_chart" style="height:400px;"></div>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </div>
