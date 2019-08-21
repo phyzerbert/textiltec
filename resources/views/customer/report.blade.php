@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Supplier Report</title>    
+    <title>Customer Report</title>    
     <style>
         .value {
             font-size: 18px;
