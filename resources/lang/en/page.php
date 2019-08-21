@@ -104,10 +104,10 @@ return [
     'deleted_successfully' => 'Deleted Successfully',
     'insufficient' => 'Insufficient',
     'insufficient_balance' => 'Insufficient Balance',
-    'discount_invalid' => 'The discount field format is invalid',
-    'shipping_invalid' => 'The shipping field format is invalid',
-
-
+    'discount_invalid' => 'The discount field format is invalid.',
+    'shipping_invalid' => 'The shipping field format is invalid.',
+    'delete_product_error' => 'You can not delete this product.',
+    'edit_product_error' => 'You can not edit this product.',
 
     // ******** Column Name ********
     'date' => 'Date',
@@ -192,6 +192,7 @@ return [
     'supply_cost' => 'Supply Cost',
     'manufacturing_cost' => 'Manufacturing Cost',
     'total_cost' => 'Total Cost',
+    'production_cost' => 'Production Cost',
     'total_supply_cost' => 'Total Supply Cost',
     'total_manufacture_cost' => 'Total Manufacture Cost',
     'total_production_cost' => 'Total Production Cost',
@@ -200,6 +201,7 @@ return [
     'received_quantity' => 'Received Quantity',
     'receive_date' => 'Receive Date',
     'count_of_production' => 'Count Of Production',
+    'manufactured' => 'Manufactured',
 
 
     // ******** Modal ********

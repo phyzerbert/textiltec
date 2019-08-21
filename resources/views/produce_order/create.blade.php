@@ -51,7 +51,9 @@
                                             <select class="form-control select2" name="product" id="search_product" required data-placeholder="{{__('page.select_product')}}">
                                                 <option label="{{__('page.select_product')}}"></option>
                                                 @foreach ($products as $item)
-                                                    <option value="{{$item->id}}" @if(old('product') == $item->id) selected @endif>{{$item->name}}</option>
+                                                    @if($item->produce_order == null)
+                                                        <option value="{{$item->id}}" @if(old('product') == $item->id) selected @endif>{{$item->name}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                             <div class="input-group-append">
@@ -111,6 +113,7 @@
                                                 <tr>
                                                     <th>{{__('page.name')}}</th>
                                                     <th>{{__('page.cost')}}</th>
+                                                    <th>{{__('page.unit')}}</th>
                                                     <th>{{__('page.quantity')}}</th>
                                                     <th>{{__('page.subtotal')}}</th>
                                                     <th style="width:30px"></th>
@@ -123,6 +126,7 @@
                                                         <input type="text" name="supply_name[]" class="form-control form-control-sm supply" v-model="item.supply_name_code" required />
                                                     </td>
                                                     <td><input type="number" class="form-control form-control-sm cost" name="cost[]" v-model="item.cost" required placeholder="{{__('page.cost')}}" /></td>
+                                                    <td> @{{item.unit}}</td>
                                                     <td><input type="number" class="form-control form-control-sm quantity" name="quantity[]" v-model="item.quantity" min="0" step="0.01" required placeholder="{{__('page.quantity')}}" /></td>
                                                     <td class="subtotal">
                                                         @{{item.sub_total}}
@@ -135,7 +139,7 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colspan="3">{{__('page.total')}}</td>
+                                                    <td colspan="4">{{__('page.total')}}</td>
                                                     {{-- <td class="total_quantity">@{{total.quantity}}</td> --}}
                                                     <td class="total" colspan="2">
                                                         @{{total.cost}}
@@ -249,6 +253,13 @@
                             <span id="name_error" class="invalid-feedback">
                                 <strong></strong>
                             </span>
+                        </div>                        
+                        <div class="form-group">
+                            <label class="control-label">{{__('page.unit')}}</label>
+                            <input class="form-control unit" type="text" name="unit" placeholder="{{__('page.unit')}}">
+                            <span id="unit_error" class="invalid-feedback">
+                                <strong></strong>
+                            </span>
                         </div>
                         @php
                             $categories = \App\Models\Pcategory::all();
@@ -260,13 +271,6 @@
                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach                                
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">{{__('page.price')}}</label>
-                            <input class="form-control price" type="text" name="price" placeholder="{{__('page.price')}}">
-                            <span id="price_error" class="invalid-feedback">
-                                <strong></strong>
-                            </span>
                         </div>
                         <div class="form-group">
                             <label class="control-label">{{__('page.description')}}</label>

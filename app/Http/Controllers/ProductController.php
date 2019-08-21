@@ -26,13 +26,12 @@ class ProductController extends Controller
         $request->validate([
             'name'=>'required',
             'code'=>'required',
-            'price'=>'required',
         ]);
         
         $item = Product::find($request->get("id"));
         $item->name = $request->get("name");
         $item->code = $request->get("code");
-        $item->price = $request->get("price");
+        $item->unit = $request->get("unit");
         $item->category_id = $request->get("category_id");
         $item->description = $request->get("description");
         if($request->has("image")){
@@ -49,13 +48,12 @@ class ProductController extends Controller
         $request->validate([
             'name'=>'required|string',
             'code'=>'required',
-            'price'=>'required|numeric',
         ]);
 
         $item = new Product();
         $item->name = $request->get("name");
         $item->code = $request->get("code");
-        $item->price = $request->get("price");
+        $item->unit = $request->get("unit");
         $item->category_id = $request->get("category_id");
         $item->description = $request->get("description");
         if($request->has("image")){
@@ -70,7 +68,12 @@ class ProductController extends Controller
 
     public function delete($id){
         $item = Product::find($id);
-        $item->delete();
+        // dump($item->produce_order);
+        if($item->produce_order == null){
+            $item->delete();
+        }else{            
+            return back()->withErrors(['product' => __('page.delete_product_error')]);
+        }        
         return back()->with("success", __('page.deleted_successfully'));
     }
 
@@ -78,12 +81,11 @@ class ProductController extends Controller
         $request->validate([
             'name'=>'required|string',
             'code'=>'required',
-            'price'=>'required|numeric',
         ]);
         $item = new Product();
         $item->name = $request->get("name");
         $item->code = $request->get("code");
-        $item->price = $request->get("price");
+        $item->unit = $request->get("unit");
         $item->category_id = $request->get("category_id");
         $item->description = $request->get("description");
         if($request->has("image")){

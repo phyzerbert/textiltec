@@ -41,7 +41,7 @@
                                     <th>{{__('page.workshop')}}</th>
                                     <th>{{__('page.supply_cost')}}</th>
                                     <th>{{__('page.manufacturing_cost')}}</th>
-                                    <th>{{__('page.total_cost')}}</th>
+                                    <th>{{__('page.production_cost')}}</th>
                                     <th>{{__('page.status')}}</th>
                                     <th>{{__('page.action')}}</th>
                                 </tr>
@@ -53,9 +53,9 @@
                                 @foreach ($data as $item)
                                     @php
                                         $received_quantity = $item->receptions()->sum('quantity');
-                                        $footer_supply_cost += $item->supply_cost;
-                                        $footer_manufacturing_cost += $item->manufacturing_cost;
-                                        $footer_total_cost += $item->total_cost;
+                                        $footer_supply_cost += $item->supply_cost * $item->quantity;
+                                        $footer_manufacturing_cost += $item->manufacturing_cost * $item->quantity;
+                                        $footer_total_cost += $item->total_cost * $item->quantity;
                                     @endphp
                                     <tr>
                                         <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
@@ -65,9 +65,9 @@
                                         <td class="quantity" data-balance="{{$item->quantity - $received_quantity}}">{{$item->quantity}}</td>
                                         <td class="received_quantity">{{$received_quantity}}</td>
                                         <td class="workshop" data-id="{{$item->workshop_id}}">{{$item->workshop->name}}</td>
-                                        <td class="supply_cost"> {{number_format($item->supply_cost)}} </td>
-                                        <td class="manufacturing_cost"> {{number_format($item->manufacturing_cost)}} </td>
-                                        <td class="total_cost"> {{number_format($item->total_cost)}} </td>
+                                        <td class="supply_cost"> {{number_format($item->supply_cost * $item->quantity)}} </td>
+                                        <td class="manufacturing_cost"> {{number_format($item->manufacturing_cost * $item->quantity)}} </td>
+                                        <td class="production_cost"> {{number_format($item->total_cost * $item->quantity)}} </td>
                                         <td>
                                             @if ($received_quantity == 0)
                                                 <span class="badge badge-danger">{{__('page.pending')}}</span>

@@ -25,10 +25,12 @@ var app = new Vue({
         add_item() {
             axios.get('/get_first_supply')
                 .then(response => {
+                    console.log(response.data)
                     this.order_items.push({
                         supply_id: response.data.id,
                         supply_name_code: response.data.name + "(" + response.data.code + ")",
                         cost: response.data.cost,
+                        unit: response.data.unit,
                         quantity: 1,
                         sub_total: response.data.cost,
                     })
@@ -80,6 +82,7 @@ var app = new Vue({
                                     value: item.name + "(" + item.code + ")",
                                     id: item.id,
                                     cost: item.cost,
+                                    unit: item.unit,
                                 }
                             })
                         );
@@ -95,6 +98,7 @@ var app = new Vue({
                 app.order_items[index].supply_id = ui.item.id
                 app.order_items[index].supply_name_code = ui.item.label
                 app.order_items[index].cost = ui.item.cost
+                app.order_items[index].unit = ui.item.unit
                 app.order_items[index].quantity = 1
                 app.order_items[index].sub_total = ui.item.cost
             }

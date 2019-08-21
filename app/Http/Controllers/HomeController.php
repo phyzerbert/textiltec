@@ -49,11 +49,13 @@ class HomeController extends Controller
         $products = Product::all();
         $product_in_quantity = $product_out_quantity = 0;
         foreach ($products as $product) {
-            $product_in = 0;
-            foreach ($product->produce_orders as $order) {
-                $product_order_in = $order->receptions()->sum('quantity');
-                $product_in += $product_order_in;
+            $produce_order = $product->produce_order;
+            if($produce_order){
+                $product_in = $product->produce_order->receptions()->sum('quantity');
+            }else {
+                $product_in = 0;
             }
+            
             $product_in_quantity += $product_in;
             $product_out = $product->sale_orders()->sum('quantity');
             $product_out_quantity += $product_out;

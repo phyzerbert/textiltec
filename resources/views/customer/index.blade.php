@@ -36,7 +36,7 @@
                                             $sales_array = $item->product_sales()->pluck('id');
                                             $total_sales = $item->product_sales()->count();
                                             $mod_total_amount = $item->product_sales();
-                                            $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $sales_array)->where('paymentable_type', ProductSale::class);
+                                            $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $sales_array)->where('paymentable_type', "App\Models\ProductSale");
         
                                             $total_amount = $mod_total_amount->sum('grand_total');
                                             $paid = $mod_paid->sum('amount');  

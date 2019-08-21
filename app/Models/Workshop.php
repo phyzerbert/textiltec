@@ -14,9 +14,9 @@ class Workshop extends Model
     }
 
     public function products(){
-        $produce_orders = $this->produce_orders->pluck('id');
+        $products = $this->produce_orders->pluck('product_id');
         $mod = new Product();
-        return $mod->whereIn('id', $produce_orders);
+        return $mod->whereIn('id', $products);
     }
     
 }

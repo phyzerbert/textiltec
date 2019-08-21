@@ -207,9 +207,7 @@ class ProduceOrderController extends Controller
             $imageName = time().'.'.$picture->getClientOriginalExtension();
             $picture->move(public_path('images/uploaded/produce_images/main_image'), $imageName);
             $item->main_image = 'images/uploaded/produce_images/main_image/'.$imageName;
-        }
-
-        
+        }       
 
         $item->supply_cost = $data['supply_cost'];
         $item->manufacturing_cost = $data['manufacturing_cost'];

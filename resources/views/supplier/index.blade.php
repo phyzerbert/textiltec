@@ -34,10 +34,11 @@
                                     @endphp                               
                                     @foreach ($data as $item)
                                         @php
-                                            $purchases_array = $item->purchases()->pluck('id');
+                                            $purchases_array = $item->purchases()->pluck('id')->toArray();
+                                            // dump($purchases_array);
                                             $total_purchases = $item->purchases()->count();
                                             $mod_total_amount = $item->purchases();
-                                            $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $purchases_array)->where('paymentable_type', Purchase::class);
+                                            $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $purchases_array)->where('paymentable_type', "App\Models\Purchase");
         
                                             $total_amount = $mod_total_amount->sum('grand_total');
                                             $paid = $mod_paid->sum('amount');  

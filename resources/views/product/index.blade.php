@@ -30,6 +30,7 @@
                                     <th>{{__('page.name')}}</th>
                                     <th>{{__('page.code')}}</th>
                                     <th>{{__('page.category')}}</th>
+                                    <th>{{__('page.unit')}}</th>
                                     <th>{{__('page.price')}}</th>
                                     <th>{{__('page.quantity')}}</th>
                                     <th>{{__('page.description')}}</th>
@@ -39,10 +40,13 @@
                             <tbody>                                
                                 @foreach ($data as $item)
                                     @php
-                                        $produce_orders = $item->produce_orders;
-                                        $quantity = 0;
-                                        foreach ($produce_orders as $order) {
-                                            $quantity += $order->receptions->sum('quantity');
+                                        $produce_order = $item->produce_order;
+                                        $price = 0;
+                                        if($produce_order){
+                                            $quantity = $produce_order->receptions->sum('quantity');
+                                            $price = $produce_order->total_cost;
+                                        }else {
+                                            $quantity = 0;
                                         }
                                     @endphp
                                     <tr>
@@ -53,7 +57,8 @@
                                         </td>
                                         <td class="code">{{$item->code}}</td>
                                         <td class="category" data-value="{{$item->category_id}}">@isset($item->category->name){{$item->category->name}}@endisset</td>
-                                        <td class="price" data-value="{{$item->price}}">{{number_format($item->price)}}</td>
+                                        <td class="unit">{{$item->unit}}</td>
+                                        <td class="price" data-value="{{$item->price}}">{{number_format($price)}}</td>
                                         <td class="quantity">{{$quantity}}</td>
                                         <td class="description">{{$item->description}}</td>
                                         <td class="py-1">
@@ -98,16 +103,16 @@
                             <input class="form-control code" type="text" name="code" placeholder="{{__('page.code')}}">
                         </div>
                         <div class="form-group">
+                            <label class="control-label">{{__('page.unit')}}</label>
+                            <input class="form-control unit" type="text" name="unit" placeholder="{{__('page.unit')}}">
+                        </div>
+                        <div class="form-group">
                             <label class="control-label">{{__('page.category')}}</label>
                             <select name="category_id" class="form-control category_id">
                                 @foreach ($categories as $item)
                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach                                
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">{{__('page.price')}}</label>
-                            <input class="form-control price" type="number" name="price" placeholder="{{__('page.price')}}">
                         </div>
                         <div class="form-group">
                             <label class="control-label">{{__('page.description')}}</label>
@@ -130,7 +135,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{__('page.edit_workshop')}}</h4>
+                    <h4 class="modal-title">{{__('page.edit_product')}}</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
                 <form action="{{route('product.edit')}}" id="edit_form" method="post" enctype="multipart/form-data">
@@ -146,16 +151,16 @@
                             <input class="form-control code" type="text" name="code" placeholder="{{__('page.code')}}">
                         </div>
                         <div class="form-group">
+                            <label class="control-label">{{__('page.unit')}}</label>
+                            <input class="form-control unit" type="text" name="unit" placeholder="{{__('page.unit')}}">
+                        </div>
+                        <div class="form-group">
                             <label class="control-label">{{__('page.category')}}</label>
                             <select name="category_id" class="form-control category_id">
                                 @foreach ($categories as $item)
                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach                                
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">{{__('page.price')}}</label>
-                            <input class="form-control price" type="number" name="price" placeholder="{{__('page.price')}}">
                         </div>
                         <div class="form-group">
                             <label class="control-label">{{__('page.description')}}</label>
@@ -207,13 +212,13 @@
                 let name = $(this).parents('tr').find(".name").data('value');
                 let category = $(this).parents('tr').find(".category").data('value');
                 let code = $(this).parents('tr').find(".code").text().trim();
-                let price = $(this).parents('tr').find(".price").data('value');
+                let unit = $(this).parents('tr').find(".unit").text().trim();
                 let description = $(this).parents('tr').find(".description").text().trim();
                 $("#edit_form input.form-control").val('');
                 $("#editModal .id").val(id);
                 $("#editModal .name").val(name);
                 $("#editModal .code").val(code);
-                $("#editModal .price").val(price);
+                $("#editModal .unit").val(unit);
                 $("#editModal .category_id").val(category).change();
                 $("#editModal .description").val(description);
                 $("#editModal").modal();

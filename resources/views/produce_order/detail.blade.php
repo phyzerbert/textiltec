@@ -74,8 +74,9 @@
                                         <thead class="table-info">
                                             <tr>
                                                 <th class="wd-40">#</th>
-                                                <th>{{__('page.product_name_code')}}</th>
+                                                <th>{{__('page.supply_name_code')}}</th>
                                                 <th>{{__('page.cost')}}</th>
+                                                <th>{{__('page.unit')}}</th>
                                                 <th>{{__('page.quantity')}}</th>
                                                 <th>{{__('page.subtotal')}}</th>
                                             </tr>
@@ -87,38 +88,35 @@
                                             @endphp
                                             @foreach ($order->supplies as $item)
                                             @php
-                                                $quantity = $item->quantity;
                                                 $cost = $item->cost;
-                                                $subtotal = $item->subtotal;
-            
-                                                $total_quantity += $quantity;
+                                                $subtotal = $item->subtotal;            
                                                 $total_amount += $subtotal;
                                             @endphp
                                                 <tr>
                                                     <td>{{$loop->index+1}}</td>
                                                     <td>@isset($item->supply->name){{$item->supply->name}} ({{$item->supply->code}})@endisset</td>
                                                     <td>{{number_format($item->cost)}}</td>
+                                                    <td>@isset($item->supply->unit){{$item->supply->unit}}@endisset</td>
                                                     <td>{{$item->quantity}}</td>
                                                     <td>{{number_format($item->subtotal)}}</td>
                                                 </tr>
                                             @endforeach
                                             <tr>
-                                                <td colspan="3" class="tx-bold" style="text-align:right">{{__('page.total')}} </td>
-                                                <td>{{$total_quantity}}</td>
+                                                <td colspan="5" class="font-weight-bold" style="text-align:right">{{__('page.total')}} </td>
                                                 <td>{{number_format($total_amount)}}</td>
                                             </tr>
                                         </tbody>
                                         <tfoot class="tx-bold tx-black">
                                             <tr>
-                                                <td colspan="4" style="text-align:right">{{__('page.supply_cost')}} </td>
+                                                <td colspan="5" class="font-weight-bold" style="text-align:right">{{__('page.supply_cost')}} </td>
                                                 <td>{{number_format($total_amount)}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4" style="text-align:right">{{__('page.manufacturing_cost')}} </td>
+                                                <td colspan="5" class="font-weight-bold" style="text-align:right">{{__('page.manufacturing_cost')}} </td>
                                                 <td>{{number_format($order->manufacturing_cost)}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4" style="text-align:right">{{__('page.total_cost')}} </td>
+                                                <td colspan="5" class="font-weight-bold" style="text-align:right">{{__('page.total_cost')}} </td>
                                                 <td>{{number_format($order->total_cost)}}</td>
                                             </tr>
                                         </tfoot>
@@ -196,6 +194,7 @@
                                 </div>
                                 <div class="row mt-5">
                                     <div class="col-md-12 text-right">                                        
+                                        <a href="{{route('produce_order.edit', $order->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i>  {{__('page.edit')}}</a>
                                         <a href="{{route('produce_order.index')}}" class="btn btn-success"><i class="fa fa-list"></i>  {{__('page.production_order_list')}}</a>
                                     </div>
                                 </div>
