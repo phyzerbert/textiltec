@@ -89,5 +89,6 @@ class CustomerController extends Controller
         $pdf = PDF::loadView('customer.report', compact('customer'));
   
         return $pdf->download('customer_report_'.$customer->name.'.pdf');
+        // return view('customer.report', compact('customer'));
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Supplier Report</title>
+    <title>{{__('page.supplier')}} {{__('page.report')}}</title>
     <link rel="stylesheet" href="{{asset('master/css/app.css')}}">
     <style>
         body {
@@ -12,7 +12,7 @@
             margin-top: 30px;
             text-align:center;
             font-size:30px;
-            font-weight: 500;
+            font-weight: 800;
             text-decoration:underline;
         }
         .value {
