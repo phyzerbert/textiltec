@@ -12,74 +12,76 @@
                         <div class="card-header">
                             <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> Add New</button>
                         </div>
-                        <div class="card-body table-responsive">
-                            <table id="datatables-basic" class="table table-striped table-bordered table-hover" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th class="wd-40">#</th>
-                                        <th>{{__('page.name')}}</th>
-                                        <th>{{__('page.company')}}</th>
-                                        <th>{{__('page.phone')}}</th>
-                                        <th>{{__('page.email_address')}}</th>
-                                        <th style="width:120px;">{{__('page.total_purchases')}}</th>
-                                        <th style="width:120px !important;">{{__('page.total_amount')}}</th>
-                                        <th>{{__('page.paid')}}</th>
-                                        <th>{{__('page.balance')}}</th>
-                                        <th>{{__('page.action')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                        $footer_total_purchases = $footer_total_amount = $footer_paid = 0;
-                                    @endphp                               
-                                    @foreach ($data as $item)
-                                        @php
-                                            $purchases_array = $item->purchases()->pluck('id')->toArray();
-                                            // dump($purchases_array);
-                                            $total_purchases = $item->purchases()->count();
-                                            $mod_total_amount = $item->purchases();
-                                            $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $purchases_array)->where('paymentable_type', "App\Models\Purchase");
-        
-                                            $total_amount = $mod_total_amount->sum('grand_total');
-                                            $paid = $mod_paid->sum('amount');  
-        
-                                            $footer_total_purchases += $total_purchases;
-                                            $footer_total_amount += $total_amount;
-                                            $footer_paid += $paid;
-                                        @endphp                              
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="datatables-basic" class="table table-striped table-bordered table-hover" style="width:100%">
+                                    <thead>
                                         <tr>
-                                            <input type="hidden" name="note" class="note" value="{{$item->note}}">
-                                            <input type="hidden" name="address" class="address" value="{{$item->address}}">
-                                            <input type="hidden" name="city" class="city" value="{{$item->city}}">
-                                            <td class="wd-40">{{ $loop->index + 1 }}</td>
-                                            <td class="name">{{$item->name}}</td>
-                                            <td class="company">{{$item->company}}</td>
-                                            <td class="phone_number">{{$item->phone_number}}</td>
-                                            <td class="email">{{$item->email}}</td>
-                                            <td style="width:120px !important;">{{number_format($total_purchases)}}</td>
-                                            <td style="width:120px !important;">{{number_format($total_amount)}}</td>                                        
-                                            <td>{{number_format($paid)}}</td>
-                                            <td>{{number_format($total_amount - $paid)}}</td>                                      
-                                            <td>
-                                                {{-- <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('page.view')}}"><i class="align-middle" data-feather="file-text"></i></a> --}}
-                                                <a href="{{route('supplier.report', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.report')}}"><i class="align-middle" data-feather="file-text"></i></a>
-                                                <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
-												<a href="{{route('supplier.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
-                                            </td>
+                                            <th class="wd-40">#</th>
+                                            <th>{{__('page.name')}}</th>
+                                            <th>{{__('page.company')}}</th>
+                                            <th>{{__('page.phone')}}</th>
+                                            <th>{{__('page.email_address')}}</th>
+                                            <th style="width:120px;">{{__('page.total_purchases')}}</th>
+                                            <th style="width:120px !important;">{{__('page.total_amount')}}</th>
+                                            <th>{{__('page.paid')}}</th>
+                                            <th>{{__('page.balance')}}</th>
+                                            <th>{{__('page.action')}}</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="5">{{__('page.total')}}</td>
-                                        <td>{{number_format($footer_total_purchases)}}</td>
-                                        <td>{{number_format($footer_total_amount)}}</td>
-                                        <td>{{number_format($footer_paid)}}</td>
-                                        <td>{{number_format($footer_total_amount - $footer_paid)}}</td>
-                                        <td></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $footer_total_purchases = $footer_total_amount = $footer_paid = 0;
+                                        @endphp                               
+                                        @foreach ($data as $item)
+                                            @php
+                                                $purchases_array = $item->purchases()->pluck('id')->toArray();
+                                                // dump($purchases_array);
+                                                $total_purchases = $item->purchases()->count();
+                                                $mod_total_amount = $item->purchases();
+                                                $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $purchases_array)->where('paymentable_type', "App\Models\Purchase");
+            
+                                                $total_amount = $mod_total_amount->sum('grand_total');
+                                                $paid = $mod_paid->sum('amount');  
+            
+                                                $footer_total_purchases += $total_purchases;
+                                                $footer_total_amount += $total_amount;
+                                                $footer_paid += $paid;
+                                            @endphp                              
+                                            <tr>
+                                                <input type="hidden" name="note" class="note" value="{{$item->note}}">
+                                                <input type="hidden" name="address" class="address" value="{{$item->address}}">
+                                                <input type="hidden" name="city" class="city" value="{{$item->city}}">
+                                                <td class="wd-40">{{ $loop->index + 1 }}</td>
+                                                <td class="name">{{$item->name}}</td>
+                                                <td class="company">{{$item->company}}</td>
+                                                <td class="phone_number">{{$item->phone_number}}</td>
+                                                <td class="email">{{$item->email}}</td>
+                                                <td style="width:120px !important;">{{number_format($total_purchases)}}</td>
+                                                <td style="width:120px !important;">{{number_format($total_amount)}}</td>                                        
+                                                <td>{{number_format($paid)}}</td>
+                                                <td>{{number_format($total_amount - $paid)}}</td>                                      
+                                                <td>
+                                                    {{-- <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('page.view')}}"><i class="align-middle" data-feather="file-text"></i></a> --}}
+                                                    <a href="{{route('supplier.report', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.report')}}"><i class="align-middle" data-feather="file-text"></i></a>
+                                                    <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
+                                                    <a href="{{route('supplier.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5">{{__('page.total')}}</td>
+                                            <td>{{number_format($footer_total_purchases)}}</td>
+                                            <td>{{number_format($footer_total_amount)}}</td>
+                                            <td>{{number_format($footer_paid)}}</td>
+                                            <td>{{number_format($footer_total_amount - $footer_paid)}}</td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>                            
                         </div>
                     </div>
                 </div>

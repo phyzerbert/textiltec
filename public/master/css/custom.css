@@ -114,5 +114,15 @@ li.sidebar-item.active>a.sidebar-link {
 
 td, th {
     white-space: nowrap;
-    /* overflow: hidden; */
-  }
+}
+
+#app {
+    opacity: 0;
+}
+.sidebar, .sidebar-content {
+    z-index: 9999;
+}
+
+/* div.main {
+    width: calc(100% - 255px);
+} */

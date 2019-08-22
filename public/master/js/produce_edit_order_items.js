@@ -139,6 +139,7 @@ var app = new Vue({
 
     mounted:function() {
         this.init();
+        $("#app").css('opacity', 1);
     },
     created: function() {
         var self = this

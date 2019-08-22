@@ -15,61 +15,63 @@
                         <div class="card-header">
                             <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> {{__('page.add_new')}}</button>
                         </div>
-                        <div class="card-body table-responsive">                            
-                            <table class="table table-bordered table-hover">
-                                <thead class="thead-colored thead-primary">
-                                    <tr class="bg-blue">
-                                        <th class="wd-50">#</th>
-                                        <th>{{__('page.name')}}</th>
-                                        <th>{{__('page.count_of_production')}}</th>
-                                        <th>{{__('page.manufactured')}}</th>
-                                        <th>{{__('page.paid')}}</th>
-                                        <th>{{__('page.balance')}}</th>
-                                        <th>{{__('page.action')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>                                
-                                    @foreach ($data as $item)
-                                        @php
-                                            $produce_count = $item->produce_orders()->count();
-                                            $produce_quantity = $item->produce_orders->sum('quantity');
-                                            $produce_orders_array = $item->produce_orders->pluck('id');
-                                            $produce_manufactured = $item->produce_orders->sum(function ($order) {
-                                                return $order->quantity * $order->manufacturing_cost;
-                                            });
-                                            // $purchases = $item->produce_orders->sum('production_cost');
-                                            $products_array = $item->products()->pluck('id');
-                                            $sales_count = \App\Models\SaleOrder::whereIn('product_id', $products_array)->distinct('product_id')->count();
-                                            $sales_quantity = \App\Models\SaleOrder::whereIn('product_id', $products_array)->sum('quantity');
-
-                                            $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $produce_orders_array)->where('paymentable_type', "App\Models\ProduceOrder");
-                                            $paid = $mod_paid->sum('amount');
-
-                                            $balance = $produce_manufactured - $paid;
-                                        @endphp
-                                        <tr>
-                                            <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
-                                            <td class="name">{{$item->name}}</td>
-                                            <td class="produce_count">{{$produce_count}}</td>
-                                            <td class="manufactured" data-value="{{$produce_manufactured}}">{{number_format($produce_manufactured)}}</td>
-                                            <td class="paid">{{number_format($paid)}}</td>
-                                            <td class="balance" data-value="{{$produce_manufactured}}">{{number_format($balance)}}</td>
-                                            <td class="py-1">
-                                                <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
-                                                <a href="{{route('workshop.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
-                                            </td>
+                        <div class="card-body table-responsive">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead class="thead-colored thead-primary">
+                                        <tr class="bg-blue">
+                                            <th class="wd-50">#</th>
+                                            <th>{{__('page.name')}}</th>
+                                            <th>{{__('page.count_of_production')}}</th>
+                                            <th>{{__('page.manufactured')}}</th>
+                                            <th>{{__('page.paid')}}</th>
+                                            <th>{{__('page.balance')}}</th>
+                                            <th>{{__('page.action')}}</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>                
-                            <div class="clearfix mt-2">
-                                <div class="float-left" style="margin: 0;">
-                                    <p>{{__('page.total')}} <strong style="color: red">{{ $data->total() }}</strong> {{__('page.items')}}</p>
+                                    </thead>
+                                    <tbody>                                
+                                        @foreach ($data as $item)
+                                            @php
+                                                $produce_count = $item->produce_orders()->count();
+                                                $produce_quantity = $item->produce_orders->sum('quantity');
+                                                $produce_orders_array = $item->produce_orders->pluck('id');
+                                                $produce_manufactured = $item->produce_orders->sum(function ($order) {
+                                                    return $order->quantity * $order->manufacturing_cost;
+                                                });
+                                                // $purchases = $item->produce_orders->sum('production_cost');
+                                                $products_array = $item->products()->pluck('id');
+                                                $sales_count = \App\Models\SaleOrder::whereIn('product_id', $products_array)->distinct('product_id')->count();
+                                                $sales_quantity = \App\Models\SaleOrder::whereIn('product_id', $products_array)->sum('quantity');
+
+                                                $mod_paid = \App\Models\Payment::whereIn('paymentable_id', $produce_orders_array)->where('paymentable_type', "App\Models\ProduceOrder");
+                                                $paid = $mod_paid->sum('amount');
+
+                                                $balance = $produce_manufactured - $paid;
+                                            @endphp
+                                            <tr>
+                                                <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
+                                                <td class="name">{{$item->name}}</td>
+                                                <td class="produce_count">{{$produce_count}}</td>
+                                                <td class="manufactured" data-value="{{$produce_manufactured}}">{{number_format($produce_manufactured)}}</td>
+                                                <td class="paid">{{number_format($paid)}}</td>
+                                                <td class="balance" data-value="{{$produce_manufactured}}">{{number_format($balance)}}</td>
+                                                <td class="py-1">
+                                                    <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
+                                                    <a href="{{route('workshop.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>                
+                                <div class="clearfix mt-2">
+                                    <div class="float-left" style="margin: 0;">
+                                        <p>{{__('page.total')}} <strong style="color: red">{{ $data->total() }}</strong> {{__('page.items')}}</p>
+                                    </div>
+                                    <div class="float-right" style="margin: 0;">
+                                        {!! $data->appends([])->links() !!}
+                                    </div>
                                 </div>
-                                <div class="float-right" style="margin: 0;">
-                                    {!! $data->appends([])->links() !!}
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>

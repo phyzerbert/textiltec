@@ -12,36 +12,38 @@
                         <div class="card-header">
                             <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> {{__('page.add_new')}}</button>
                         </div>
-                        <div class="card-body table-responsive">                            
-                            <table class="table table-bordered table-hover">
-                                <thead class="thead-colored thead-primary">
-                                    <tr class="bg-blue">
-                                        <th class="wd-40">#</th>
-                                        <th>{{__('page.name')}}</th>
-                                        <th>{{__('page.action')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>                                
-                                    @foreach ($data as $item)
-                                        <tr>
-                                            <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
-                                            <td class="name">{{$item->name}}</td>
-                                            <td class="py-1">
-                                                <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
-                                                <a href="{{route('pcategory.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
-                                            </td>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead class="thead-colored thead-primary">
+                                        <tr class="bg-blue">
+                                            <th class="wd-40">#</th>
+                                            <th>{{__('page.name')}}</th>
+                                            <th>{{__('page.action')}}</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>                
-                            <div class="clearfix mt-2">
-                                <div class="float-left" style="margin: 0;">
-                                    <p>{{__('page.total')}} <strong style="color: red">{{ $data->total() }}</strong> {{__('page.items')}}</p>
+                                    </thead>
+                                    <tbody>                                
+                                        @foreach ($data as $item)
+                                            <tr>
+                                                <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
+                                                <td class="name">{{$item->name}}</td>
+                                                <td class="py-1">
+                                                    <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
+                                                    <a href="{{route('pcategory.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>                
+                                <div class="clearfix mt-2">
+                                    <div class="float-left" style="margin: 0;">
+                                        <p>{{__('page.total')}} <strong style="color: red">{{ $data->total() }}</strong> {{__('page.items')}}</p>
+                                    </div>
+                                    <div class="float-right" style="margin: 0;">
+                                        {!! $data->appends([])->links() !!}
+                                    </div>
                                 </div>
-                                <div class="float-right" style="margin: 0;">
-                                    {!! $data->appends([])->links() !!}
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>

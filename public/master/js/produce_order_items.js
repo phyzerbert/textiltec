@@ -7,7 +7,7 @@ var app = new Vue({
             quantity: 0,
             cost: 0
         },
-        product_quantity: 0,
+        product_quantity: 1,
         manufacturing_cost: 0,
         grand_total: 0,
     },
@@ -25,7 +25,6 @@ var app = new Vue({
         add_item() {
             axios.get('/get_first_supply')
                 .then(response => {
-                    console.log(response.data)
                     this.order_items.push({
                         supply_id: response.data.id,
                         supply_name_code: response.data.name + "(" + response.data.code + ")",
@@ -66,6 +65,7 @@ var app = new Vue({
     mounted:function() {
         this.init();
         this.add_item()
+        $("#app").css('opacity', 1);
     },
     updated: function() {
         this.calc_subtotal()

@@ -22,53 +22,56 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <thead class="thead-colored thead-primary">
-                                    <tr class="bg-blue">
-                                        <th style="width:40px;">#</th>
-                                        <th>{{__('page.date')}}</th>
-                                        <th>{{__('page.reference_no')}}</th>
-                                        <th>{{__('page.amount')}}</th> 
-                                        <th>{{__('page.note')}}</th>
-                                        <th>{{__('page.action')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>                                
-                                    @foreach ($data as $item)
-                                        <tr>
-                                            <td>{{ $loop->index + 1 }}</td>
-                                            <td class="date">{{date('Y-m-d H:i', strtotime($item->timestamp))}}</td>
-                                            <td class="reference_no">{{$item->reference_no}}</td>
-                                            <td class="amount" data-value="{{$item->amount}}">{{number_format($item->amount)}}</td>
-                                            <td class="" data-path="{{$item->attachment}}">
-                                                <span class="tx-info note">{{$item->note}}</span>&nbsp;
-                                                @if($item->attachment != "")
-                                                    <a href="#" class="attachment" data-value="{{asset($item->attachment)}}"><i class="fa fa-paperclip"></i></a>
-                                                @endif
-                                            </td>
-                                            <td class="py-1">
-                                                <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
-                                                <a href="{{route('payment.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
-                                            </td>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead class="thead-colored thead-primary">
+                                        <tr class="bg-blue">
+                                            <th style="width:40px;">#</th>
+                                            <th>{{__('page.date')}}</th>
+                                            <th>{{__('page.reference_no')}}</th>
+                                            <th>{{__('page.amount')}}</th> 
+                                            <th>{{__('page.note')}}</th>
+                                            <th>{{__('page.action')}}</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <div class="row">
-                                <div class="col-md-12 mt-3 text-right">
-                                    @if($type == 'purchase')
-                                        <a href="{{route('purchase.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_purchase')}}</a>                                       
-                                        <a href="{{route('purchase.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.purchases_list')}}</a>
-                                    @elseif($type == 'sale')
-                                        <a href="{{route('product_sale.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_product_sale')}}</a>                                       
-                                        <a href="{{route('product_sale.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.product_sale_list')}}</a>
-                                    @elseif($type == 'produce')
-                                        <a href="{{route('produce_order.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_production_order')}}</a>                                       
-                                        <a href="{{route('produce_order.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.production_order')}}</a>
-                                    @endif
+                                    </thead>
+                                    <tbody>                                
+                                        @foreach ($data as $item)
+                                            <tr>
+                                                <td>{{ $loop->index + 1 }}</td>
+                                                <td class="date">{{date('Y-m-d H:i', strtotime($item->timestamp))}}</td>
+                                                <td class="reference_no">{{$item->reference_no}}</td>
+                                                <td class="amount" data-value="{{$item->amount}}">{{number_format($item->amount)}}</td>
+                                                <td class="" data-path="{{$item->attachment}}">
+                                                    <span class="tx-info note">{{$item->note}}</span>&nbsp;
+                                                    @if($item->attachment != "")
+                                                        <a href="#" class="attachment" data-value="{{asset($item->attachment)}}"><i class="fa fa-paperclip"></i></a>
+                                                    @endif
+                                                </td>
+                                                <td class="py-1">
+                                                    <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
+                                                    <a href="{{route('payment.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-md-12 mt-3 text-right">
+                                        @if($type == 'purchase')
+                                            <a href="{{route('purchase.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_purchase')}}</a>                                       
+                                            <a href="{{route('purchase.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.purchases_list')}}</a>
+                                        @elseif($type == 'sale')
+                                            <a href="{{route('product_sale.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_product_sale')}}</a>                                       
+                                            <a href="{{route('product_sale.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.product_sale_list')}}</a>
+                                        @elseif($type == 'produce')
+                                            <a href="{{route('produce_order.create')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.add_production_order')}}</a>                                       
+                                            <a href="{{route('produce_order.index')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.production_order')}}</a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
