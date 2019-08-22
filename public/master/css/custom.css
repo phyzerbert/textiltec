@@ -126,3 +126,8 @@ td, th {
 /* div.main {
     width: calc(100% - 255px);
 } */
+
+.main {
+    width: calc(100% - 255px);
+    margin-left: 0px;
+}
