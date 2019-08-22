@@ -1,22 +1,44 @@
 (function () {
 	"use strict";
 
+	function isMobile() { return ('ontouchstart' in document.documentElement); }
+
+	console.log(isMobile())
+
 	if(sessionStorage.getItem('sidebar') === null){
 		$('.sidebar').removeClass('toggled');
-		$(".main").width("calc(100% - 255px)")
+		if(isMobile()){
+			$(".main").width("100%")
+		}else{
+			$(".main").width("calc(100% - 255px)")
+		}
 	}else{
 		$('.sidebar').addClass('toggled');
-		$(".main").width("100%")
+		if(isMobile()){
+			$(".main").width("calc(100% - 255px)")
+		}else{
+			$(".main").width("100%")
+		}
 	}
 	
 	$('.sidebar-toggle').click(function(event) {
 		if($(".sidebar").hasClass("toggled")){
 			sessionStorage.clear();	
-			$(".main").width("calc(100% - 255px)")
+			if(isMobile()){
+				$(".main").width("100%")
+			}else{
+				$(".main").width("calc(100% - 255px)")
+			}
 		}else{
 			sessionStorage.setItem('sidebar', 'expanded');
-			$(".main").width("100%")
+			if(isMobile()){
+				$(".main").width("calc(100% - 255px)")
+			}else{
+				$(".main").width("100%")
+			}	
 		}
 	});
+
+
 
 })();
