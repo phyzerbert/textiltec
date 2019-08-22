@@ -3,7 +3,7 @@
 
 	function isMobile() { return ('ontouchstart' in document.documentElement); }
 
-	console.log(isMobile())
+	// console.log(isMobile())
 
 	if(sessionStorage.getItem('sidebar') === null){
 		$('.sidebar').removeClass('toggled');

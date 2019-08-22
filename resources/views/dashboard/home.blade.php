@@ -149,9 +149,9 @@
         var sale = "{{__('page.sale')}}";
             
         // console.log(legend_array);
-        var supply_overview = function() {
+        var home_overview = function() {
 
-            var supply_chart = function() {
+            var home_chart = function() {
                 if (typeof echarts == 'undefined') {
                     console.warn('Warning - echarts.min.js is not loaded.');
                     return;
@@ -159,6 +159,7 @@
 
                 // Define elements
                 var supply_basic_element = document.getElementById('supply_chart');
+                var product_basic_element = document.getElementById('product_chart');
 
                 if (supply_basic_element) {
 
@@ -283,46 +284,6 @@
                     });
                 }
 
-                // Resize function
-                var triggerChartResize = function() {
-                    supply_basic_element && area_supply.resize();
-                };
-
-                // On sidebar width change
-                $(document).on('click', '.sidebar-toggle', function() {
-                    setTimeout(function () {
-                        triggerChartResize();
-                    }, 0);
-                });
-
-                // On window resize
-                var resizeCharts;
-                window.onresize = function () {
-                    clearTimeout(resizeCharts);
-                    resizeCharts = setTimeout(function () {
-                        triggerChartResize();
-                    }, 200);
-                };
-            };
-
-            return {
-                init: function() {
-                    supply_chart();
-                }
-            }
-        }();
-
-        var product_overview = function() {
-
-            var product_chart = function() {
-                if (typeof echarts == 'undefined') {
-                    console.warn('Warning - echarts.min.js is not loaded.');
-                    return;
-                }
-
-                // Define elements
-                var product_basic_element = document.getElementById('product_chart');
-
                 if (product_basic_element) {
 
                     var area_product = echarts.init(product_basic_element);
@@ -446,8 +407,11 @@
                     });
                 }
 
+
+
                 // Resize function
                 var triggerChartResize = function() {
+                    supply_basic_element && area_supply.resize();
                     product_basic_element && area_product.resize();
                 };
 
@@ -470,14 +434,14 @@
 
             return {
                 init: function() {
-                    product_chart();
+                    home_chart();
                 }
             }
         }();
+       
 
         document.addEventListener('DOMContentLoaded', function() {
-            supply_overview.init();
-            product_overview.init();
+            home_overview.init();
         });
     </script>
     <script>
