@@ -34,7 +34,12 @@
                                     @foreach ($data as $item)
                                         @php
                                             $purchase_quantity = $item->purchase_orders()->sum('quantity');
-                                            $produce_quantity = $item->produce_orders()->sum('quantity');
+
+                                            // $produce_quantity = $item->produce_orders()->sum('quantity');
+                                            $produce_quantity = $item->produce_orders->sum(function($supply){
+                                                $product_quantity = $supply->produce_order->quantity;
+                                                return $supply->quantity * $product_quantity;
+                                            });
                                             $quantity = $purchase_quantity - $produce_quantity;
                                         @endphp
                                         <tr>
