@@ -306,7 +306,7 @@
                     .wrap('<div class="position-relative" style="width: calc(100% - 40px)"></div>')
                     .select2({
                         width: 'resolve',
-                        placeholder: '{!! __('page.product_supplier') !!}'
+                        placeholder: "{!! __('page.select_product') !!}"
                     });                    
             });
             $("#purchase_date").datetimepicker({
