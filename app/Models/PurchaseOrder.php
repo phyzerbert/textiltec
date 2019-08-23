@@ -11,4 +11,8 @@ class PurchaseOrder extends Model
     public function produce() {
         return $this->belongsTo('App\Models\Produce');
     }
+
+    public function supply() {
+        return $this->belongsTo('App\Models\Supply');
+    }
 }

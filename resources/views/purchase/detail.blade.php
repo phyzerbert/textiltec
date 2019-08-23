@@ -96,7 +96,7 @@
                                             @endphp
                                                 <tr>
                                                     <td>{{$loop->index+1}}</td>
-                                                    <td>@isset($item->product->name){{$item->product->name}} ({{$item->product->code}})@endisset</td>
+                                                    <td>@isset($item->supply->name){{$item->supply->name}} ({{$item->supply->code}})@endisset</td>
                                                     <td>{{number_format($item->cost)}}</td>
                                                     <td>{{$item->quantity}}</td>
                                                     <td>{{number_format($item->subtotal)}}</td>
