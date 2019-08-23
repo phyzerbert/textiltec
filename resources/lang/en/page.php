@@ -46,6 +46,7 @@ return [
     'category' => 'Category',
     'company' => 'Company',
     'supply_list' => 'Supply List',
+    'product_list' => 'Product List',
     'product_sale' => 'Product Sale',
     'sales_list' => 'Sales List',
 
@@ -65,7 +66,6 @@ return [
     'add_new' => 'Add New',
     'edit' => 'Edit',
     'delete' => 'Delete',
-    'duplicated' => 'Duplicated',
     'details' => 'Details',
     'payment' => 'Payment',
     'payments' => 'Payments',
@@ -292,8 +292,6 @@ return [
     'profit' => 'Profit',
 
     // ******** User ********
-    'username' => 'Username',
-    'role' => 'Role',
     'phone_number' => 'Phone Number', 
     'password_confirm' => 'Password Confirm', 
     'add_new_user' => 'Add New User',
@@ -303,6 +301,5 @@ return [
     'new_password' => 'New Password',
     'confirm_password' => 'Confirm Password',
     'save_changes' => 'Save Changes',
-
-
+    
 ];
