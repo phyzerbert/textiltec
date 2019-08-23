@@ -12,6 +12,8 @@ class ProduceOrderReceptionController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        ini_set('post_max_size', '100M');
+        ini_set('upload_max_filesize', '100M');
     }
 
     public function index(Request $request, $id)
