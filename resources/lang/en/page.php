@@ -22,7 +22,8 @@ return [
     'sales' => 'Sales',
     'production_order' => 'Production Order',
     'add_sale' => 'Add Sale',
-    'product' => 'Product',
+    'product' => 'Product',    
+    'supplies' => 'Supplies',
     'report' => 'Report',
     'reports' => 'Reports',
     'overview_chart' => 'Overview Chart',
@@ -301,5 +302,10 @@ return [
     'new_password' => 'New Password',
     'confirm_password' => 'Confirm Password',
     'save_changes' => 'Save Changes',
+
+    'add_supply' => 'Add Supply',
+    'purchase_list' => 'Purchase List',
+    'order_list' => 'Order List',
+    'add_order' => 'Add Order',
     
 ];

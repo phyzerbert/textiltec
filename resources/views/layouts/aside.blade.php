@@ -14,11 +14,11 @@
             @endphp
             <li class="sidebar-item @if(in_array($page, $supply_items)) active @endif">
                 <a href="#supplies" data-toggle="collapse" class="font-weight-bold sidebar-link collapsed">
-                    <i class="align-middle" data-feather="server"></i> <span class="align-middle">Supplies</span>
+                    <i class="align-middle" data-feather="server"></i> <span class="align-middle">{{__('page.supplies')}}</span>
                 </a>
                 <ul id="supplies" class="sidebar-dropdown list-unstyled collapse ">
-                    <li class="sidebar-item @if($page == 'supply_list') active @endif"><a class="sidebar-link" href="{{route('supply.index')}}">Supply List</a></li>
-                    <li class="sidebar-item @if($page == 'add_supply') active @endif"><a class="sidebar-link" href="{{route('supply.create')}}">Add Supply</a></li>
+                    <li class="sidebar-item @if($page == 'supply_list') active @endif"><a class="sidebar-link" href="{{route('supply.index')}}">{{__('page.supply_list')}}</a></li>
+                    <li class="sidebar-item @if($page == 'add_supply') active @endif"><a class="sidebar-link" href="{{route('supply.create')}}">{{__('page.add_supply')}}</a></li>
                 </ul>
             </li>
             @php
@@ -29,8 +29,8 @@
                     <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">{{__('page.purchase')}}</span>
                 </a>
                 <ul id="purchases" class="sidebar-dropdown list-unstyled collapse ">
-                    <li class="sidebar-item @if($page == 'purchase_list') active @endif"><a class="sidebar-link" href="{{route('purchase.index')}}">Purchase List</a></li>
-                    <li class="sidebar-item @if($page == 'add_purchase') active @endif"><a class="sidebar-link" href="{{route('purchase.create')}}">Add Purchase</a></li>
+                    <li class="sidebar-item @if($page == 'purchase_list') active @endif"><a class="sidebar-link" href="{{route('purchase.index')}}">{{__('page.purchase_list')}}</a></li>
+                    <li class="sidebar-item @if($page == 'add_purchase') active @endif"><a class="sidebar-link" href="{{route('purchase.create')}}">{{__('page.add_purchase')}}</a></li>
                 </ul>
             </li>
             @php
@@ -41,8 +41,8 @@
                     <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">{{__('page.production_order')}}</span>
                 </a>
                 <ul id="produce_orders" class="sidebar-dropdown list-unstyled collapse ">
-                    <li class="sidebar-item @if($page == 'produce_order_list') active @endif"><a class="sidebar-link" href="{{route('produce_order.index')}}">Order List</a></li>
-                    <li class="sidebar-item @if($page == 'add_produce_order') active @endif"><a class="sidebar-link" href="{{route('produce_order.create')}}">Add Order</a></li>
+                    <li class="sidebar-item @if($page == 'produce_order_list') active @endif"><a class="sidebar-link" href="{{route('produce_order.index')}}">{{__('page.order_list')}}</a></li>
+                    <li class="sidebar-item @if($page == 'add_produce_order') active @endif"><a class="sidebar-link" href="{{route('produce_order.create')}}">{{__('page.add_order')}}</a></li>
                 </ul>
             </li>
             <li class="sidebar-item @if($page == 'product') active @endif"><a href="{{route('product.index')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="box"></i> <span class="align-middle">{{__('page.product_management')}}</span></a></li>            

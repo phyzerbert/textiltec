@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">{{__('page.gallery_images')}}</label>
-                                        <input type="file" name="gallery_images[]" id="file2" class="form-control file-input-styled" accept="image/*" multiple />
+                                        <input type="file" name="gallery_images[]" id="file2" class="form-control file-input-styled" accept="image/*, video/*" multiple />
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">{{__('page.responsibility')}}</label>

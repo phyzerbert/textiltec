@@ -57,13 +57,26 @@
                             </div>
                             <div class="col-lg-8">
                                 <h3><i class="align-middle" data-feather="image"></i> {{__('page.image_gallery')}}</h3>
-                                <div class="row">                                    
-                                    @foreach ($order->images as $item)                                        
+                                <div class="row"> 
+                                    @php
+                                        $image_array = array('jpg', 'png', 'jpeg', 'gif');
+                                        $video_array = array('avi', 'mp4', 'mpg');                                
+                                    @endphp                                  
+                                    @foreach ($order->images as $item)  
+                                        @php
+                                            $filename = basename($item->path);
+                                            $extension = pathinfo($item->path, PATHINFO_EXTENSION);
+                                        @endphp                                      
                                         <div class="col-md-4">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <img src="{{asset($item->path)}}" width="100%" alt="" class="img-fluid">
-                                                </div>
+                                            <div class="card card-body">
+                                                @if (in_array($extension, $image_array))
+                                                    <img class="gallery-image" width="100%" height="160" src="{{asset($item->path)}}" alt="" class="img-fluid" />
+                                                @elseif(in_array($extension, $video_array))
+                                                    <video class="gallery-video" width="100%" height="160" src="{{asset($item->path)}}" controls autoplay><source src="{{asset($item->path)}}"></video>
+                                                @else
+                                                    <a href="{{asset($item->path)}}" download>{{$filename}}</a>
+                                                @endif
+                                                    {{-- <img src="{{asset($item->path)}}" width="100%" alt="" class="img-fluid"> --}}
                                             </div>
                                         </div>
                                     @endforeach
@@ -225,7 +238,7 @@
             $(".attachment").click(function(e){
                 e.preventDefault();
                 let path = $(this).data('value');
-                console.log(path)
+                // console.log(path)
                 // $("#attachment").attr('src', path);
                 $("#image_preview").html('')
                 $("#image_preview").verySimpleImageViewer({
@@ -237,6 +250,28 @@
                     keyboard: true,
                     toolbar: true,
                 });
+                $("#attachModal").modal();
+            });
+
+            $(".gallery-image").click(function(){
+                let path = $(this).attr('src');
+                $("#image_preview").html('')
+                $("#image_preview").verySimpleImageViewer({
+                    imageSource: path,
+                    frame: ['100%', '100%'],
+                    maxZoom: '900%',
+                    zoomFactor: '10%',
+                    mouse: true,
+                    keyboard: true,
+                    toolbar: true,
+                });
+                $("#attachModal").modal();
+            });
+
+            $(".gallery-video").click(function(){
+                let path = $(this).attr('src');
+                let content = `<video width="100%" height="100%" controls><source src="${path}"></video>`
+                $("#image_preview").html(content);
                 $("#attachModal").modal();
             });
             
