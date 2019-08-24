@@ -89,8 +89,9 @@
                                                 <th class="wd-40">#</th>
                                                 <th>{{__('page.supply_name_code')}}</th>
                                                 <th>{{__('page.cost')}}</th>
-                                                <th>{{__('page.unit')}}</th>
                                                 <th>{{__('page.quantity')}}</th>
+                                                <th>{{__('page.total_quantity')}}</th>
+                                                <th>{{__('page.unit')}}</th>
                                                 <th>{{__('page.subtotal')}}</th>
                                             </tr>
                                         </thead>
@@ -109,27 +110,28 @@
                                                     <td>{{$loop->index+1}}</td>
                                                     <td>@isset($item->supply->name){{$item->supply->name}} ({{$item->supply->code}})@endisset</td>
                                                     <td>{{number_format($item->cost)}}</td>
-                                                    <td>@isset($item->supply->unit){{$item->supply->unit}}@endisset</td>
                                                     <td>{{$item->quantity}}</td>
+                                                    <td>{{$item->quantity * $order->quantity}}</td>
+                                                    <td>@isset($item->supply->unit){{$item->supply->unit}}@endisset</td>
                                                     <td>{{number_format($item->subtotal)}}</td>
                                                 </tr>
                                             @endforeach
                                             <tr>
-                                                <td colspan="5" class="font-weight-bold" style="text-align:right">{{__('page.total')}} </td>
+                                                <td colspan="6" class="font-weight-bold" style="text-align:right">{{__('page.total')}} </td>
                                                 <td>{{number_format($total_amount)}}</td>
                                             </tr>
                                         </tbody>
                                         <tfoot class="tx-bold tx-black">
                                             <tr>
-                                                <td colspan="5" class="font-weight-bold" style="text-align:right">{{__('page.supply_cost')}} </td>
+                                                <td colspan="6" class="font-weight-bold" style="text-align:right">{{__('page.supply_cost')}} </td>
                                                 <td>{{number_format($total_amount)}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="5" class="font-weight-bold" style="text-align:right">{{__('page.manufacturing_cost')}} </td>
+                                                <td colspan="6" class="font-weight-bold" style="text-align:right">{{__('page.manufacturing_cost')}} </td>
                                                 <td>{{number_format($order->manufacturing_cost)}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="5" class="font-weight-bold" style="text-align:right">{{__('page.total_cost')}} </td>
+                                                <td colspan="6" class="font-weight-bold" style="text-align:right">{{__('page.total_cost')}} </td>
                                                 <td>{{number_format($order->total_cost)}}</td>
                                             </tr>
                                         </tfoot>

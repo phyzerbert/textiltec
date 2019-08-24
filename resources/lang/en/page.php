@@ -307,5 +307,6 @@ return [
     'purchase_list' => 'Purchase List',
     'order_list' => 'Order List',
     'add_order' => 'Add Order',
+    'total_quantity' =>'Total Quantity',
     
 ];

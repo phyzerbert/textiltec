@@ -113,6 +113,7 @@
                                                     <th>{{__('page.name')}}</th>
                                                     <th>{{__('page.cost')}}</th>
                                                     <th>{{__('page.quantity')}}</th>
+                                                    <th>{{__('page.total_quantity')}}</th>
                                                     <th>{{__('page.unit')}}</th>
                                                     <th>{{__('page.subtotal')}}</th>
                                                     <th style="width:30px"></th>
@@ -128,6 +129,7 @@
                                                     </td>
                                                     <td><input type="number" class="form-control form-control-sm cost" name="cost[]" v-model="item.cost" required placeholder="{{__('page.cost')}}" /></td>
                                                     <td><input type="number" class="form-control form-control-sm quantity" name="quantity[]" min="0" step="0.01" v-model="item.quantity" required placeholder="{{__('page.quantity')}}" /></td>
+                                                    <td> @{{item.quantity * product_quantity}}</td>
                                                     <td> @{{item.unit}}</td>
                                                     <td class="subtotal">
                                                         @{{formatPrice(item.sub_total)}}
