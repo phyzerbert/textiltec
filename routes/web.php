@@ -109,6 +109,7 @@ Route::get('/product_sale/delete/{id}', 'ProductSaleController@delete')->name('p
 
 Route::get('get_supplies', 'VueController@get_supplies');
 Route::get('get_products', 'VueController@get_products');
+Route::post('get_data', 'VueController@get_data');
 Route::post('get_orders', 'VueController@get_orders');
 Route::post('get_supply', 'VueController@get_supply');
 Route::post('get_product', 'VueController@get_product');

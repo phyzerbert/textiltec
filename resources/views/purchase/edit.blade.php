@@ -7,7 +7,7 @@
 @endsection
 @section('content')
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3"><i class="fa fa-cubes"></i> Edit Purchase</h1>
+        <h1 class="h3 mb-3"><i class="fa fa-cubes"></i> {{__('page.edit_purchase')}}</h1>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
