@@ -33,7 +33,7 @@ var app = new Vue({
                         quantity: 1,
                         sub_total: response.data.cost,
                     })
-                    console.log(app.$refs['supply'][app.$refs['supply'].length - 1])
+                    // console.log(app.$refs['supply'][app.$refs['supply'].length - 1])
                     Vue.nextTick(function() {
                         app.$refs['supply'][app.$refs['supply'].length - 1].select()
                     });                    
