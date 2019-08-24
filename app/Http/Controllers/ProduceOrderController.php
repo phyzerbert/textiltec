@@ -278,7 +278,7 @@ class ProduceOrderController extends Controller
     public function delete($id){
         $item = ProduceOrder::find($id);
         $item->supplies()->delete();
-        $item->receives()->delete();
+        $item->receptions()->delete();
         $item->delete();
         return back()->with("success", __('page.deleted_successfully'));
     }
