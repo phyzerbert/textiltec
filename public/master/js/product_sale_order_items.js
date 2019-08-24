@@ -37,6 +37,9 @@ var app = new Vue({
                         quantity: 1,
                         sub_total: response.data.price,
                     })
+                    Vue.nextTick(function() {
+                        app.$refs['product'][app.$refs['product'].length - 1].select()
+                    });
                 })
                 .catch(error => {
                     console.log(error);

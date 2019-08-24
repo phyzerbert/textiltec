@@ -38,6 +38,9 @@ var app = new Vue({
                         expiry_date: "",
                         sub_total: response.data.cost,
                     })
+                    Vue.nextTick(function() {
+                        app.$refs['supply'][app.$refs['supply'].length - 1].select()
+                    });
                 })
                 .catch(error => {
                     console.log(error);

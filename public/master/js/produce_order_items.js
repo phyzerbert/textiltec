@@ -78,7 +78,6 @@ var app = new Vue({
             source : function( request, response ) {
                 axios.post('/get_autocomplete_supplies', { keyword : request.term })
                     .then(resp => {
-                        // response(resp.data);
                         response(
                             $.map(resp.data, function(item) {
                                 return {

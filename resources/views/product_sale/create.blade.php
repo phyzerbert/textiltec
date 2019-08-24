@@ -95,7 +95,7 @@
                                                 <tr v-for="(item,i) in order_items" :key="i">
                                                     <td>
                                                         <input type="hidden" name="product_id[]" class="product_id" :value="item.product_id" />
-                                                        <input type="text" name="product_name[]" class="form-control form-control-sm product" v-model="item.product_name_code" required />
+                                                        <input type="text" name="product_name[]" ref="product" class="form-control form-control-sm product" v-model="item.product_name_code" required />
                                                     </td>
                                                     <td><input type="number" class="form-control form-control-sm price" name="price[]" v-model="item.price" required placeholder="{{__('page.price')}}" /></td>
                                                     <td><input type="number" class="form-control form-control-sm quantity" name="quantity[]" v-model="item.quantity" required placeholder="{{__('page.quantity')}}" /></td>
