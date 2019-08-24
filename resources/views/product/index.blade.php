@@ -44,16 +44,18 @@
                                             $produce_order = $item->produce_order;
                                             $price = 0;
                                             if($produce_order){
-                                                $quantity = $produce_order->receptions->sum('quantity');
+                                                $produce_quantity = $produce_order->receptions->sum('quantity');
                                                 $price = $produce_order->total_cost;
                                             }else {
-                                                $quantity = 0;
+                                                $produce_quantity = 0;
                                             }
+                                            $sale_quantity = $item->sale_orders->sum('quantity');
+                                            $quantity = $produce_quantity - $sale_quantity;
                                         @endphp
                                         <tr>
                                             <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
                                             <td class="name py-1" data-value="{{$item->name}}">
-                                                <img class="product_image" src="@if($item->image){{asset($item->image)}}@else{{asset('images/no-image-icon.png')}}@endif" width="48" height="48" class="rounded-circle mr-2" style="cursor:pointer;" alt="Product Picture">
+                                                <img class="product_image" src="@if($item->image){{asset($item->image)}}@else{{asset('images/no-image-icon.png')}}@endif" width="48" height="48" class="rounded-circle mr-2" style="cursor:pointer;" alt="">
                                                 {{$item->name}}
                                             </td>
                                             <td class="code">{{$item->code}}</td>
