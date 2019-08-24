@@ -113,7 +113,7 @@
                                                 <tr>
                                                     <th>{{__('page.name')}}</th>
                                                     <th>{{__('page.cost')}}</th>
-                                                    <th>{{__('page.quantity')}}</th>
+                                                    <th>{{__('page.average_quantity')}}</th>
                                                     <th>{{__('page.total_quantity')}}</th>
                                                     <th>{{__('page.unit')}}</th>
                                                     <th>{{__('page.subtotal')}}</th>

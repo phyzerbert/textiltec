@@ -8,7 +8,7 @@
             <span class="align-middle">{{config('app.name')}}</span>
         </a>
         <ul class="sidebar-nav">
-            <li class="sidebar-item @if($page == 'home') active @endif"><a href="{{route('home')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span></a></li>
+            <li class="sidebar-item @if($page == 'home') active @endif"><a href="{{route('home')}}" class="font-weight-bold sidebar-link"><i class="align-middle" data-feather="home"></i> <span class="align-middle">{{__('page.dashboard')}}</span></a></li>
             @php
                 $supply_items = ['supply_list', 'add_supply'];
             @endphp
