@@ -307,5 +307,6 @@ return [
     'purchase_list' => 'Lista de compras',
     'order_list' => 'Lista de ordenes',
     'add_order' => 'Agregar Orden',
+    'total_quantity' =>'Cantidad Total',
     
 ];
