@@ -33,6 +33,7 @@ var app = new Vue({
                         quantity: 1,
                         sub_total: response.data.cost,
                     })
+                    
                 })
                 .catch(error => {
                     console.log(error);
