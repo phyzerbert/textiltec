@@ -87,7 +87,7 @@
                 document.addEventListener("DOMContentLoaded", function(event) {
                     // Datatables basic
                     $('#datatables-basic').DataTable({
-                        responsive: true,
+                        // responsive: true,
                         language: {
                             paginate: {
                             next: '>',
