@@ -71,8 +71,8 @@
                             <textarea class="form-control" name="detail" id="detail" rows="5" placeholder="{{__('page.detail')}}">{{old('detail')}}</textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-lg btn-primary float-right"><i class="align-middle" data-feather="send"></i>&nbsp;&nbsp;Submit</button>
-                        <a href="{{route('supply.index')}}" class="btn btn-lg btn-success mr-2 float-right"><i class="align-middle" data-feather="list"></i>&nbsp;&nbsp;Supply List</a>
+                        <button type="submit" class="btn btn-lg btn-primary float-right"><i class="align-middle" data-feather="send"></i>&nbsp;&nbsp;{{__('page.save')}}</button>
+                        <a href="{{route('supply.index')}}" class="btn btn-lg btn-success mr-2 float-right"><i class="align-middle" data-feather="list"></i>&nbsp;&nbsp;{{__('page.supply_list')}}</a>
                     </form>
                 </div>
             </div>
