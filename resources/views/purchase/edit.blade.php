@@ -105,7 +105,7 @@
                                                     <td><input type="number" class="form-control form-control-sm cost" name="cost[]" v-model="item.cost" required placeholder="{{__('page.cost')}}" /></td>
                                                     <td><input type="number" class="form-control form-control-sm quantity" name="quantity[]" v-model="item.quantity" required placeholder="{{__('page.quantity')}}" /></td>
                                                     <td class="subtotal">
-                                                        @{{item.sub_total}}
+                                                        @{{formatPrice(item.sub_total)}}
                                                         <input type="hidden" name="subtotal[]" :value="item.sub_total" />
                                                         <input type="hidden" name="order_id[]" :value="item.order_id" />
                                                     </td>
@@ -118,7 +118,7 @@
                                                 <tr>
                                                     <td colspan="3">{{__('page.total')}}</td>
                                                     <td class="total_quantity">@{{total.quantity}}</td>
-                                                    <td class="total" colspan="2">@{{total.cost}}</td>
+                                                    <td class="total" colspan="2">@{{formatPrice(total.cost)}}</td>
                                                 </tr>
                                             </tfoot>
                                         </table>
