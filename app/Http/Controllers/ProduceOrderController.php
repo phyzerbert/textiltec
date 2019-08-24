@@ -196,7 +196,7 @@ class ProduceOrderController extends Controller
         if($data['deadline'] != ''){
             $item->deadline = $data['deadline'];
             $item->max_date = date('Y-m-d', strtotime("+".$data['deadline']."days", strtotime($item->timestamp)));
-        }        
+        }
         $item->deadline = $data['deadline'];
         $item->description = $data['description'];
         $item->responsibility = $data['responsibility'];
@@ -215,6 +215,12 @@ class ProduceOrderController extends Controller
         $item->production_cost = $data['production_cost'];
 
         $item->save();
+
+        $original_galleries = $item->images->pluck('id')->toArray();
+        $diff_galleries = array_diff($original_galleries, $data['original_galleries']);
+        foreach ($diff_galleries as $key => $value) {
+            Image::find($value)->delete();
+        }
 
         if($request->has("gallery_images")){
             for ($i=0; $i < count($data['gallery_images']); $i++) { 

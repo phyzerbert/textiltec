@@ -101,6 +101,35 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
+                                    <h3><i class="align-middle" data-feather="image"></i> {{__('page.image_gallery')}}</h3>
+                                    <div class="row"> 
+                                        @php
+                                            $image_array = array('jpg', 'png', 'jpeg', 'gif');
+                                            $video_array = array('avi', 'mp4', 'mpg');                                
+                                        @endphp                                  
+                                        @foreach ($order->images as $item)  
+                                            @php
+                                                $filename = basename($item->path);
+                                                $extension = pathinfo($item->path, PATHINFO_EXTENSION);
+                                            @endphp                                      
+                                            <div class="col-md-4 image-container">
+                                                <div class="card card-body">
+                                                    <button type="button" data-id="{{$item->id}}" class="close remove-image" data-dismiss="alert" style="position:absolute;top:5px;right:10px;" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    <input type="hidden" name="original_galleries[]" value="{{$item->id}}">
+                                                    @if (in_array($extension, $image_array))
+                                                        <img class="gallery-image" width="100%" height="160" src="{{asset($item->path)}}" alt="" class="img-fluid" />
+                                                    @elseif(in_array($extension, $video_array))
+                                                        <video class="gallery-video" width="100%" height="160" src="{{asset($item->path)}}" controls autoplay><source src="{{asset($item->path)}}"></video>
+                                                    @else
+                                                        <a href="{{asset($item->path)}}" download>{{$filename}}</a>
+                                                    @endif
+                                                        {{-- <img src="{{asset($item->path)}}" width="100%" alt="" class="img-fluid"> --}}
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                     <div>
                                         <h5 class="my-1" style="float:left">{{__('page.supply_list')}}</h5>
                                         {{-- <button type="button" class="btn btn-primary mg-b-10 add-product" style="float:right">ADD</button> --}}
@@ -300,6 +329,16 @@
             });
             $(".expiry_date").datepicker({
                 dateFormat: 'yy-mm-dd',
+            });
+
+            $(".remove-image").click(function(){
+                let sure = window.confirm("{{__('page.are_you_sure')}}");
+                console.log(sure);
+                if(sure == true){
+                    $(this).parents('.image-container').remove();
+                }else{
+                    return false;
+                }
             });
 
             $("#btn-add-product").click(function(){
