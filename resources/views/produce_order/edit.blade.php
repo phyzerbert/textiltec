@@ -172,7 +172,7 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colspan="4">{{__('page.total')}}</td>
+                                                    <td colspan="5">{{__('page.total')}}</td>
                                                     {{-- <td class="total_quantity">@{{total.quantity}}</td> --}}
                                                     <td class="total" colspan="2">
                                                         @{{formatPrice(total.cost)}}
@@ -199,7 +199,7 @@
                                                 <div class="card-body py-4">
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            <h3 class="mb-2">@{{formatPrice(total.cost * product_quantity)}}</h3>
+                                                            <h3 class="mb-2">@{{formatPrice((total.cost * product_quantity).toFixed(2))}}</h3>
                                                             <div class="mb-0">{{__('page.supply_cost')}}</div>
                                                         </div>
                                                         <div class="col-4 ml-auto text-right">
