@@ -55,7 +55,7 @@ var app = new Vue({
             this.total.cost = total_cost
         },
         calc_grand_total() {
-            this.grand_total = parseInt(this.total.cost) + parseInt(this.manufacturing_cost)
+            this.grand_total = parseFloat(this.total.cost) + parseFloat(this.manufacturing_cost)
         },
         remove(i) {
             this.order_items.splice(i, 1)

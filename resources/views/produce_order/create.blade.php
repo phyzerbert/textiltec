@@ -131,7 +131,7 @@
                                                     <td> @{{(item.quantity * product_quantity).toFixed(2)}}</td>
                                                     <td> @{{item.unit}}</td>
                                                     <td class="subtotal">
-                                                        @{{item.sub_total}}
+                                                        @{{formatPrice(item.sub_total)}}
                                                         <input type="hidden" name="subtotal[]" :value="item.sub_total" />
                                                     </td>
                                                     <td align="center">
@@ -144,7 +144,7 @@
                                                     <td colspan="5">{{__('page.total')}}</td>
                                                     {{-- <td class="total_quantity">@{{total.quantity}}</td> --}}
                                                     <td class="total" colspan="2">
-                                                        @{{total.cost}}
+                                                        @{{formatPrice(total.cost)}}
                                                         <input type="hidden" name="supply_cost" :value="total.cost" />
                                                     </td>
                                                 </tr>
