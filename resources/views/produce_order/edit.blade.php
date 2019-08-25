@@ -158,7 +158,7 @@
                                                     </td>
                                                     <td><input type="number" class="form-control form-control-sm cost" name="cost[]" v-model="item.cost" required placeholder="{{__('page.cost')}}" /></td>
                                                     <td><input type="number" class="form-control form-control-sm quantity" name="quantity[]" min="0" step="0.01" v-model="item.quantity" required placeholder="{{__('page.quantity')}}" /></td>
-                                                    <td> @{{item.quantity * product_quantity}}</td>
+                                                    <td> @{{(item.quantity * product_quantity).toFixed(2)}}</td>
                                                     <td> @{{item.unit}}</td>
                                                     <td class="subtotal">
                                                         @{{formatPrice(item.sub_total)}}
