@@ -217,10 +217,14 @@ class ProduceOrderController extends Controller
         $item->save();
 
         $original_galleries = $item->images->pluck('id')->toArray();
-        $diff_galleries = array_diff($original_galleries, $data['original_galleries']);
+        if(isset($data['original_galleries']) && count($data['original_galleries']) > 0){
+            $diff_galleries = array_diff($original_galleries, $data['original_galleries']);
+        }else{
+            $diff_galleries = $original_galleries;
+        }
         foreach ($diff_galleries as $key => $value) {
             Image::find($value)->delete();
-        }
+        }      
 
         if($request->has("gallery_images")){
             for ($i=0; $i < count($data['gallery_images']); $i++) { 
