@@ -40,6 +40,7 @@
                                         <th>{{__('page.quantity')}}</th>
                                         <th>{{__('page.received_quantity')}}</th>
                                         <th>{{__('page.workshop')}}</th>
+                                        <th>{{__('page.manufactured')}}</th>
                                         <th>{{__('page.supply_cost')}}</th>
                                         <th>{{__('page.manufacturing_cost')}}</th>
                                         <th>{{__('page.production_cost')}}</th>
@@ -70,6 +71,13 @@
                                             <td class="quantity" data-balance="{{$item->quantity - $received_quantity}}">{{$item->quantity}}</td>
                                             <td class="received_quantity">{{$received_quantity}}</td>
                                             <td class="workshop" data-id="{{$item->workshop_id}}">{{$item->workshop->name}}</td>
+                                            <td class="manufactured_status">
+                                                @if($received_quantity > 0)
+                                                    <span class="badge badge-primary">{{__('page.yes')}}</span>
+                                                @else
+                                                    <span class="badge badge-warning">{{__('page.no')}}</span>
+                                                @endif
+                                            </td>
                                             <td class="supply_cost"> {{number_format($item->supply_cost * $item->quantity)}} </td>
                                             <td class="manufacturing_cost"> {{number_format($item->manufacturing_cost * $item->quantity)}} </td>
                                             <td class="production_cost"> {{number_format($item->total_cost * $item->quantity)}} </td>
@@ -103,13 +111,13 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="7">{{__('page.total')}}</td>
-                                        <td>{{number_format($footer_supply_cost)}}</td>
-                                        <td>{{number_format($footer_manufacturing_cost)}}</td>
-                                        <td>{{number_format($footer_total_cost)}}</td>
-                                        <td>{{number_format($footer_total_paid)}}</td>
-                                        <td>{{number_format($footer_manufacturing_cost - $footer_total_paid)}}</td>
-                                        <td colspan="2"></td>
+                                        <th colspan="8">{{__('page.total')}}</th>
+                                        <th>{{number_format($footer_supply_cost)}}</th>
+                                        <th>{{number_format($footer_manufacturing_cost)}}</th>
+                                        <th>{{number_format($footer_total_cost)}}</th>
+                                        <th>{{number_format($footer_total_paid)}}</th>
+                                        <th>{{number_format($footer_manufacturing_cost - $footer_total_paid)}}</th>
+                                        <th colspan="2"></th>
                                     </tr>
                                 </tfoot>
                             </table>                

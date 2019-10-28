@@ -309,5 +309,8 @@ return [
     'add_order' => 'Add Order',
     'total_quantity' =>'Total Quantity',
     'average_quantity' => 'Average Quantity',
+    'manufactured' => 'Manufactured',
+    'yes' => 'Yes',
+    'no' => 'No',
     
 ];
