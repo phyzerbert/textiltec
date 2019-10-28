@@ -20,7 +20,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> Add New</button>
+                        <form action="" method="post" class="form-inline float-right">
+                            @csrf
+                            <input type="search" name="keyword" id="search_keyword" value="{{$keyword}}" class="form-control form-control-sm mr-3" placeholder="Keyword" />
+                            <button type="button" class="btn btn-success btn-sm float-right mg-b-5" id="btn-add"><i class="align-middle" data-feather="plus"></i> Add New</button>
+                        </form>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -77,7 +81,7 @@
                                     <p>{{__('page.total')}} <strong style="color: red">{{ $data->total() }}</strong> {{__('page.items')}}</p>
                                 </div>
                                 <div class="float-right" style="margin: 0;">
-                                    {!! $data->appends([])->links() !!}
+                                    {!! $data->appends(['keyword' => $keyword])->links() !!}
                                 </div>
                             </div>
                         </div>                        

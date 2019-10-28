@@ -14,12 +14,21 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         config(['site.page' => 'product']);
         $categories = Pcategory::all();
-        $data = Product::paginate(15);
-        return view('product.index', compact('data', 'categories'));
+        $mod = new Product();
+        $keyword = '';
+        if($request->keyword != '') {
+            $keyword = $request->keyword;
+            $category_array = PCategory::where('name', 'like', "%$keyword%")->pluck('id');
+            $mod = $mod->where('name', 'like', "%$keyword%")
+                        ->orWhere('description', 'like', "%$keyword%")
+                        ->orWhereIn('category_id', $category_array);
+        }
+        $data =$mod->orderBy('created_at', 'desc')->paginate(15);
+        return view('product.index', compact('data', 'categories', 'keyword'));
     }
 
     public function edit(Request $request){
