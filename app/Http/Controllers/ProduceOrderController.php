@@ -105,7 +105,8 @@ class ProduceOrderController extends Controller
         $item->product_id = $data['product'];
 
         $product = Product::find($data['product']);
-        $product->price = $data['supply_cost'] * $data['product_quantity'];
+        // $product->price = $data['supply_cost'] * $data['product_quantity'];
+        $product->price = $data['total_cost'];
         $product->save();
 
         $item->workshop_id = $data['workshop'];

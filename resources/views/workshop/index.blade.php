@@ -36,7 +36,8 @@
                                                 $produce_quantity = $item->produce_orders->sum('quantity');
                                                 $produce_orders_array = $item->produce_orders->pluck('id');
                                                 $produce_manufactured = $item->produce_orders->sum(function ($order) {
-                                                    return $order->quantity * $order->manufacturing_cost;
+                                                    $received_quantity = $order->receptions->sum('quantity');
+                                                    return $received_quantity * $order->manufacturing_cost;
                                                 });
                                                 // $purchases = $item->produce_orders->sum('production_cost');
                                                 $products_array = $item->products()->pluck('id');

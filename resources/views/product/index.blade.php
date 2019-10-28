@@ -59,7 +59,11 @@
                                         <tr>
                                             <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
                                             <td class="name py-1" data-value="{{$item->name}}">
-                                                <img class="product_image" src="@if($item->image){{asset($item->image)}}@else{{asset('images/no-image-icon.png')}}@endif" width="48" height="48" class="rounded-circle mr-2" style="cursor:pointer;" alt="">
+                                                @if (file_exists($item->image))
+                                                    <img class="product_image" src="{{asset($item->image)}}" width="48" height="48" class="rounded-circle mr-2" style="cursor:pointer;" alt="">
+                                                @else
+                                                    <img class="product_image" src="{{asset('images/no-image-icon.png')}}" width="48" height="48" class="rounded-circle mr-2" style="cursor:pointer;" alt="">
+                                                @endif                                                
                                                 {{$item->name}}
                                             </td>
                                             <td class="code">{{$item->code}}</td>
