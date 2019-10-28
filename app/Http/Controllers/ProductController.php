@@ -25,6 +25,7 @@ class ProductController extends Controller
             $category_array = PCategory::where('name', 'like', "%$keyword%")->pluck('id');
             $mod = $mod->where('name', 'like', "%$keyword%")
                         ->orWhere('description', 'like', "%$keyword%")
+                        ->orWhere('code', 'like', "%$keyword%")
                         ->orWhereIn('category_id', $category_array);
         }
         $data =$mod->orderBy('created_at', 'desc')->paginate(15);
