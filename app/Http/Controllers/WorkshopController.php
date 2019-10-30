@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Workshop;
+use App\Models\ProduceOrder;
+use App\Models\Payment;
+use App\Models\ProduceOrderReception;
 
 class WorkshopController extends Controller
 {
@@ -44,5 +47,13 @@ class WorkshopController extends Controller
         $item = Workshop::find($id);
         $item->delete();
         return back()->with("success", __('page.deleted_successfully'));
+    }
+
+    public function produce_order(Request $request, $id) {
+        config(['site.page' => 'produce_order']);
+        $workshop = Workshop::find($id);
+        $mod = $workshop->produce_orders();
+        $data = $mod->orderBy('created_at', 'desc')->paginate(15);
+        return view('workshop.order', compact('data', 'id'));
     }
 }

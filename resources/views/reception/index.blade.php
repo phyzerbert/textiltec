@@ -37,7 +37,7 @@
                                         @forelse ($data as $item)
                                             <tr>
                                                 <td>{{ $loop->index + 1 }}</td>
-                                                <td class="date">{{date('Y-m-d', strtotime($item->received_date))}}</td>
+                                                <td class="date">{{date('Y-m-d H:i', strtotime($item->receive_date))}}</td>
                                                 <td class="quantity" data-value="{{$item->quantity}}">{{number_format($item->quantity)}}</td>
                                                 <td class="py-1">
                                                     <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
@@ -137,8 +137,6 @@
             $(".attachment").click(function(e){
                 e.preventDefault();
                 let path = $(this).data('value');
-                console.log(path)
-                // $("#attachment").attr('src', path);
                 $("#image_preview").html('')
                 $("#image_preview").verySimpleImageViewer({
                     imageSource: path,

@@ -47,6 +47,9 @@ Route::any('/workshop/index', 'WorkshopController@index')->name('workshop.index'
 Route::post('/workshop/create', 'WorkshopController@create')->name('workshop.create');
 Route::post('/workshop/edit', 'WorkshopController@edit')->name('workshop.edit');
 Route::get('/workshop/delete/{id}', 'WorkshopController@delete')->name('workshop.delete');
+Route::any('/workshop/order/{id}', 'WorkshopController@order')->name('workshop.order');
+Route::any('/workshop/payment/{id}', 'WorkshopController@payment')->name('workshop.payment');
+Route::any('/workshop/receive/{id}', 'WorkshopController@receive')->name('workshop.receive');
 
 Route::any('/supply/index', 'SupplyController@index')->name('supply.index');
 Route::get('/supply/create', 'SupplyController@create')->name('supply.create');

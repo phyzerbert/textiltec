@@ -90,4 +90,5 @@ class SupplierController extends Controller
         return $pdf->download('supplier_report_'.$supplier->name.'.pdf');    
         // return view('supplier.report', compact('supplier'));
     }
+
 }
