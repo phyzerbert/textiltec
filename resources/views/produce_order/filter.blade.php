@@ -5,7 +5,7 @@
     <select class="form-control form-control-sm mr-sm-2 mb-2 select2" name="product_id" id="search_product" data-placeholder="{{__('page.select_product')}}">
         <option label="{{__('page.select_product')}}"></option>
         @foreach ($products as $item)
-            <option value="{{$item->id}}" @if ($product_id == $item->id) selected @endif>{{$item->name}}</option>
+            <option value="{{$item->id}}" @if ($product_id == $item->id) selected @endif>{{$item->name}} ({{$item->code}}) </option>
         @endforeach
     </select>
     <select class="form-control form-control-sm ml-2 mb-2" name="workshop_id" id="search_workshop">
