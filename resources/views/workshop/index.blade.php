@@ -59,6 +59,7 @@
                                                 <td class="py-1">
                                                     <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
                                                     <a href="{{route('workshop.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
+                                                    <a href="{{route('workshop.order', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.details')}}"><i class="align-middle" data-feather="eye"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
