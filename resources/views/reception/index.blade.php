@@ -67,8 +67,8 @@
                                 </table>
                                 <div class="clearfix">
                                     <div class="mt-3 text-right">
-                                        <a href="{{route('produce_order.index')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-plus"></i>  {{__('page.production_order')}}</a>                                       
-                                        <a href="{{route('produce_order.create')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-list"></i>  {{__('page.add_order')}}</a>
+                                        <a href="{{route('produce_order.index')}}" class="btn btn-oblong btn-primary mr-3"><i class="fa fa-list"></i>  {{__('page.production_order')}}</a>                                       
+                                        <a href="{{route('produce_order.create')}}" class="btn btn-oblong btn-success mg-r-30"><i class="fa fa-plus"></i>  {{__('page.add_order')}}</a>
                                     </div>
                                 </div>
                             </div>
