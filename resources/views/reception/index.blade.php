@@ -30,20 +30,34 @@
                                             <th style="width:40px;">#</th>
                                             <th>{{__('page.date')}}</th>
                                             <th>{{__('page.quantity')}}</th> 
+                                            <th>{{__('page.total_amount')}}</th> 
+                                            <th>{{__('page.balance')}}</th> 
                                             <th>{{__('page.action')}}</th>
                                         </tr>
                                     </thead>
-                                    <tbody>                                
+                                    <tbody>    
+                                        @php
+                                            $total_amount = $order->quantity;
+                                            $balance = 0;
+                                        @endphp                            
                                         @forelse ($data as $item)
+                                            @php
+                                                $balance = $total_amount - $item->quantity;
+                                            @endphp
                                             <tr>
                                                 <td>{{ $loop->index + 1 }}</td>
                                                 <td class="date">{{date('Y-m-d H:i', strtotime($item->receive_date))}}</td>
                                                 <td class="quantity" data-value="{{$item->quantity}}">{{number_format($item->quantity)}}</td>
+                                                <td>{{number_format($total_amount)}}</td>
+                                                <td>{{number_format($balance)}}</td>
                                                 <td class="py-1">
                                                     <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
                                                     <a href="{{route('order_receive.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
                                                 </td>
                                             </tr>
+                                            @php
+                                                $total_amount = $balance;
+                                            @endphp
                                         @empty
                                             <tr>
                                                 <th colspan="10" class="text-center">No Data</th>

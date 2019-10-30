@@ -108,7 +108,7 @@ class WorkshopController extends Controller
         $produce_order_array = $workshop->produce_orders->pluck('id');
         $mod = new ProduceOrderReception();
         $mod = $mod->whereIn('produce_order_id', $produce_order_array);
-        $data = $mod->orderBy('receive_date', 'desc')->paginate(15);
+        $data = $mod->orderBy('receive_date')->paginate(15);
         return view('workshop.receiption', compact('data', 'id'));
     }
 

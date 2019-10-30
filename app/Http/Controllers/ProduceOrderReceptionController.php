@@ -20,8 +20,8 @@ class ProduceOrderReceptionController extends Controller
     {
         config(['site.page' => 'reception_list']);
         $order = ProduceOrder::find($id);
-        $data = $order->receptions;
-        return view('reception.index', compact('data', 'id'));
+        $data = $order->receptions()->orderBy('receive_date')->get();
+        return view('reception.index', compact('data', 'order', 'id'));
     }
 
     public function create(Request $request){
