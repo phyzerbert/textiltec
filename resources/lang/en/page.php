@@ -312,5 +312,7 @@ return [
     'manufactured' => 'Manufactured',
     'yes' => 'Yes',
     'no' => 'No',
+    'receive_report' => 'Receive Report',
+    'edit_order_receive' => 'Edit Receive',
     
 ];

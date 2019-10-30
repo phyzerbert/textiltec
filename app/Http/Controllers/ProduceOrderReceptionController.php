@@ -43,7 +43,7 @@ class ProduceOrderReceptionController extends Controller
             'date'=>'required',
         ]);
         $item = ProduceOrderReception::find($request->get('id'));
-        $item->receive_date = $request->get('receive_date').":00";
+        $item->receive_date = $request->get('date').":00";
         $item->quantity = $request->get('quantity');
         $item->save();
         return back()->with('success', __('page.updated_successfully'));

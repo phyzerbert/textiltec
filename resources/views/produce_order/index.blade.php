@@ -96,13 +96,14 @@
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paper-plane"></i> {{__('page.action')}}</button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item px-3" href="{{route('produce_order.detail', $item->id)}}"><i class="align-middle" data-feather="eye"></i>  {{__('page.details')}}</a>
-                                                        <a class="dropdown-item px-3" href="{{route('payment.index', ['produce', $item->id])}}"><i class="align-middle" data-feather="dollar-sign"></i> {{__('page.payment_list')}}</a>
-                                                        <a class="dropdown-item px-3 btn-add-payment" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="credit-card"></i> {{__('page.add_payment')}}</a>
-                                                        <a class="dropdown-item px-3" href="{{route('produce_order.report', $item->id)}}"><i class="align-middle mr-2 far fa-file-pdf"></i> {{__('page.report')}}</a>
-                                                        <a class="dropdown-item px-3 btn-add-receive" href="#" data-id="{{$item->id}}"><i class="align-middle" data-feather="archive"></i> {{__('page.receive')}}</a>
-                                                        <a class="dropdown-item px-3" href="{{route('produce_order.edit', $item->id)}}"><i class="align-middle" data-feather="edit"></i> {{__('page.edit')}}</a>
-                                                        <a class="dropdown-item px-3" href="{{route('produce_order.delete', $item->id)}}"><i class="align-middle" data-feather="trash-2"></i> {{__('page.delete')}}</a>
+                                                        <a class="dropdown-item px-3" href="{{route('produce_order.detail', $item->id)}}">{{__('page.details')}}</a>
+                                                        <a class="dropdown-item px-3" href="{{route('payment.index', ['produce', $item->id])}}">{{__('page.payment_list')}}</a>
+                                                        <a class="dropdown-item px-3 btn-add-payment" href="#" data-id="{{$item->id}}">{{__('page.add_payment')}}</a>
+                                                        <a class="dropdown-item px-3" href="{{route('produce_order.report', $item->id)}}">{{__('page.report')}}</a>
+                                                        <a class="dropdown-item px-3 btn-add-receive" href="#" data-id="{{$item->id}}">{{__('page.receive')}}</a>
+                                                        <a class="dropdown-item px-3" href="{{route('order_receive.index', $item->id)}}">{{__('page.receive_report')}}</a>
+                                                        <a class="dropdown-item px-3" href="{{route('produce_order.edit', $item->id)}}">{{__('page.edit')}}</a>
+                                                        <a class="dropdown-item px-3" href="{{route('produce_order.delete', $item->id)}}">{{__('page.delete')}}</a>
                                                     </div>
                                                 </div>
                                             </td>
