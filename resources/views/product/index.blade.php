@@ -50,6 +50,7 @@
                                             if($produce_order){
                                                 $produce_quantity = $produce_order->receptions->sum('quantity');
                                                 $price = $produce_order->total_cost;
+                                                $item->update(['price' => $price]);
                                             }else {
                                                 $produce_quantity = 0;
                                             }
