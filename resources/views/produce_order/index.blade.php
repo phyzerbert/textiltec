@@ -67,7 +67,7 @@
                                             <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
                                             <td class="timestamp">{{date('Y-m-d H:i', strtotime($item->timestamp))}}</td>
                                             <td class="reference_no">{{$item->reference_no}}</td>
-                                            <td class="product" data-id="{{$item->product_id}}">{{$item->product->name}}</td>
+                                            <td class="product" data-id="{{$item->product_id}}">{{$item->product->name ?? ''}}( {{$item->product->code ?? ''}} )</td>
                                             <td class="quantity" data-balance="{{$item->quantity - $received_quantity}}">{{$item->quantity}}</td>
                                             <td class="received_quantity">{{$received_quantity}}</td>
                                             <td class="workshop" data-id="{{$item->workshop_id}}">{{$item->workshop->name}}</td>
