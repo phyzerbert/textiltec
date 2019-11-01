@@ -118,7 +118,7 @@ class WorkshopController extends Controller
         $produce_order_array = $workshop->produce_orders->pluck('id');
         $mod = new Payment();
         $mod = $mod->whereIn('paymentable_id', $produce_order_array)->where('paymentable_type', 'App\Models\ProduceOrder');
-        $data = $mod->orderBy('receive_date', 'desc')->paginate(15);
+        $data = $mod->orderBy('timestamp', 'desc')->paginate(15);
         return view('workshop.payment', compact('data', 'id'));
     }
 }
