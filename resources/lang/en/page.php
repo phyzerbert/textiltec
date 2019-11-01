@@ -314,5 +314,8 @@ return [
     'no' => 'No',
     'receive_report' => 'Receive Report',
     'edit_order_receive' => 'Edit Receive',
+    'payment_list_of_workshop' => 'Payment List Of Workshop',
+    'receive_of_workshop' => 'Reveive Of Workshop',
+    'produce_order_of_workshop' => 'Produce Order Of Workshop',
     
 ];

@@ -17,7 +17,7 @@
     <div class="container-fluid p-0">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">{{__('page.payment_list')}}</h1>
+            <h1 class="h3 mb-3">{{__('page.payment_list_of_workshop')}}</h1>
 
             <div class="row">
                 <div class="col-12">
@@ -37,11 +37,16 @@
                                             <th>{{__('page.reference_no')}}</th>
                                             <th>{{__('page.amount')}}</th> 
                                             <th>{{__('page.note')}}</th>
-                                            <th>{{__('page.action')}}</th>
                                         </tr>
                                     </thead>
-                                    <tbody>                                
+                                    <tbody> 
+                                        @php
+                                            $total_amount = 0;
+                                        @endphp                               
                                         @forelse ($data as $item)
+                                            @php
+                                                $total_amount += $item->amount;
+                                            @endphp
                                             <tr>
                                                 <td>{{ $loop->index + 1 }}</td>
                                                 <td class="date">{{date('Y-m-d H:i', strtotime($item->timestamp))}}</td>
@@ -53,10 +58,6 @@
                                                         <a href="#" class="attachment" data-value="{{asset($item->attachment)}}"><i class="fa fa-paperclip"></i></a>
                                                     @endif
                                                 </td>
-                                                <td class="py-1">
-                                                    <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
-                                                    <a href="{{route('payment.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
-                                                </td>
                                             </tr>
                                         @empty
                                             <tr>
@@ -64,9 +65,15 @@
                                             </tr>
                                         @endforelse
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3"></th>
+                                            <th>{{number_format($total_amount)}}</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
-                            </div>
-                            
+                            </div>                            
                         </div>
                     </div>
                 </div>

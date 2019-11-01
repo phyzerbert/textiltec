@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3"><i class="fa fa-list"></i> {{__('page.production_order_list')}}</h1>
+        <h1 class="h3 mb-3"><i class="fa fa-list"></i> {{__('page.produce_order_of_workshop')}}</h1>
 
         <div class="row">
             <div class="col-12">

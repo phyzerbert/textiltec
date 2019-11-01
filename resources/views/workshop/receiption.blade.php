@@ -17,7 +17,7 @@
     <div class="container-fluid p-0">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">{{__('page.receive_report')}}</h1>
+            <h1 class="h3 mb-3">{{__('page.receive_of_workshop')}}</h1>
 
             <div class="row">
                 <div class="col-12">
@@ -37,7 +37,7 @@
                                             <th>{{__('page.quantity')}}</th> 
                                         </tr>
                                     </thead>
-                                    <tbody>                                
+                                    <tbody>                            
                                         @forelse ($data as $item)
                                             <tr>
                                                 <td>{{ $loop->index + 1 }}</td>
