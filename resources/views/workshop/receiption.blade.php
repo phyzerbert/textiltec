@@ -43,7 +43,6 @@
                                                 <td>{{ $loop->index + 1 }}</td>
                                                 <td class="date">{{date('Y-m-d H:i', strtotime($item->receive_date))}}</td>
                                                 <td class="quantity" data-value="{{$item->quantity}}">{{number_format($item->quantity)}}</td>
-                                                
                                             </tr>
                                         @empty
                                             <tr>

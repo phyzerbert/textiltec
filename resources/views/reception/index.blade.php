@@ -51,6 +51,7 @@
                                                 <td class="py-1">
                                                     <a href="#" class="btn-edit" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="left" title="{{__('page.edit')}}"><i class="align-middle" data-feather="edit"></i></a>
                                                     <a href="{{route('order_receive.delete', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.delete')}}" onclick="return window.confirm('{{__('page.are_you_sure')}}')"><i class="align-middle" data-feather="trash-2"></i></a>
+                                                    <a href="{{route('order_receive.report', $item->id)}}" data-toggle="tooltip" data-placement="left" title="{{__('page.report')}}"><i class="align-middle" data-feather="file"></i></a>
                                                 </td>
                                             </tr>
                                         @empty

@@ -99,6 +99,7 @@ Route::any('/order_receive/index/{id}', 'ProduceOrderReceptionController@index')
 Route::post('/order_receive/create', 'ProduceOrderReceptionController@create')->name('order_receive.create');
 Route::post('/order_receive/edit', 'ProduceOrderReceptionController@edit')->name('order_receive.edit');
 Route::get('/order_receive/delete/{id}', 'ProduceOrderReceptionController@delete')->name('order_receive.delete');
+Route::get('/order_receive/report/{id}', 'ProduceOrderReceptionController@report')->name('order_receive.report');
 
 Route::any('/product_sale/index', 'ProductSaleController@index')->name('product_sale.index');
 Route::get('/product_sale/create', 'ProductSaleController@create')->name('product_sale.create');

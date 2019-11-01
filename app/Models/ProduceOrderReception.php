@@ -9,6 +9,6 @@ class ProduceOrderReception extends Model
     protected $guarded = [];
 
     public function produce_order(){
-        return $this->belongsTo('App\Models\ProudceOrder');
+        return $this->belongsTo('App\Models\ProduceOrder');
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\ProduceOrder;
 use App\Models\ProduceOrderReception;
+use PDF;
 
 class ProduceOrderReceptionController extends Controller
 {
@@ -54,5 +55,13 @@ class ProduceOrderReceptionController extends Controller
         $item = ProduceOrderReception::find($id);
         $item->delete();
         return back()->with("success", __('page.deleted_successfully'));
+    }
+    
+    public function report($id){
+        $reception = ProduceOrderReception::find($id);
+        $produce_order =$reception->produce_order;
+        $pdf = PDF::loadView('reception.report', compact('reception'))->setPaper('B5', 'landscape');  
+        return $pdf->download('reception_report_'.$produce_order->reference_no.'.pdf');
+        // return view('reception.report', compact('reception'));
     }
 }
