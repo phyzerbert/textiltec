@@ -51,7 +51,7 @@ class WorkshopController extends Controller
     }
 
     public function produce_order(Request $request, $id) {
-        config(['site.page' => 'produce_order']);
+        config(['site.page' => 'workshop']);
         $workshop = Workshop::find($id);
         $products = Product::all();
         $mod = $workshop->produce_orders();
@@ -103,7 +103,7 @@ class WorkshopController extends Controller
     }
 
     public function receiption(Request $request, $id) {
-        config(['site.page' => 'produce_order']);
+        config(['site.page' => 'workshop']);
         $workshop = Workshop::find($id);
         $produce_order_array = $workshop->produce_orders->pluck('id');
         $mod = new ProduceOrderReception();
@@ -113,7 +113,7 @@ class WorkshopController extends Controller
     }
 
     public function payment(Request $request, $id) {
-        config(['site.page' => 'produce_order']);
+        config(['site.page' => 'workshop']);
         $workshop = Workshop::find($id);
         $produce_order_array = $workshop->produce_orders->pluck('id');
         $mod = new Payment();
