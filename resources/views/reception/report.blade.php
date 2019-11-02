@@ -75,10 +75,10 @@
         <table class="table mt-5">
             <tr>
                 <th>
-                    <div class="border-top border-dark px-5 pt-2 mx-auto" style="width:180px;">Approved</div>
+                    <div class="border-top border-dark px-5 pt-2 mx-auto" style="width:180px;">{{__('page.approved')}}</div>
                 </th>
                 <th>
-                    <div class="border-top border-dark px-5 pt-2 mx-auto" style="width:180px;">Received</div>
+                    <div class="border-top border-dark px-5 pt-2 mx-auto" style="width:180px;">{{__('page.received')}}</div>
                 </th>
             </tr>
         </table>

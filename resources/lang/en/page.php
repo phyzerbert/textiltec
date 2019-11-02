@@ -93,6 +93,7 @@ return [
     'accepted_formats_image' => 'Accepted formats: gif, png, jpg. Max file size 2Mb.',
     'success' => 'Success',
     'pending' => 'Pending',
+    'approved' => 'Approved',
     'received' => 'Received',
     'partial' => 'Partial',
     'error' => 'Error',
