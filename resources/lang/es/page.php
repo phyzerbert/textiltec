@@ -310,5 +310,6 @@ return [
     'total_quantity' =>'Cantidad Total',
     'average_quantity' => 'Cantidad Promedio',
     'receive_report' => 'Reporte de Recibido',
+    'approved' => 'Aprobada por',
     
 ];
