@@ -19,6 +19,9 @@
         }
         .table td,.table th {
             border: none;
+            text-align: center;
+            padding-top: 8px;
+            padding-bottom: 8px;
         }
         .w-30 {
             width: 33.33333333333333%;
@@ -40,14 +43,14 @@
                 <th>{{__('page.workshop')}}</th>
             </tr>
             <tr>
-                <th>{{$reception->produce_order->reference_no ?? ''}}</th>
-                <th>{{date('d/m/Y', strtotime($reception->receive_date))}}</th>
-                <th>{{$workshop}}</th>
+                <td>{{$reception->produce_order->reference_no ?? ''}}</td>
+                <td>{{date('d/m/Y', strtotime($reception->receive_date))}}</td>
+                <td>{{$workshop}}</td>
             </tr>
         </table>
     </div>
-    <div class="px-3 mt-4">
-        <h3 class="my-3">{{__('page.receive_report')}}</h3>
+    <div class="px-3 mt-2">
+        <h3 class="mt-3 text-center">{{__('page.receive_report')}}</h3>
         <table class="table" id="receive_table">
             <tr>
                 <th>{{__('page.quantity')}}</th>
@@ -60,9 +63,23 @@
                 <td>{{number_format($produce_order->manufacturing_cost * $reception->quantity)}}</td>
             </tr>
             <tr>
-                <td><div class="border" style="height: 30px; width:150px;"></div></td>
-                <td><div class="border" style="height: 30px; width:150px;"></div></td>
-                <td><div class="border" style="height: 30px; width:150px;"></div></td>
+                <td><div class="border border-dark mx-auto" style="height: 30px; width:150px;"></div></td>
+                <td><div class="border border-dark mx-auto" style="height: 30px; width:150px;"></div></td>
+                <td><div class="border border-dark mx-auto" style="height: 30px; width:150px;"></div></td>
+            </tr>
+            <tr>
+                <th colspan="2" class="text-right pt-3">{{__('page.total')}}</th>
+                <th><div class="border border-dark mx-auto" style="height: 30px; width:150px;"></div></th>
+            </tr>
+        </table>
+        <table class="table mt-5">
+            <tr>
+                <th>
+                    <div class="border-top border-dark px-5 pt-2 mx-auto" style="width:180px;">Approved</div>
+                </th>
+                <th>
+                    <div class="border-top border-dark px-5 pt-2 mx-auto" style="width:180px;">Received</div>
+                </th>
             </tr>
         </table>
     </div>
