@@ -9,8 +9,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.15);
-    z-index: 1100;
+    background-color: rgba(61, 90, 254, 0.98);
+    z-index: 10000;
+}
+
+.spinner-grow {
+    width: 4rem;
+    height: 4rem;
 }
 
 /* ******** uniform.js style ******** */

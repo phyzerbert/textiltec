@@ -16,6 +16,7 @@ class CreateProductSalesTable extends Migration
         Schema::create('product_sales', function (Blueprint $table) {
             $table->bigIncrements('id');            
             $table->integer("user_id")->nullable();
+            $table->integer('company_id')->nullable();
             $table->dateTime('timestamp')->nullable();
             $table->string('reference_no')->nullable();
             $table->integer('biller_id')->nullable();

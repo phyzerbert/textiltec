@@ -57,6 +57,21 @@
         // $(document).ready(function(){
         //     $("#ajax-loading").hide();
         // });
+
+        let auth_id = "{{auth()->id()}}";
+        $("#ajax-loading").show();
+        $.ajax({
+            url: "{{route('auth_check')}}",
+            data: {id: auth_id, _token: "{{csrf_token()}}"},
+            method: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                $("#ajax-loading").hide();
+            },
+            error: function(errors) {
+                window.location.href = '/login';
+            }
+        });
     </script>
 
     <script>
@@ -93,7 +108,7 @@
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             }  
-        }
+        }        
     </script>
 </body>
 

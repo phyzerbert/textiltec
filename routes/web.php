@@ -126,3 +126,4 @@ Route::post('get_autocomplete_supplies', 'VueController@get_autocomplete_supplie
 Route::post('get_autocomplete_products', 'VueController@get_autocomplete_products');
 
 Route::post('/set_pagesize', 'HomeController@set_pagesize')->name('set_pagesize');
+Route::post('/auth_check', 'VueController@auth_check')->name('auth_check');

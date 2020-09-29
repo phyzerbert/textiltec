@@ -16,6 +16,7 @@ class CreateProduceOrdersTable extends Migration
         Schema::create('produce_orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer("user_id")->nullable();
+            $table->integer('company_id')->nullable();
             $table->dateTime('timestamp')->nullable();
             $table->string('reference_no')->nullable();
             $table->integer('product_id')->nullable();
