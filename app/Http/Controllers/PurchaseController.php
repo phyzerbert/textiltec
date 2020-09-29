@@ -68,7 +68,7 @@ class PurchaseController extends Controller
         config(['site.page' => 'add_purchase']);
         $suppliers = Supplier::all();
         $supplies = Supply::all();
-        return view('purchase.create', compact('suppliers', 'stores', 'products'));
+        return view('purchase.create', compact('suppliers', 'supplies', 'suppliers'));
     }
 
     public function save(Request $request){

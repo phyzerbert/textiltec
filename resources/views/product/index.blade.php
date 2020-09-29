@@ -1,13 +1,11 @@
 @extends('layouts.master')
-@section('style')    
-    <link rel="stylesheet" href="{{asset('master/plugins/imageviewer/css/jquery.verySimpleImageViewer.css')}}">
+@section('style')
     <style>
-        #image_preview {
-            max-width: 600px;
-            height: 600px;
-        }
-        .image_viewer_inner_container {
-            width: 100% !important;
+        .product-image {
+            width: 45px;
+            height: 45px;
+            margin-right: 7px;
+            cursor: pointer;
         }
     </style> 
 @endsection
@@ -60,9 +58,9 @@
                                             <td>{{ (($data->currentPage() - 1 ) * $data->perPage() ) + $loop->iteration }}</td>
                                             <td class="name py-1" data-value="{{$item->name}}">
                                                 @if (file_exists($item->image))
-                                                    <img class="product_image" src="{{asset($item->image)}}" width="48" height="48" class="rounded-circle mr-2" style="cursor:pointer;" alt="">
+                                                    <img class="product-image" src="{{asset($item->image)}}" width="48" height="48" class="rounded-circle mr-2" style="cursor:pointer;" alt="">
                                                 @else
-                                                    <img class="product_image" src="{{asset('images/no-image-icon.png')}}" width="48" height="48" class="rounded-circle mr-2" style="cursor:pointer;" alt="">
+                                                    <img class="product-image" src="{{asset('images/no-image-icon.png')}}" width="48" height="48" class="rounded-circle mr-2" style="cursor:pointer;" alt="">
                                                 @endif                                                
                                                 {{$item->name}}
                                             </td>
@@ -192,20 +190,11 @@
         </div>
     </div>
     
-    <div class="modal fade" id="attachModal">
-        <div class="modal-dialog" style="margin-top:17vh">
-            <div class="modal-content">
-                <div id="image_preview"></div>
-                {{-- <img src="" id="attachment" width="100%" height="600" alt=""> --}}
-            </div>
-        </div>
-    </div>
-    
 @endsection
 
 @section('script')
     <script src="{{asset('master/plugins/uniform/uniform.min.js')}}"></script> 
-    <script src="{{asset('master/plugins/imageviewer/js/jquery.verySimpleImageViewer.min.js')}}"></script> 
+    <script src="{{asset('master/plugins/ezview/EZView.js')}}"></script>
     <script>
         $(document).ready(function(){
             
@@ -235,24 +224,9 @@
                 $("#editModal .description").val(description);
                 $("#editModal").modal();
             });
-
-            $(".product_image").click(function(e){
-                e.preventDefault();
-                let path = $(this).attr('src');                
-                console.log(path)
-                // $("#attachment").attr('src', path);
-                $("#image_preview").html('')
-                $("#image_preview").verySimpleImageViewer({
-                    imageSource: path,
-                    frame: ['100%', '100%'],
-                    maxZoom: '900%',
-                    zoomFactor: '10%',
-                    mouse: true,
-                    keyboard: true,
-                    toolbar: true,
-                });
-                $("#attachModal").modal();
-            });
+            if($(".product-image").length) {
+                $(".product-image").EZView();
+            }
         })
     </script>
 @endsection

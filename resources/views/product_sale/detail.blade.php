@@ -1,13 +1,11 @@
 @extends('layouts.master')
-@section('style')    
-    <link rel="stylesheet" href="{{asset('master/plugins/imageviewer/css/jquery.verySimpleImageViewer.css')}}">
+@section('style')
     <style>
-        #image_preview {
-            max-width: 600px;
-            height: 600px;
-        }
-        .image_viewer_inner_container {
-            width: 100% !important;
+        .purchase-image {
+            width: 45px;
+            height: 45px;
+            margin-right: 7px;
+            cursor: pointer;
         }
     </style> 
 @endsection
@@ -49,7 +47,7 @@
                                         <li class="list-group-item">
                                             {{__('page.attachment')}} : 
                                             @if ($sale->attachment != "")
-                                                <a href="#" class="attachment" data-value="{{asset($sale->attachment)}}">&nbsp;&nbsp;&nbsp;<i class="fa fa-paperclip"></i></a>
+                                                <img src="{{asset($sale->attachment)}}" href="{{asset($sale->attachment)}}" class="purchase-image border rounded" alt="">
                                             @endif
                                         </li>
                                     </ul>
@@ -165,41 +163,16 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="attachModal">
-        <div class="modal-dialog" style="margin-top:17vh">
-            <div class="modal-content">
-                <div id="image_preview"></div>
-                {{-- <img src="" id="attachment" width="100%" height="600" alt=""> --}}
-            </div>
-        </div>
-    </div>
 @endsection
 
 
 @section('script')
-    <script src="{{asset('master/plugins/imageviewer/js/jquery.verySimpleImageViewer.min.js')}}"></script>
+    <script src="{{asset('master/plugins/ezview/EZView.js')}}"></script>
     <script>
-        $(document).ready(function(){
-            
-            $(".attachment").click(function(e){
-                e.preventDefault();
-                let path = $(this).data('value');
-                console.log(path)
-                // $("#attachment").attr('src', path);
-                $("#image_preview").html('')
-                $("#image_preview").verySimpleImageViewer({
-                    imageSource: path,
-                    frame: ['100%', '100%'],
-                    maxZoom: '900%',
-                    zoomFactor: '10%',
-                    mouse: true,
-                    keyboard: true,
-                    toolbar: true,
-                });
-                $("#attachModal").modal();
-            });
-            
+        $(document).ready(function(){            
+            if($(".purchase-image").length) {
+                $(".purchase-image").EZView();
+            }
         });
     </script>
 @endsection
